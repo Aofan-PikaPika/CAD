@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Threading;
 
-namespace AutoCAD
+namespace DEMO
 {
     static class Program
     {
@@ -15,7 +16,9 @@ namespace AutoCAD
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Splash.LoadAndRun(new FrmMain());
+            // Application.Run(new FrmMain());
+           // Application.Run(new SubForm.FrmFrameInfo());
         }
     }
 }

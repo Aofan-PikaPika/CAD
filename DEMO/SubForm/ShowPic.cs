@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace AutoCAD
+namespace DEMO.SubForm
 {
-    public partial class Form1 : Form
+    public partial class ShowPic : Form
     {
-        public Form1()
+        public ShowPic()
         {
             InitializeComponent();
         }
