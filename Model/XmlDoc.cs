@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 
-namespace DEMO.Class
+namespace Model
 {
-    public static class XmlTool
+    public static class XmlDoc
     {
         private static XmlDocument doc;
 

@@ -284,7 +284,10 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.skinComboBox1);
             this.Controls.Add(this.skinTabControl1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmMaterial";
+            this.ShowInTaskbar = false;
             this.Text = "材料库";
             this.Load += new System.EventHandler(this.FrmMaterial_Load);
             this.skinTabControl1.ResumeLayout(false);

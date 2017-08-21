@@ -153,6 +153,7 @@
             this.Controls.Add(this.skinLabel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmAdd";
             this.ShowInTaskbar = false;
             this.Text = "新建工程";

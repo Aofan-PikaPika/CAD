@@ -66,8 +66,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\XmlTool.cs" />
-    <Compile Include="Entity\Project.cs" />
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +150,7 @@
     <EmbeddedResource Include="SubForm\ShowPic.resx">
       <DependentUpon>ShowPic.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -218,6 +217,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Drawing_72px_1095749_easyicon.net.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{26f3caa6-ae82-4f07-9702-285e2035c010}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{473a9e95-214e-4b23-96ec-ec733adff586}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

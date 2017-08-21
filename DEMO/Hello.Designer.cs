@@ -53,6 +53,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(123, 240);
@@ -60,6 +61,7 @@
             this.label2.Size = new System.Drawing.Size(54, 28);
             this.label2.TabIndex = 1;
             this.label2.Text = "打开";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
