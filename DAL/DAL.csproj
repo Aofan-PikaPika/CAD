@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InterfaceConn.cs" />
-    <Compile Include="SQLiteConn.cs" />
+    <Compile Include="SQLiteConnectionBase.cs" />
     <Compile Include="XMLHandle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
