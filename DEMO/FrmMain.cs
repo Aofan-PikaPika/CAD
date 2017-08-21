@@ -12,7 +12,9 @@ using System.Xml;
 using DEMO.SubForm;
 using System.Reflection;
 using System.Diagnostics;
+using Model.Entity;
 using Model;
+using BLL;
 
 namespace DEMO
 {
@@ -101,18 +103,17 @@ namespace DEMO
 
 
         #region 文件模块
-        private XmlDocument doc = null;
-
+        XMLOperation xo = new XMLOperation();
         //新建工程
         private void skinButton1_Click(object sender, EventArgs e)
         {
-            if (doc == null)
+            if ( XmlDoc.doc== null)
             {
-                FrmAdd add = new FrmAdd(doc);
+                FrmAdd add = new FrmAdd();
                 add.ShowDialog();
                 if (add.DialogResult==DialogResult.OK)
                 {
-                    doc = XmlDoc.GetInstance();                      
+                    toolStripLabel2.Text = ProjectInfo.Pro_Name;                
                 }
             }
             else 
@@ -121,42 +122,48 @@ namespace DEMO
             }
         }
 
+
         //打开工程
         private void skinButton2_Click(object sender, EventArgs e)
         {
-            if (doc == null)
+            int ProjectID=0;
+            if (XmlDoc.doc == null)
             {
                 OpenFileDialog ofd = new OpenFileDialog();
+                
                 ofd.FileName = "工程文档";
                 ofd.Filter = "工程文档(*.xml)|*.xml";
                 if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    doc = XmlDoc.GetInstance();
-                    doc.Load(ofd.FileName);
-                    toolStripLabel2.Text = ofd.FileName;
+                {                  
+                     ProjectID= xo.XmlOpen(ofd.FileName);
+                    //传值projectid，给实体赋值。。。
+                    //给窗体状态栏赋值
                 }
-
             }
             else 
             {
                 MessageBoxEx.Show("已有工程打开！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+
+
+
         //保存工程
         private void skinButton3_Click(object sender, EventArgs e)
         {
-            if (doc!=null)
+            if (XmlDoc.doc != null)
             {
                 SaveFileDialog sfd = new SaveFileDialog();
-                sfd.FileName = "工程文档";
+                sfd.FileName = ProjectInfo.Pro_Name;
                 sfd.Filter = "工程文档(*.xml)|*.xml";
                 if (sfd.ShowDialog()==DialogResult.OK)
                 {
-                    doc.Save(sfd.FileName);
-                    MessageBoxEx.Show("保存完毕！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    doc.RemoveAll();
-                    doc = null;
-                    toolStripLabel2.Text = sfd.FileName;
+                    if (xo.XmlSave(sfd.FileName)) 
+                    {
+                        MessageBoxEx.Show("保存完毕！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        xo.XmlClear();
+                        toolStripLabel2.Text = "无";
+                    }                                                      
                 }
                 
             }
@@ -175,7 +182,7 @@ namespace DEMO
 
         private void SaveAlert()
         {
-            if (doc != null)
+            if (XmlDoc.doc != null)
             {
                 if (MessageBoxEx.Show("尚未保存工程，是否立刻保存？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.Yes)
                 {
