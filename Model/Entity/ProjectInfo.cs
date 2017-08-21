@@ -21,6 +21,22 @@ namespace Model.Entity
         public static double Con_Area { get; set; }//建筑面积
         public static double Con_Height { get; set; }//建筑高度
         public static string Des_Unit { get; set; }//设计单位
+
+        //一个将实体重置的方法
+        public static void ResetProjectInfo()
+        {
+            Pro_Id = 0;
+            Pro_Name = null;
+            Pro_Type = null;
+            Con_Province = null;
+            Con_City = null;
+            Unit = null;
+            Con_Unit = null;
+            Sup_Unit = null;
+            Con_Area = 0.0;
+            Con_Height = 0.0;
+            Des_Unit = null;
+        }
     }
     
 }
