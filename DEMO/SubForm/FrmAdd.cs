@@ -20,14 +20,6 @@ namespace DEMO.SubForm
         {
             InitializeComponent();
         }
-
-        private XmlDocument doc;
-        public FrmAdd(XmlDocument xml) 
-        {
-            InitializeComponent();
-            doc = xml;
-        }
-
         private void FrmAdd_Load(object sender, EventArgs e)
         {
             skinComboBox1.SelectedIndex = 0;          
@@ -37,9 +29,9 @@ namespace DEMO.SubForm
         //确定按钮
         private void skinButton1_Click(object sender, EventArgs e)
         {
-           // Project proj = new Project();
-            XMLOperation xmlop = new XMLOperation(doc);
-            switch (skinComboBox1.SelectedIndex)
+                      
+            XMLOperation xmlop = new XMLOperation();//实例化xml的控制类
+            switch (skinComboBox1.SelectedIndex)//为实体类属性赋值
             {
                 case 0:
                     {
@@ -55,7 +47,7 @@ namespace DEMO.SubForm
                     break;
             }
 
-            if (xmlop.XmlAddNode())
+            if (xmlop.XmlAddNode())//调用控制类方法，判断是否添加了子节点
             {
                 this.DialogResult = DialogResult.OK;
                 this.Close();
