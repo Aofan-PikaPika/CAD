@@ -23,7 +23,7 @@ namespace Model.Entity
         public static string Des_Unit { get; set; }//设计单位
 
         //一个将实体重置的方法
-        public static void ResetProjectInfo()
+        public static void Clear()
         {
             Pro_Id = 0;
             Pro_Name = null;
