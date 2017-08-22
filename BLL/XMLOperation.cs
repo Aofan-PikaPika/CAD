@@ -55,43 +55,48 @@ namespace BLL
         /// </summary>
         /// <param name="path">文档路径</param>
         /// <returns></returns>
-        public int XmlOpen(string path) 
+        public string  XmlOpen(string path) 
         {
             int  projectID=0;
+            string projectName = "";
             if (xmlstore.XmlOpen(path))
             {
                 XmlNode root = XmlDoc.doc.SelectSingleNode("Project");
                 XmlNode infoNode = root.FirstChild;
                 XmlElement xe = (XmlElement)infoNode;
                 XmlNodeList list = xe.ChildNodes;
-                projectID = int.Parse(list.Item(2).InnerText);      
+                projectID = int.Parse(list.Item(2).InnerText);
+                projectName = list.Item(0).InnerText;
+                //根据ID，填充实体类。。。
+
             }
-            return projectID;           
+            return projectName;        
         }
 
 
-        public void XmlAddIDNode() 
+        private void XmlAddIDValue(int projectState) 
         {
             if (XmlDoc.doc!=null)
             {
-                string proID="";
                 XmlNode root = XmlDoc.doc.SelectSingleNode("Project");
                 XmlNode infoNode = root.FirstChild;
                 XmlElement xe = (XmlElement)infoNode;
                 XmlNodeList list = xe.ChildNodes;
-                proID=list.Item(2).InnerText;
                 //将所有数据保存到数据库
-                if (proID!="")
+                if (projectState==2)
                 {
-                    //更新数据库
+                    //更新数据...
+                }
+                else if (projectState == 1)
+                {
+                    //添加数据...
 
+                    //将工程id值写入XML文档
+                    list.Item(2).InnerText = ProjectInfo.Pro_Id.ToString();
                 }
                 else 
                 {
-                    //添加数据库
 
-                    //
-                    list.Item(2).InnerText = ProjectInfo.Pro_Id.ToString();
                 }
                                            
             }
@@ -100,20 +105,16 @@ namespace BLL
 
 
 
-        public bool XmlSave(string path) 
+        public bool XmlSave(string path,int projectState) 
         {
-            XmlAddIDNode();
+            XmlAddIDValue(projectState);
             string localFileName = "";
             if (xmlstore.XmlSave(path))
             {
                 //获得当前保存xml文件的路径
                 localFileName = path.ToString();
 
-
-
                 //调用 插入“工程日志”。。。
-
-                //调用 插入“工程”。。。
 
                 return true;
             }
