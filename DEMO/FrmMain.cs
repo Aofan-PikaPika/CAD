@@ -27,7 +27,7 @@ namespace DEMO
         {
             InitializeComponent();            
         }
-
+        #region 界面窗口控制
         //创建hello界面的全局实例。
         Hello hello = new Hello();
         private void Form1_Load(object sender, EventArgs e)
@@ -37,9 +37,9 @@ namespace DEMO
             //设置默认打开“工程设置”面板
             skinTabControl1.SelectedIndex = 1;
 
-           //设置面板不可用
+            //设置面板不可用
             skinTabControl1.Enabled = false;
-            
+
             //设置hello为子窗口
             hello.TopLevel = false;
             this.panel1.Controls.Add(hello);
@@ -51,7 +51,7 @@ namespace DEMO
             hello.setOpenProjectFuntion += new setOpenFunctionHandle(hello_setOpenFuntion);
             //显示子窗口
             hello.Show();
-            
+
         }
 
         //hello界面标志位，值为0表示hello界面已经打开，值为1表示hello界面已经关闭
@@ -60,18 +60,18 @@ namespace DEMO
         /// <summary>
         /// 委托指向的函数-新建工程
         /// </summary>
-        private void hello_setNewFunction() 
+        private void hello_setNewFunction()
         {
             skinTabControl1.Enabled = true;
             //点击“新建”按钮，同时关闭了子窗口
-            skinButton1_Click(this,null);
+            skinButton1_Click(this, null);
             flag = 1;
         }
 
         /// <summary>
         /// 委托指向的函数-打开工程
         /// </summary>
-        private void hello_setOpenFuntion() 
+        private void hello_setOpenFuntion()
         {
             skinTabControl1.Enabled = true;
             //点击“打开”按钮，同时关闭了子窗口
@@ -83,7 +83,7 @@ namespace DEMO
         /// 设置底部状态栏的工程名
         /// </summary>
         /// <param name="label"></param>
-        void add_setToolBar(string label) 
+        void add_setToolBar(string label)
         {
             toolStripLabel2.Text = label;
         }
@@ -95,15 +95,23 @@ namespace DEMO
         /// <param name="e"></param>
         private void FrmMain_Resize(object sender, EventArgs e)
         {
-            if (flag==0)
+            if (flag == 0)
             {
                 hello.resize();
-            }          
+            }
         }
-
-
+        #endregion
+        
         #region 文件模块
+
+        //实例化XML操作控制类
         XMLOperation xo = new XMLOperation();
+
+        /// <summary>
+        /// 工程状态标志位，0：无工程， 1：，新建的工程   2：打开的工程
+        /// </summary>
+        private int ProjectSate = 0;
+
         //新建工程
         private void skinButton1_Click(object sender, EventArgs e)
         {
@@ -113,7 +121,11 @@ namespace DEMO
                 add.ShowDialog();
                 if (add.DialogResult==DialogResult.OK)
                 {
-                    toolStripLabel2.Text = ProjectInfo.Pro_Name;                
+                    //给窗体状态栏赋值
+                    toolStripLabel2.Text = ProjectInfo.Pro_Name;
+
+                    //设置工程状态位为：打开
+                    ProjectSate = 1;
                 }
             }
             else 
@@ -126,7 +138,7 @@ namespace DEMO
         //打开工程
         private void skinButton2_Click(object sender, EventArgs e)
         {
-            int ProjectID=0;
+            string ProjectName="";
             if (XmlDoc.doc == null)
             {
                 OpenFileDialog ofd = new OpenFileDialog();
@@ -134,10 +146,13 @@ namespace DEMO
                 ofd.FileName = "工程文档";
                 ofd.Filter = "工程文档(*.xml)|*.xml";
                 if (ofd.ShowDialog() == DialogResult.OK)
-                {                  
-                     ProjectID= xo.XmlOpen(ofd.FileName);
-                    //传值projectid，给实体赋值。。。
+                {    //从XML中获取工程名称          
+                     ProjectName= xo.XmlOpen(ofd.FileName);
+                    //设置工程状态位为：打开
+                     ProjectSate = 2;
                     //给窗体状态栏赋值
+                     toolStripLabel2.Text = ProjectName;
+
                 }
             }
             else 
@@ -158,11 +173,17 @@ namespace DEMO
                 sfd.Filter = "工程文档(*.xml)|*.xml";
                 if (sfd.ShowDialog()==DialogResult.OK)
                 {
-                    if (xo.XmlSave(sfd.FileName)) 
+                    if (xo.XmlSave(sfd.FileName,ProjectSate)) 
                     {
                         MessageBoxEx.Show("保存完毕！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //清空XML文档
                         xo.XmlClear();
+                        //修改状态栏
                         toolStripLabel2.Text = "无";
+                        //修改工程状态位
+                        ProjectSate = 0;
+                        //重置实体类
+                        ProjectInfo.Clear();
                     }                                                      
                 }
                 
@@ -197,11 +218,11 @@ namespace DEMO
         //工程信息
         private void skinButton5_Click(object sender, EventArgs e)
         {
-            FrmInfo info = new FrmInfo();
+            FrmInfo info = new FrmInfo(ProjectSate);
             info.ShowDialog();
         }
        
-
+        //材料库
         private void skinButton6_Click(object sender, EventArgs e)
         {
             FrmMaterial frmM = new FrmMaterial();
@@ -210,13 +231,28 @@ namespace DEMO
         #endregion
 
         #region 外架设计
+
+        //脚手架参数
         private void skinButton7_Click(object sender, EventArgs e)
         {
             FrmFrameInfo f = new FrmFrameInfo();
             f.ShowDialog();
         }
 
+        //计算书
         private void skinButton8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //用料统计
+        private void skinButton12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //施工图
+        private void skinButton11_Click(object sender, EventArgs e)
         {
 
         }
