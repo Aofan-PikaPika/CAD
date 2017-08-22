@@ -6,19 +6,12 @@ using System.Xml;
 
 namespace Model
 {
+    /// <summary>
+    /// XML静态实体类
+    /// </summary>
     public static class XmlDoc
     {
-        private static XmlDocument doc;
-
-        //获得xml文件实例
-        public static XmlDocument GetInstance() 
-        {
-
-            if (doc==null)//若不存在，创建实例
-            {
-                doc = new XmlDocument();               
-            }
-            return doc;//若存在，返回已经创建的实例。
-        }
+        //声明一个静态的xml文档
+        public static XmlDocument doc;
     }
 }
