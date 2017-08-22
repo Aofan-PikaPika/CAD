@@ -7,7 +7,7 @@ namespace Model.Entity
 {
     public static class ScaffoldPara
     {
-        public static string Pro_Id { get; set; }//工程ID
+        public static int Pro_Id { get; set; }//工程ID
         public static string Sca_Type { get; set; }//脚手架类型
         public static int Con_Layers { get; set; }//同时施工的层数
         public static int Act_Layers { get; set; }//实际铺设脚手板层数
@@ -29,5 +29,31 @@ namespace Model.Entity
         public static double La { get; set; }//立杆纵距
         public static double Lb { get; set; }//立杆横距
         public static double H { get; set; }//相邻水平杆竖向步距
+        public static void Clear()
+        {
+            Pro_Id = 0;
+            Sca_Type = null;
+            Act_Layers=0;
+            Base_Type=null;
+            Soil_Types=null;
+            Rough_Level=null;
+            Cha_Value=0.0;
+            Pad_Area=0.0;
+            Anchor_Style=null;
+            Anchor_Type=null;
+            Anchor_Model=null;
+            Anchor_Connect=null;
+            Sca_Situation=null;
+            Bui_Status=null;
+            Bui_Distance =0.0;
+            Per_Brace=0;
+            Per_Level=0;
+            Per_Set=0;
+            La=0.0;
+            Lb=0.0;
+            H = 0.0;
+        }
     }
+
+
 }
