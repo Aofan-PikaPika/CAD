@@ -27,6 +27,14 @@ namespace DEMO.SubForm
                     {
                         skinTextBox1.Text = ProjectInfo.Pro_Name;
                         label1.Text = ProjectInfo.Pro_Type;
+                        skinComboBox1.Text = ProjectInfo.Con_Province;
+                        skinComboBox3.Text = ProjectInfo.Con_City;
+                        skinTextBox2.Text = ProjectInfo.Unit;
+                        skinTextBox4.Text = ProjectInfo.Con_Unit;
+                        skinTextBox6.Text = ProjectInfo.Sup_Unit;
+                        skinTextBox3.Text = ProjectInfo.Con_Area.ToString();
+                        skinTextBox5.Text = ProjectInfo.Con_Height.ToString();
+                        skinTextBox7.Text = ProjectInfo.Des_Unit;      
                     }
                     break;
                 case 2: 

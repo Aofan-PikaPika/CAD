@@ -16,6 +16,7 @@ namespace BLL
     {
         
         XMLHandle xmlstore = new XMLHandle();//实例化xml数据操作类
+        SQLOperations sqlo = new SQLOperations();
         
         /// <summary>
         /// 判断是否添加完子节点
@@ -67,7 +68,9 @@ namespace BLL
                 XmlNodeList list = xe.ChildNodes;
                 projectID = int.Parse(list.Item(2).InnerText);
                 projectName = list.Item(0).InnerText;
-                //根据ID，填充实体类。。。
+                //根据ID，填充实体类
+                sqlo.SearchDatabaseFillEntity(projectID);
+
 
             }
             return projectName;        
@@ -85,12 +88,14 @@ namespace BLL
                 //将所有数据保存到数据库
                 if (projectState==2)
                 {
-                    //更新数据...
+                    //更新数据
+                    sqlo.UpdateDatabaseFromEntity(ProjectInfo.Pro_Id);
+
                 }
                 else if (projectState == 1)
                 {
-                    //添加数据...
-
+                    //添加数据
+                    sqlo.AddEntityToDatabase();
                     //将工程id值写入XML文档
                     list.Item(2).InnerText = ProjectInfo.Pro_Id.ToString();
                 }

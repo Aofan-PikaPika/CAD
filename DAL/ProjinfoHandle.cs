@@ -24,17 +24,7 @@ namespace DAL
         /// <returns></returns>
         public int AddInfo()
         {
-            /*
-            ProjectInfo.Pro_Name = "f ";
-            ProjectInfo.Pro_Type = "";
-            ProjectInfo.Con_Province = "天津";
-            ProjectInfo.Con_City = "天津";
-            ProjectInfo.Unit = "联合利华";
-            ProjectInfo.Sup_Unit = "联合利华";
-            ProjectInfo.Con_Area = 100.0;
-            ProjectInfo.Con_Height = 10.0;
-            ProjectInfo.Des_Unit = "联合利华";
-            */
+
             //拼凑Sql语句的方法无法存null串，只能存入空字符串
             string sqlInsertInfo = "insert into tb_projinfo(pro_name,pro_type,con_province,con_city,unit,con_unit,sup_unit,con_area,con_height,des_unit)"
                         + " values('"+ProjectInfo.Pro_Name+"','"+ ProjectInfo.Pro_Type+"','"+ProjectInfo.Con_Province+"','"+ProjectInfo.Con_City+"','"+ProjectInfo.Unit+"','"+ProjectInfo.Sup_Unit+"','"+ProjectInfo.Sup_Unit+"','"+ProjectInfo.Con_Area+"','"+ProjectInfo.Con_Height+"','"+ProjectInfo.Des_Unit+"')";
@@ -82,17 +72,7 @@ namespace DAL
         /// <returns></returns>
         public bool UpdateInfo(int pro_Id)
         {
-           
-            ProjectInfo.Pro_Name = "f ";
-            ProjectInfo.Pro_Type = "768786";
-            ProjectInfo.Con_Province = "天";
-            ProjectInfo.Con_City = "天";
-            ProjectInfo.Unit = "联合利";
-            ProjectInfo.Sup_Unit = "合利";
-            ProjectInfo.Con_Area = 100.0;
-            ProjectInfo.Con_Height = 10.0;
-            ProjectInfo.Des_Unit = "合利";
-           
+                      
             string sqlUpdate = "update tb_projinfo set pro_name = '"+ProjectInfo.Pro_Name+
                                 "',pro_type='"+ProjectInfo.Pro_Type+
                                 "',con_province='"+ProjectInfo.Con_Province+

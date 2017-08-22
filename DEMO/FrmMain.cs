@@ -183,7 +183,7 @@ namespace DEMO
                         //修改工程状态位
                         ProjectSate = 0;
                         //重置实体类
-                        ProjectInfo.ResetProjectInfo();
+                        ProjectInfo.Clear();
                     }                                                      
                 }
                 

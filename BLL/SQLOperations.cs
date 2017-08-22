@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Model.Entity;
 using DAL;
-using System.Windows.Forms;
 using System.Data;
 
 namespace BLL
