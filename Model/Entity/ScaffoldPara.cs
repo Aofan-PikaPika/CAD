@@ -14,15 +14,15 @@ namespace Model.Entity
         public static string Base_Type { get; set; }//基础类型
         public static string Soil_Types { get; set; }//地基土类型
         public static string Rough_Level { get; set; }//地面粗糙层度
-        public static string Cha_Value { get; set; }//地基承载力特征值
-        public static string Pad_Area { get; set; }//垫板面积
+        public static double Cha_Value { get; set; }//地基承载力特征值
+        public static double Pad_Area { get; set; }//垫板面积
         public static string Anchor_Style { get; set; }//连墙件的布置方式
         public static string Anchor_Type { get; set; }//连墙件类型
         public static string Anchor_Model { get; set; }//连墙件型号
         public static string Anchor_Connect { get; set; }//连墙件的连接方式
         public static string Sca_Situation { get; set; }//脚手架状况
         public static string Bui_Status { get; set; }//背靠建筑物状况
-        public static string Bui_Distance { get; set; }//脚手架内立杆距建筑物距离
+        public static double Bui_Distance { get; set; }//脚手架内立杆距建筑物距离
         public static int Per_Brace { get; set; }//每x跨间设置扣件钢管剪力撑
         public static int Per_Level { get; set; }//每x跨设置水平斜杆
         public static int Per_Set { get; set; }//脚手板铺设层数每隔x一设
