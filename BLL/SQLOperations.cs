@@ -5,6 +5,7 @@ using System.Text;
 using Model.Entity;
 using DAL;
 using System.Data;
+using BLL.Service;
 
 namespace BLL
 {
@@ -27,8 +28,7 @@ namespace BLL
             int pro_Id = projinfoHandle.AddInfo();//程序调用这个函数时，实体类已经从窗体获取了数据
             if (pro_Id == -1)//判断插入数据库是否成功
             {
-                //若程序走到这里，说明数据库有混乱的可能
-                //ErrorHandle.Show(ErrorNum.InsertProjectInfoError);
+                ErrorService.Show("保存新数据发生错误");
             }
 
             //以下再写脚手架参数和材料库的添加逻辑。。。
@@ -47,8 +47,7 @@ namespace BLL
             bool isSuccess = projinfoHandle.UpdateInfo(pro_Id);
             if (!isSuccess)
             {
-                //若程序走到这里，说明数据库有混乱的可能
-                //ErrorHandle.Show(ErrorNum.UpdateProjectInfoError);
+                ErrorService.Show("刷新数据时出现问题");
                 return;
             }
 
@@ -84,13 +83,45 @@ namespace BLL
                 }
                 catch
                 {
-                    //这里弹框
+                    ErrorService.Show("写入了不合法字符");
+                    return;
                 }
             }
             else
             {
-                //这里弹框
+                ErrorService.Show("本机数据库与工程文件不匹配");
+                return;
             }
         }
+
+
+
+
+        #region 封装DAL层级联查询省市和对应城市风压的函数
+        public string[] GetProvince()
+        {
+            WindpressHandle windpressHandle = new WindpressHandle();
+            DataTable dt = windpressHandle.SearchProvince();
+            string[] provinceArr = new string[dt.Rows.Count];
+            //遍历填充数组
+            for (int i = 0; i < provinceArr.Length; i++)
+            {
+                provinceArr[i] = dt.Rows[i][0].ToString();
+            }
+            return provinceArr;
+        }
+
+        //这里直接返回了datatable 然后在主窗体上调节skinComboBox3.DisplayMember = "con_city";即可
+        public DataTable GetCity(string province)
+        {
+            WindpressHandle windpressHandle = new WindpressHandle();
+            DataTable dt = windpressHandle.SearchCity(province);
+            if (dt.Rows.Count < 1)
+            {
+                ErrorService.Show("省份输入错误");
+            }
+            return dt;
+        }
+        #endregion
     }
 }

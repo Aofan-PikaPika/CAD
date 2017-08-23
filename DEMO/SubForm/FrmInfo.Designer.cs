@@ -163,6 +163,7 @@
             this.skinComboBox1.Size = new System.Drawing.Size(142, 22);
             this.skinComboBox1.TabIndex = 3;
             this.skinComboBox1.WaterText = "";
+            this.skinComboBox1.DropDownClosed += new System.EventHandler(this.skinComboBox1_DropDownClosed);
             // 
             // skinLabel4
             // 
@@ -187,6 +188,7 @@
             this.skinComboBox3.Size = new System.Drawing.Size(147, 22);
             this.skinComboBox3.TabIndex = 7;
             this.skinComboBox3.WaterText = "";
+            this.skinComboBox3.DropDown += new System.EventHandler(this.skinComboBox3_DropDown);
             // 
             // skinLabel5
             // 
