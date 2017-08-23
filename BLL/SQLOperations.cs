@@ -95,7 +95,26 @@ namespace BLL
         }
 
 
+        #region 以下是针对最近打开时间功能封装的函数
+        //不需要任何参数，获取tb_projlog中时间最近的前五项
+        public DataTable GetLog()
+        {
+            //UI层的列表框需要一个DataTable来表示文件名和文件路径
+            ProjlogHandle projlogHandle = new ProjlogHandle();
+            DataTable dt = projlogHandle.SearchLog();
+            return dt;
+        }
 
+        //需要传入工程ID 工程名 文件路径，程序生成的最近打开时间.XML部分进行pro_name：文件名的切分
+        public void AddLog(int pro_Id, string pro_Name,string sto_Path, string rec_Time)
+        {
+            ProjlogHandle projlogHandle = new ProjlogHandle();
+            if (projlogHandle.AddLog(pro_Id, pro_Name, sto_Path, rec_Time))
+            {
+                ErrorService.Show("最近文件添加错误");
+            }
+        }
+        #endregion
 
         #region 封装DAL层级联查询省市和对应城市风压的函数
         public string[] GetProvince()

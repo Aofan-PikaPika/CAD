@@ -29,7 +29,7 @@ namespace DAL
         }
         public DataTable SearchLog()
         {
-            string sqlSearchLog = "select pro_id,pro_name,sto_path,rec_time from tb_projlog order by rec_time desc limit 0,5";
+            string sqlSearchLog = "select pro_name,sto_path,rec_time from tb_projlog order by rec_time desc limit 0,5";
             SQLiteConnection conn = con.connectToDatabase();
             DataTable dt = SQLiteHelper.ExecuteDataSet(conn, sqlSearchLog, null).Tables[0];
             return dt;
