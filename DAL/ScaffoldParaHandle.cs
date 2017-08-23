@@ -21,7 +21,6 @@ namespace DAL
             string sqlInsert= "insert into tb_scaffoldPara(sca_type,con_layers,act_layers,base_type,soil_types,rough_level,cha_value,pad_area,anchor_style,anchor_type,anchor_model,anchor_connect,sca_situation,bui_status,bui_distance ,per_brace,per_level,per_set,la,lb,h)"
 +"values('"+ScaffoldPara.Sca_Type+"','"+ScaffoldPara.Con_Layers+"','"+ScaffoldPara.Act_Layers+"','"+ScaffoldPara.Base_Type+"','"+ScaffoldPara.Soil_Types+"','"+ScaffoldPara.Rough_Level+"','"+ScaffoldPara.Cha_Value+"','"+ScaffoldPara.Pad_Area+"','"+ScaffoldPara.Anchor_Style+"','"+ScaffoldPara.Anchor_Type+"','"+ScaffoldPara.Anchor_Model+"','"+ScaffoldPara.Anchor_Connect+"','"+ScaffoldPara.Sca_Situation+"','"+ScaffoldPara.Bui_Status+"','"+ScaffoldPara.Bui_Distance+"','"+ScaffoldPara.Per_Brace+"','"+ScaffoldPara.Per_Level+"','"+ScaffoldPara.Per_Set+"','"+ScaffoldPara.La+"','"+ScaffoldPara.Lb+"','"+ScaffoldPara.H+"')";
             SQLiteConnection conn = con.connectToDatabase();
-            int isIn = SQLiteHelper.ExecuteNonQuery(conn, sqlInsert);
             int i = SQLiteHelper.ExecuteNonQuery(conn,sqlInsert);
             if (i == 1)
             {

@@ -37,6 +37,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\System.Data.SQLite.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +48,7 @@
   <ItemGroup>
     <Compile Include="InterfaceConn.cs" />
     <Compile Include="ProjinfoHandle.cs" />
+    <Compile Include="ProjlogHandle.cs" />
     <Compile Include="ScaffoldParaHandle.cs" />
     <Compile Include="SQLiteConnectionBase.cs" />
     <Compile Include="SqliteHelper.cs" />
