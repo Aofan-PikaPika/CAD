@@ -111,10 +111,11 @@ namespace BLL
             return provinceArr;
         }
 
-        public DataTable GetCity_Windpress(string province)
+        //这里直接返回了datatable 然后在主窗体上调节skinComboBox3.DisplayMember = "con_city";即可
+        public DataTable GetCity(string province)
         {
             WindpressHandle windpressHandle = new WindpressHandle();
-            DataTable dt = windpressHandle.SearchCity_Windpress(province);
+            DataTable dt = windpressHandle.SearchCity(province);
             if (dt.Rows.Count < 1)
             {
                 ErrorService.Show("省份输入错误");

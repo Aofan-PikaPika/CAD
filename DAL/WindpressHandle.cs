@@ -15,7 +15,7 @@ namespace DAL
     {
         private SQLiteConnectionBase _connBase = new SQLiteConnectionBase();
 
-        //这个函数用来查询tb_windpress
+        //这个函数用来查询tb_windpress中的省份
         public DataTable SearchProvince()
         {
             SQLiteConnection conn = _connBase.connectToDatabase();
@@ -28,10 +28,11 @@ namespace DAL
             return dt;
         }
 
-        public DataTable SearchCity_Windpress(string province)
+        //这个函数用来查询风压值不为空的城市
+        public DataTable SearchCity(string province)
         {
             SQLiteConnection conn = _connBase.connectToDatabase();
-            string sql = "select con_city,w0 from tb_windpress where w0 not null and con_province='" + province + "'";
+            string sql = "select con_city from tb_windpress where w0 not null and con_province='" + province + "'";
             DataTable dt = SQLiteHelper.ExecuteDataSet(conn, sql, null).Tables[0];
             return dt;
         }

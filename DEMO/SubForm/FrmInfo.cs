@@ -116,8 +116,8 @@ namespace DEMO.SubForm
         {
             if (skinComboBox1.SelectedItem!=null)
             {
-                skinComboBox3.DataSource = sqlo.GetCity_Windpress(skinComboBox1.SelectedItem.ToString());
-                skinComboBox3.ValueMember = "w0";
+                skinComboBox3.DataSource = sqlo.GetCity(skinComboBox1.SelectedItem.ToString());
+                //skinComboBox3.ValueMember = "w0";
                 skinComboBox3.DisplayMember = "con_city";
             }
         }
