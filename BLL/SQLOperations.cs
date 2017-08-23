@@ -109,7 +109,7 @@ namespace BLL
         public void AddLog(int pro_Id, string pro_Name,string sto_Path, string rec_Time)
         {
             ProjlogHandle projlogHandle = new ProjlogHandle();
-            if (projlogHandle.AddLog(pro_Id, pro_Name, sto_Path, rec_Time))
+            if (!projlogHandle.AddLog(pro_Id, pro_Name, sto_Path, rec_Time))
             {
                 ErrorService.Show("最近文件添加错误");
             }

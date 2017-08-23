@@ -49,6 +49,10 @@ namespace DEMO
 
             //为hello中定义的委托变量赋值-“打开工程”
             hello.setOpenProjectFuntion += new setOpenFunctionHandle(hello_setOpenFuntion);
+
+            //为hello中定义的委托变量赋值-“最近工程”
+            hello.setRecentProjectFuntion += new setRecentFunctionHandle(hello_setRecentFuntion);
+
             //显示子窗口
             hello.Show();
 
@@ -78,6 +82,19 @@ namespace DEMO
             skinButton2_Click(this, null);
             flag = 1;
         }
+
+        /// <summary>
+        /// 委托指向的函数-最近工程
+        /// </summary>
+        private void hello_setRecentFuntion(string name) 
+        {
+            skinTabControl1.Enabled = true;
+            toolStripLabel2.Text = name;
+            flag = 1;
+            ProjectSate = 2;
+        }
+
+
 
         /// <summary>
         /// 设置底部状态栏的工程名

@@ -70,8 +70,6 @@ namespace BLL
                 projectName = list.Item(0).InnerText;
                 //根据ID，填充实体类
                 sqlo.SearchDatabaseFillEntity(projectID);
-
-
             }
             return projectName;        
         }
@@ -132,10 +130,12 @@ namespace BLL
                 if (projectState==1)
                 {
                     //插入日志
+                    sqlo.AddLog(ProjectInfo.Pro_Id,fileName,localFilePath,localTime);
                 }
                 if (projectState==2)
                 {
                     //更新日志
+                    
                 }
 
                 return true;

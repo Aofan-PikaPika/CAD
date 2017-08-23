@@ -17,12 +17,14 @@ namespace DEMO
     /// </summary>
     public delegate void setNewFunctionHandle();
     public delegate void setOpenFunctionHandle();
+    public delegate void setRecentFunctionHandle(string name);
 
     public partial class Hello :Form
     {
-        //定义几个委托变量，实现“新建工程”、“打开工程”的功能
+        //定义几个委托变量，实现“新建工程”、“打开工程”、"最近工程"的功能
         public setNewFunctionHandle setNewProjectFuction;
         public setOpenFunctionHandle setOpenProjectFuntion;
+        public setRecentFunctionHandle setRecentProjectFuntion;
 
         /// <summary>
         /// 快捷开始界面
@@ -44,12 +46,12 @@ namespace DEMO
 
 
             //最近
-            listBox1.Items.Clear();
-            listBox1.Items.Add("dasfsd.xml");
-            listBox1.Items.Add("dasfsd.xml");
-            listBox1.Items.Add("dasfsd.xml");
-            listBox1.Items.Add("dasfsd.xml");
-            listBox1.Items.Add("dasfsd.xml");
+            //listBox1.Items.Clear();
+            SQLOperations sqlo = new SQLOperations();
+            listBox1.DataSource = sqlo.GetLog();
+            listBox1.DisplayMember = "pro_name";
+            listBox1.ValueMember = "sto_path";
+           
             
         }
 
@@ -94,7 +96,16 @@ namespace DEMO
             int index = this.listBox1.IndexFromPoint(e.Location);
             if (index!=System.Windows.Forms.ListBox.NoMatches)
             {
-                MessageBox.Show(index.ToString());
+                string name = "";
+                XMLOperation xmlo = new XMLOperation();
+                name=xmlo.XmlOpen(listBox1.SelectedValue.ToString());
+                if (name!="")
+                {
+                    this.Close();
+                    this.Dispose();
+                    setRecentProjectFuntion(name);
+                }
+                
             }
         }
     }
