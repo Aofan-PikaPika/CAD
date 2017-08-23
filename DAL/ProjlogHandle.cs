@@ -51,7 +51,8 @@ namespace DAL
                 return false;
             }
         }
-          public bool DeleteLog(int pro_Id)
+         
+        public bool DeleteLog(int pro_Id)
         {
             string sqlDeleteLog = "delete from tb_projlog where pro_id ="+pro_Id;
             SQLiteConnection conn =con.connectToDatabase();
@@ -66,7 +67,5 @@ namespace DAL
                 return false;
             }
         }
-
-
     }
 }

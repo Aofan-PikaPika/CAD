@@ -15,6 +15,7 @@ namespace BLL
     public class SQLOperations
     {
 
+        #region 打开，保存时，向下调用数据库crud实现窗体内容复现的逻辑
         /// <summary>
         /// 在新建并保存文件时，ID号未知，但此时实体类已经被UI层填好
         /// 作用是调用函数填充数据库的同时向XMLOperation返回一个工程ID值
@@ -94,9 +95,12 @@ namespace BLL
             }
         }
 
+        #endregion
 
         #region 以下是针对最近打开时间功能封装的函数
         //不需要任何参数，获取tb_projlog中时间最近的前五项
+        //由于最近打开时间的增删改查需要用到不同的地方，所以四种均单独简单地封装了底层DAL的
+        //CRUD功能。分别供其他地方调用
         public DataTable GetLog()
         {
             //UI层的列表框需要一个DataTable来表示文件名和文件路径
@@ -111,12 +115,31 @@ namespace BLL
             ProjlogHandle projlogHandle = new ProjlogHandle();
             if (!projlogHandle.AddLog(pro_Id, pro_Name, sto_Path, rec_Time))
             {
-                ErrorService.Show("最近文件添加错误");
+                ErrorService.Show("添加最近文件记录错误");
             }
         }
+
+        public void UpdateLog(int pro_Id,string pro_Name, string sto_Path, string rec_Time)
+        {
+            ProjlogHandle projlogHandle = new ProjlogHandle();
+            if (!projlogHandle.UpdateLog(pro_Id, pro_Name, sto_Path, rec_Time))
+            {
+                ErrorService.Show("更新最近文件记录错误");
+            }
+        }
+
+        public void DeleteLog(int pro_Id)
+        {
+            ProjlogHandle projlogHandle = new ProjlogHandle();
+            if (!projlogHandle.DeleteLog(pro_Id))
+            {
+                ErrorService.Show("更新最近文件记录错误");
+            }
+        }
+
         #endregion
 
-        #region 封装DAL层级联查询省市和对应城市风压的函数
+        #region 封装DAL层级联查询省市的函数
         public string[] GetProvince()
         {
             WindpressHandle windpressHandle = new WindpressHandle();
