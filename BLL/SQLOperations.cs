@@ -111,28 +111,15 @@ namespace BLL
             return provinceArr;
         }
 
-        public string[] GetCity_Windpress(string province)
+        public DataTable GetCity_Windpress(string province)
         {
             WindpressHandle windpressHandle = new WindpressHandle();
             DataTable dt = windpressHandle.SearchCity_Windpress(province);
             if (dt.Rows.Count < 1)
             {
                 ErrorService.Show("省份输入错误");
-                return null;
             }
-            else
-            {
-                //这里null值太多，城市数量是不确定的，采用不定的List加泛型String
-                //循环遍历，添加完毕后转换成string数组
-                List<String> tmpCityAndw0 = new List<string>();
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    if(dt.Rows[i]["w0"] != null)
-                        tmpCityAndw0.Add(dt.Rows[i]["con_city"].ToString() + "&" + dt.Rows[i]["w0"].ToString());
-                }
-                string[] cityAndw0 = tmpCityAndw0.ToArray<string>();
-                return cityAndw0;
-            }
+            return dt;
         }
         #endregion
     }

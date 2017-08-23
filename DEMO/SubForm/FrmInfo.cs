@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using CCWin;
 using Model.Entity;
 using BLL.Service;
+using BLL;
 
 namespace DEMO.SubForm
 {
@@ -18,6 +19,8 @@ namespace DEMO.SubForm
         /// 窗体初始化数据
         /// </summary>
         /// <param name="projectState"></param>
+        /// 
+        SQLOperations sqlo = new SQLOperations();
         public FrmInfo(int projectState)
         {
             InitializeComponent();
@@ -25,6 +28,7 @@ namespace DEMO.SubForm
             {
                 case 1: 
                     {
+                        skinComboBox1.DataSource = sqlo.GetProvince();
                         skinTextBox1.Text = ProjectInfo.Pro_Name;
                         label1.Text = ProjectInfo.Pro_Type;
                         skinComboBox1.Text = ProjectInfo.Con_Province;
@@ -34,11 +38,12 @@ namespace DEMO.SubForm
                         skinTextBox6.Text = ProjectInfo.Sup_Unit;
                         skinTextBox3.Text = ProjectInfo.Con_Area.ToString();
                         skinTextBox5.Text = ProjectInfo.Con_Height.ToString();
-                        skinTextBox7.Text = ProjectInfo.Des_Unit;      
+                        skinTextBox7.Text = ProjectInfo.Des_Unit;
                     }
                     break;
                 case 2: 
                     {
+                        skinComboBox1.DataSource = sqlo.GetProvince();
                         skinTextBox1.Text = ProjectInfo.Pro_Name;
                         label1.Text = ProjectInfo.Pro_Type;
                         skinComboBox1.Text = ProjectInfo.Con_Province;
@@ -100,6 +105,30 @@ namespace DEMO.SubForm
             this.Close();
         }
         #endregion
+
+
+        private void skinComboBox1_DropDownClosed(object sender, EventArgs e)
+        {
+            skinComboBox3.Text = "请选择城市";
+        }
+
+        private void skinComboBox3_DropDown(object sender, EventArgs e)
+        {
+            if (skinComboBox1.SelectedItem!=null)
+            {
+                skinComboBox3.DataSource = sqlo.GetCity_Windpress(skinComboBox1.SelectedItem.ToString());
+                skinComboBox3.ValueMember = "w0";
+                skinComboBox3.DisplayMember = "con_city";
+            }
+        }
+
+
+
+      
+
+      
+
+
 
        
       
