@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using CCWin;
+using BLL;
 
 
 namespace DEMO
@@ -40,6 +41,16 @@ namespace DEMO
         {
             panel1.Left = (this.ParentForm.Width - panel1.Width) / 2;
             panel1.Top = (int)Math.Ceiling((this.ParentForm.Height - 1.5*panel1.Height) / 2.0);
+
+
+            //最近
+            listBox1.Items.Clear();
+            listBox1.Items.Add("dasfsd.xml");
+            listBox1.Items.Add("dasfsd.xml");
+            listBox1.Items.Add("dasfsd.xml");
+            listBox1.Items.Add("dasfsd.xml");
+            listBox1.Items.Add("dasfsd.xml");
+            
         }
 
 
@@ -76,6 +87,15 @@ namespace DEMO
             this.Close();
             this.Dispose();
             setOpenProjectFuntion();
+        }
+
+        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = this.listBox1.IndexFromPoint(e.Location);
+            if (index!=System.Windows.Forms.ListBox.NoMatches)
+            {
+                MessageBox.Show(index.ToString());
+            }
         }
     }
 }
