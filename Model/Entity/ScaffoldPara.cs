@@ -7,7 +7,8 @@ namespace Model.Entity
 {
     public static class ScaffoldPara
     {
-        public static int Pro_Id { get; set; }//工程ID
+       // public static int Pro_Id { get; set; }//工程ID
+        //工程信息实体类中已经有pro_id这一项
         public static string Sca_Type { get; set; }//脚手架类型
         public static int Con_Layers { get; set; }//同时施工的层数
         public static int Act_Layers { get; set; }//实际铺设脚手板层数
@@ -31,7 +32,7 @@ namespace Model.Entity
         public static double H { get; set; }//相邻水平杆竖向步距
         public static void Clear()
         {
-            Pro_Id = 0;
+            //Pro_Id = 0;
             Sca_Type = null;
             Act_Layers=0;
             Base_Type=null;
