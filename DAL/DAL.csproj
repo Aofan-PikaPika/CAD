@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="InterfaceConn.cs" />
     <Compile Include="ProjinfoHandle.cs" />
+    <Compile Include="ScaffoldParaHandle.cs" />
     <Compile Include="SQLiteConnectionBase.cs" />
     <Compile Include="SqliteHelper.cs" />
     <Compile Include="XMLHandle.cs" />
