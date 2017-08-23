@@ -48,6 +48,7 @@
     <Compile Include="ProjinfoHandle.cs" />
     <Compile Include="SQLiteConnectionBase.cs" />
     <Compile Include="SqliteHelper.cs" />
+    <Compile Include="WindpressHandle.cs" />
     <Compile Include="XMLHandle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
