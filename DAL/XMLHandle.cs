@@ -51,8 +51,9 @@ namespace DAL
                 }
                 catch (Exception)
                 {
+                    XmlDoc.doc = null;
+                    return false;
                     
-                    throw;
                 }               
             }
             else 

@@ -135,6 +135,7 @@ namespace BLL
                 if (projectState==2)
                 {
                     //更新日志
+                    sqlo.UpdateLog(ProjectInfo.Pro_Id, fileName, localFilePath, localTime);
                     
                 }
 

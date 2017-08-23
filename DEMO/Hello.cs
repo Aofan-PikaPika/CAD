@@ -17,7 +17,7 @@ namespace DEMO
     /// </summary>
     public delegate void setNewFunctionHandle();
     public delegate void setOpenFunctionHandle();
-    public delegate void setRecentFunctionHandle(string name);
+    public delegate void setRecentFunctionHandle(string path,string name);
 
     public partial class Hello :Form
     {
@@ -34,6 +34,7 @@ namespace DEMO
             InitializeComponent();
         }
 
+        DataTable dt = null;
         /// <summary>
         /// 设置文字显示区域panel1的位置
         /// </summary>
@@ -48,9 +49,11 @@ namespace DEMO
             //最近
             //listBox1.Items.Clear();
             SQLOperations sqlo = new SQLOperations();
-            listBox1.DataSource = sqlo.GetLog();
+            dt = sqlo.GetLog();
+            listBox1.DataSource = dt;
             listBox1.DisplayMember = "pro_name";
             listBox1.ValueMember = "sto_path";
+
            
             
         }
@@ -93,17 +96,33 @@ namespace DEMO
 
         private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            
             int index = this.listBox1.IndexFromPoint(e.Location);
             if (index!=System.Windows.Forms.ListBox.NoMatches)
             {
                 string name = "";
                 XMLOperation xmlo = new XMLOperation();
                 name=xmlo.XmlOpen(listBox1.SelectedValue.ToString());
-                if (name!="")
+                if (name != "")
                 {
                     this.Close();
                     this.Dispose();
-                    setRecentProjectFuntion(name);
+                    setRecentProjectFuntion(listBox1.SelectedValue.ToString(),name);
+                }
+                else 
+                {
+                    DialogResult dr = MessageBoxEx.Show("未能打开\"" + (listBox1.Items[index] as DataRowView)[listBox1.DisplayMember].ToString() + "\". 是否从最近使用工程列表中移除对它的引用？","提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                    if (dr == DialogResult.OK)
+                    {
+                        SQLOperations sqlo = new SQLOperations();
+                        sqlo.DeleteLog(listBox1.SelectedValue.ToString());
+                        dt.Rows.RemoveAt(index);
+                        listBox1.DataSource = dt;
+                        listBox1.DisplayMember = "pro_name";
+                        listBox1.ValueMember = "sto_path";
+                        listBox1.Refresh();
+                        
+                    }
                 }
                 
             }
