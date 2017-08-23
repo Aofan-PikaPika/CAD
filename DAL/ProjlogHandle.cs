@@ -52,9 +52,9 @@ namespace DAL
             }
         }
          
-        public bool DeleteLog(int pro_Id)
+        public bool DeleteLog(string sto_path)
         {
-            string sqlDeleteLog = "delete from tb_projlog where pro_id ="+pro_Id;
+            string sqlDeleteLog = "delete from tb_projlog where sto_path ='"+sto_path+"'";
             SQLiteConnection conn =con.connectToDatabase();
             SQLiteCommand cmd = SQLiteHelper.CreateCommand(conn, sqlDeleteLog);
             int m = SQLiteHelper.ExecuteNonQuery(cmd);

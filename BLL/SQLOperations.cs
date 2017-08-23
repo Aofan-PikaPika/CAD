@@ -128,12 +128,12 @@ namespace BLL
             }
         }
 
-        public void DeleteLog(int pro_Id)
+        public void DeleteLog(string sto_path)
         {
             ProjlogHandle projlogHandle = new ProjlogHandle();
-            if (!projlogHandle.DeleteLog(pro_Id))
+            if (!projlogHandle.DeleteLog(sto_path))
             {
-                ErrorService.Show("更新最近文件记录错误");
+                ErrorService.Show("删除最近文件记录错误");
             }
         }
 
