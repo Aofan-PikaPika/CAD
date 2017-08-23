@@ -45,14 +45,14 @@
             this.skinButton8 = new CCWin.SkinControl.SkinButton();
             this.skinButton7 = new CCWin.SkinControl.SkinButton();
             this.skinTabPage4 = new CCWin.SkinControl.SkinTabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.skinToolStrip1 = new CCWin.SkinControl.SkinToolStrip();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.skinButton11 = new CCWin.SkinControl.SkinButton();
             this.skinButton12 = new CCWin.SkinControl.SkinButton();
             this.skinButton13 = new CCWin.SkinControl.SkinButton();
             this.skinButton14 = new CCWin.SkinControl.SkinButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.skinToolStrip1 = new CCWin.SkinControl.SkinToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.skinTabControl1.SuspendLayout();
             this.skinTabPage1.SuspendLayout();
             this.skinTabPage2.SuspendLayout();
@@ -382,6 +382,100 @@
             this.skinTabPage4.TabItemImage = null;
             this.skinTabPage4.Text = "支架设计";
             // 
+            // skinButton11
+            // 
+            this.skinButton11.BackColor = System.Drawing.Color.Transparent;
+            this.skinButton11.BaseColor = System.Drawing.Color.Silver;
+            this.skinButton11.BorderColor = System.Drawing.Color.Transparent;
+            this.skinButton11.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.skinButton11.DownBack = null;
+            this.skinButton11.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinButton11.Image = global::DEMO.Properties.Resources.Drawing_72px_1095749_easyicon_net;
+            this.skinButton11.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.skinButton11.ImageSize = new System.Drawing.Size(45, 45);
+            this.skinButton11.Location = new System.Drawing.Point(451, 8);
+            this.skinButton11.MouseBack = null;
+            this.skinButton11.Name = "skinButton11";
+            this.skinButton11.NormlBack = null;
+            this.skinButton11.Radius = 20;
+            this.skinButton11.RoundStyle = CCWin.SkinClass.RoundStyle.All;
+            this.skinButton11.Size = new System.Drawing.Size(90, 75);
+            this.skinButton11.TabIndex = 14;
+            this.skinButton11.Text = "施工图";
+            this.skinButton11.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.skinButton11.UseVisualStyleBackColor = false;
+            this.skinButton11.Click += new System.EventHandler(this.skinButton11_Click);
+            // 
+            // skinButton12
+            // 
+            this.skinButton12.BackColor = System.Drawing.Color.Transparent;
+            this.skinButton12.BaseColor = System.Drawing.Color.Silver;
+            this.skinButton12.BorderColor = System.Drawing.Color.Transparent;
+            this.skinButton12.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.skinButton12.DownBack = null;
+            this.skinButton12.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinButton12.Image = global::DEMO.Properties.Resources._3D_Chart_statistic_statistics_72px_578385_easyicon_net;
+            this.skinButton12.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.skinButton12.ImageSize = new System.Drawing.Size(45, 45);
+            this.skinButton12.Location = new System.Drawing.Point(311, 8);
+            this.skinButton12.MouseBack = null;
+            this.skinButton12.Name = "skinButton12";
+            this.skinButton12.NormlBack = null;
+            this.skinButton12.Radius = 20;
+            this.skinButton12.RoundStyle = CCWin.SkinClass.RoundStyle.All;
+            this.skinButton12.Size = new System.Drawing.Size(90, 75);
+            this.skinButton12.TabIndex = 13;
+            this.skinButton12.Text = "用料统计";
+            this.skinButton12.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.skinButton12.UseVisualStyleBackColor = false;
+            this.skinButton12.Click += new System.EventHandler(this.skinButton12_Click);
+            // 
+            // skinButton13
+            // 
+            this.skinButton13.BackColor = System.Drawing.Color.Transparent;
+            this.skinButton13.BaseColor = System.Drawing.Color.Silver;
+            this.skinButton13.BorderColor = System.Drawing.Color.Transparent;
+            this.skinButton13.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.skinButton13.DownBack = null;
+            this.skinButton13.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinButton13.Image = global::DEMO.Properties.Resources.box_out_67_912663755459px_1185569_easyicon_net;
+            this.skinButton13.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.skinButton13.ImageSize = new System.Drawing.Size(45, 45);
+            this.skinButton13.Location = new System.Drawing.Point(174, 8);
+            this.skinButton13.MouseBack = null;
+            this.skinButton13.Name = "skinButton13";
+            this.skinButton13.NormlBack = null;
+            this.skinButton13.Radius = 20;
+            this.skinButton13.RoundStyle = CCWin.SkinClass.RoundStyle.All;
+            this.skinButton13.Size = new System.Drawing.Size(90, 75);
+            this.skinButton13.TabIndex = 12;
+            this.skinButton13.Text = "计算书";
+            this.skinButton13.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.skinButton13.UseVisualStyleBackColor = false;
+            // 
+            // skinButton14
+            // 
+            this.skinButton14.BackColor = System.Drawing.Color.Transparent;
+            this.skinButton14.BaseColor = System.Drawing.Color.Silver;
+            this.skinButton14.BorderColor = System.Drawing.Color.Transparent;
+            this.skinButton14.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.skinButton14.DownBack = null;
+            this.skinButton14.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinButton14.Image = global::DEMO.Properties.Resources.Parameter_Review_72px_534170_easyicon_net;
+            this.skinButton14.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.skinButton14.ImageSize = new System.Drawing.Size(45, 45);
+            this.skinButton14.Location = new System.Drawing.Point(29, 8);
+            this.skinButton14.MouseBack = null;
+            this.skinButton14.Name = "skinButton14";
+            this.skinButton14.NormlBack = null;
+            this.skinButton14.Radius = 20;
+            this.skinButton14.RoundStyle = CCWin.SkinClass.RoundStyle.All;
+            this.skinButton14.Size = new System.Drawing.Size(90, 75);
+            this.skinButton14.TabIndex = 11;
+            this.skinButton14.Text = "支架参数";
+            this.skinButton14.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.skinButton14.UseVisualStyleBackColor = false;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
@@ -457,98 +551,6 @@
             this.toolStripLabel2.Name = "toolStripLabel2";
             this.toolStripLabel2.Size = new System.Drawing.Size(44, 22);
             this.toolStripLabel2.Text = "未命名";
-            // 
-            // skinButton11
-            // 
-            this.skinButton11.BackColor = System.Drawing.Color.Transparent;
-            this.skinButton11.BaseColor = System.Drawing.Color.Silver;
-            this.skinButton11.BorderColor = System.Drawing.Color.Transparent;
-            this.skinButton11.ControlState = CCWin.SkinClass.ControlState.Normal;
-            this.skinButton11.DownBack = null;
-            this.skinButton11.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinButton11.Image = global::DEMO.Properties.Resources.Drawing_72px_1095749_easyicon_net;
-            this.skinButton11.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.skinButton11.ImageSize = new System.Drawing.Size(45, 45);
-            this.skinButton11.Location = new System.Drawing.Point(451, 8);
-            this.skinButton11.MouseBack = null;
-            this.skinButton11.Name = "skinButton11";
-            this.skinButton11.NormlBack = null;
-            this.skinButton11.Radius = 20;
-            this.skinButton11.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinButton11.Size = new System.Drawing.Size(90, 75);
-            this.skinButton11.TabIndex = 14;
-            this.skinButton11.Text = "施工图";
-            this.skinButton11.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.skinButton11.UseVisualStyleBackColor = false;
-            // 
-            // skinButton12
-            // 
-            this.skinButton12.BackColor = System.Drawing.Color.Transparent;
-            this.skinButton12.BaseColor = System.Drawing.Color.Silver;
-            this.skinButton12.BorderColor = System.Drawing.Color.Transparent;
-            this.skinButton12.ControlState = CCWin.SkinClass.ControlState.Normal;
-            this.skinButton12.DownBack = null;
-            this.skinButton12.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinButton12.Image = global::DEMO.Properties.Resources._3D_Chart_statistic_statistics_72px_578385_easyicon_net;
-            this.skinButton12.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.skinButton12.ImageSize = new System.Drawing.Size(45, 45);
-            this.skinButton12.Location = new System.Drawing.Point(311, 8);
-            this.skinButton12.MouseBack = null;
-            this.skinButton12.Name = "skinButton12";
-            this.skinButton12.NormlBack = null;
-            this.skinButton12.Radius = 20;
-            this.skinButton12.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinButton12.Size = new System.Drawing.Size(90, 75);
-            this.skinButton12.TabIndex = 13;
-            this.skinButton12.Text = "用料统计";
-            this.skinButton12.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.skinButton12.UseVisualStyleBackColor = false;
-            // 
-            // skinButton13
-            // 
-            this.skinButton13.BackColor = System.Drawing.Color.Transparent;
-            this.skinButton13.BaseColor = System.Drawing.Color.Silver;
-            this.skinButton13.BorderColor = System.Drawing.Color.Transparent;
-            this.skinButton13.ControlState = CCWin.SkinClass.ControlState.Normal;
-            this.skinButton13.DownBack = null;
-            this.skinButton13.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinButton13.Image = global::DEMO.Properties.Resources.box_out_67_912663755459px_1185569_easyicon_net;
-            this.skinButton13.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.skinButton13.ImageSize = new System.Drawing.Size(45, 45);
-            this.skinButton13.Location = new System.Drawing.Point(174, 8);
-            this.skinButton13.MouseBack = null;
-            this.skinButton13.Name = "skinButton13";
-            this.skinButton13.NormlBack = null;
-            this.skinButton13.Radius = 20;
-            this.skinButton13.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinButton13.Size = new System.Drawing.Size(90, 75);
-            this.skinButton13.TabIndex = 12;
-            this.skinButton13.Text = "计算书";
-            this.skinButton13.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.skinButton13.UseVisualStyleBackColor = false;
-            // 
-            // skinButton14
-            // 
-            this.skinButton14.BackColor = System.Drawing.Color.Transparent;
-            this.skinButton14.BaseColor = System.Drawing.Color.Silver;
-            this.skinButton14.BorderColor = System.Drawing.Color.Transparent;
-            this.skinButton14.ControlState = CCWin.SkinClass.ControlState.Normal;
-            this.skinButton14.DownBack = null;
-            this.skinButton14.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinButton14.Image = global::DEMO.Properties.Resources.Parameter_Review_72px_534170_easyicon_net;
-            this.skinButton14.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.skinButton14.ImageSize = new System.Drawing.Size(45, 45);
-            this.skinButton14.Location = new System.Drawing.Point(29, 8);
-            this.skinButton14.MouseBack = null;
-            this.skinButton14.Name = "skinButton14";
-            this.skinButton14.NormlBack = null;
-            this.skinButton14.Radius = 20;
-            this.skinButton14.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinButton14.Size = new System.Drawing.Size(90, 75);
-            this.skinButton14.TabIndex = 11;
-            this.skinButton14.Text = "支架参数";
-            this.skinButton14.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.skinButton14.UseVisualStyleBackColor = false;
             // 
             // FrmMain
             // 

@@ -48,9 +48,15 @@
             this.skinTextBox6 = new CCWin.SkinControl.SkinTextBox();
             this.skinLabel10 = new CCWin.SkinControl.SkinLabel();
             this.skinTextBox7 = new CCWin.SkinControl.SkinTextBox();
+            this.skinLabel3 = new CCWin.SkinControl.SkinLabel();
+            this.label1 = new System.Windows.Forms.Label();
             this.skinButton1 = new CCWin.SkinControl.SkinButton();
             this.skinButton2 = new CCWin.SkinControl.SkinButton();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -73,6 +79,8 @@
             this.flowLayoutPanel1.Controls.Add(this.skinTextBox6);
             this.flowLayoutPanel1.Controls.Add(this.skinLabel10);
             this.flowLayoutPanel1.Controls.Add(this.skinTextBox7);
+            this.flowLayoutPanel1.Controls.Add(this.skinLabel3);
+            this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(7, 35);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(549, 234);
@@ -173,10 +181,10 @@
             // 
             this.skinComboBox3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.skinComboBox3.FormattingEnabled = true;
-            this.skinComboBox3.Location = new System.Drawing.Point(347, 46);
-            this.skinComboBox3.Margin = new System.Windows.Forms.Padding(10, 10, 3, 3);
+            this.skinComboBox3.Location = new System.Drawing.Point(362, 46);
+            this.skinComboBox3.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
             this.skinComboBox3.Name = "skinComboBox3";
-            this.skinComboBox3.Size = new System.Drawing.Size(162, 22);
+            this.skinComboBox3.Size = new System.Drawing.Size(147, 22);
             this.skinComboBox3.TabIndex = 7;
             this.skinComboBox3.WaterText = "";
             // 
@@ -504,6 +512,29 @@
             this.skinTextBox7.WaterText = "";
             this.skinTextBox7.WordWrap = true;
             // 
+            // skinLabel3
+            // 
+            this.skinLabel3.AutoSize = true;
+            this.skinLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel3.BorderColor = System.Drawing.Color.White;
+            this.skinLabel3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel3.Location = new System.Drawing.Point(5, 194);
+            this.skinLabel3.Margin = new System.Windows.Forms.Padding(5, 15, 3, 0);
+            this.skinLabel3.Name = "skinLabel3";
+            this.skinLabel3.Size = new System.Drawing.Size(68, 17);
+            this.skinLabel3.TabIndex = 21;
+            this.skinLabel3.Text = "工程类型：";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(86, 189);
+            this.label1.Margin = new System.Windows.Forms.Padding(10, 10, 3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 20);
+            this.label1.TabIndex = 22;
+            // 
             // skinButton1
             // 
             this.skinButton1.BackColor = System.Drawing.Color.Transparent;
@@ -526,6 +557,7 @@
             this.skinButton1.TabIndex = 5;
             this.skinButton1.Text = "确  定";
             this.skinButton1.UseVisualStyleBackColor = false;
+            this.skinButton1.Click += new System.EventHandler(this.skinButton1_Click);
             // 
             // skinButton2
             // 
@@ -549,6 +581,15 @@
             this.skinButton2.TabIndex = 6;
             this.skinButton2.Text = "取  消";
             this.skinButton2.UseVisualStyleBackColor = false;
+            this.skinButton2.Click += new System.EventHandler(this.skinButton2_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
             // 
             // FrmInfo
             // 
@@ -566,6 +607,8 @@
             this.Text = "工程信息";
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -593,5 +636,9 @@
         private CCWin.SkinControl.SkinTextBox skinTextBox7;
         private CCWin.SkinControl.SkinButton skinButton1;
         private CCWin.SkinControl.SkinButton skinButton2;
+        private CCWin.SkinControl.SkinLabel skinLabel3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
     }
 }
