@@ -76,7 +76,10 @@ namespace BLL
             return projectName;        
         }
 
-
+        /// <summary>
+        /// 私有方法，为XML添加ID
+        /// </summary>
+        /// <param name="projectState"></param>
         private void XmlAddIDValue(int projectState) 
         {
             if (XmlDoc.doc!=null)
@@ -92,34 +95,48 @@ namespace BLL
                     sqlo.UpdateDatabaseFromEntity(ProjectInfo.Pro_Id);
 
                 }
-                else if (projectState == 1)
+                if (projectState == 1)
                 {
                     //添加数据
                     sqlo.AddEntityToDatabase();
                     //将工程id值写入XML文档
                     list.Item(2).InnerText = ProjectInfo.Pro_Id.ToString();
-                }
-                else 
-                {
-
-                }
+                }               
                                            
             }
         }
 
 
 
-
+        /// <summary>
+        /// xml文档保存
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="projectState"></param>
+        /// <returns></returns>
         public bool XmlSave(string path,int projectState) 
         {
             XmlAddIDValue(projectState);
-            string localFileName = "";
+            string localFilePath = "";
+            string localTime = "";
+            string fileName = "";
             if (xmlstore.XmlSave(path))
             {
                 //获得当前保存xml文件的路径
-                localFileName = path.ToString();
-
-                //调用 插入“工程日志”。。。
+                localFilePath = path.ToString();
+                //获取当前系统时间
+                localTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                //获取保存的文件名
+                fileName = path.Substring(path.LastIndexOf("\\") + 1);
+                //调用 “工程日志”。。。
+                if (projectState==1)
+                {
+                    //插入日志
+                }
+                if (projectState==2)
+                {
+                    //更新日志
+                }
 
                 return true;
             }
@@ -127,7 +144,7 @@ namespace BLL
             {
                 return false;
             }
-        }
+        } 
 
         public void XmlClear() 
         {
