@@ -202,5 +202,29 @@ namespace BLL
             return dt;
         }
         #endregion
+
+        #region 封装DAL层与材料库查询有关的函数
+        /**
+         * 其中一部分函数要直接供窗体层调用，显示对应杆件的值
+         */
+        public DataTable GetModelList(string name)
+        {
+            MateriallibHandle materiallibHandle = new MateriallibHandle();
+            return materiallibHandle.SearchModel(name);//简单封装
+            //return给界面，产生可选的下拉菜单
+        }
+
+        //获取一条整体记录的函数，返回一个DataTable
+        public DataTable GetMeterialInfo(string name, string model)
+        {
+            MateriallibHandle materiallibHandle = new MateriallibHandle();
+            return materiallibHandle.SearchAll(name, model);//简单封装
+            //不存在错误的情况，因为值都是于检查表中查到的
+        }
+
+
+
+        #endregion 
+
     }
 }
