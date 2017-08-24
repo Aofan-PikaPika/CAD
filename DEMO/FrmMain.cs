@@ -20,6 +20,7 @@ namespace DEMO
 {
     public partial class FrmMain : Skin_Mac
     {
+        string _fileName = "工程01";
         /// <summary>
         /// 软件主界面
         /// </summary>
@@ -86,12 +87,13 @@ namespace DEMO
         /// <summary>
         /// 委托指向的函数-最近工程
         /// </summary>
-        private void hello_setRecentFuntion(string name) 
+        private void hello_setRecentFuntion(string filePath,string proName) 
         {
-            skinTabControl1.Enabled = true;
-            toolStripLabel2.Text = name;
+            skinTabControl1.Enabled = true;         
             flag = 1;
             ProjectSate = 2;
+            _fileName = filePath.Substring(filePath.LastIndexOf("\\") + 1);
+            toolStripLabel2.Text = proName;
         }
 
 
@@ -165,10 +167,20 @@ namespace DEMO
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {    //从XML中获取工程名称          
                      ProjectName= xo.XmlOpen(ofd.FileName);
-                    //设置工程状态位为：打开
-                     ProjectSate = 2;
+                     if (ProjectName != "无")
+                     {
+                         //设置工程状态位为：打开
+                         ProjectSate = 2;
+                     }
+                     else 
+                     {
+                         //设置工程状态位为：无工程
+                         ProjectSate = 0; 
+                     }                   
                     //给窗体状态栏赋值
                      toolStripLabel2.Text = ProjectName;
+
+                    _fileName=ofd.FileName.Substring(ofd.FileName.LastIndexOf("\\") + 1);
 
                 }
             }
@@ -186,7 +198,7 @@ namespace DEMO
             if (XmlDoc.doc != null)
             {
                 SaveFileDialog sfd = new SaveFileDialog();
-                sfd.FileName = ProjectInfo.Pro_Name;
+                sfd.FileName = _fileName;
                 sfd.Filter = "工程文档(*.xml)|*.xml";
                 if (sfd.ShowDialog()==DialogResult.OK)
                 {
@@ -201,6 +213,7 @@ namespace DEMO
                         ProjectSate = 0;
                         //重置实体类
                         ProjectInfo.Clear();
+                        ScaffoldPara.Clear();
                     }                                                      
                 }
                 

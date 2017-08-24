@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using CCWin;
 
 
 namespace BLL.Service
@@ -30,7 +31,7 @@ namespace BLL.Service
         /// <param name="errorCondition"></param>
         public static void Show(string errStr)
         {
-            MessageBox.Show("错误：" + errStr, "错误提示");
+            MessageBoxEx.Show("错误：" + errStr, "错误提示");
         }
     }
 }
