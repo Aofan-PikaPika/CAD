@@ -167,8 +167,16 @@ namespace DEMO
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {    //从XML中获取工程名称          
                      ProjectName= xo.XmlOpen(ofd.FileName);
-                    //设置工程状态位为：打开
-                     ProjectSate = 2;
+                     if (ProjectName != "无")
+                     {
+                         //设置工程状态位为：打开
+                         ProjectSate = 2;
+                     }
+                     else 
+                     {
+                         //设置工程状态位为：无工程
+                         ProjectSate = 0; 
+                     }                   
                     //给窗体状态栏赋值
                      toolStripLabel2.Text = ProjectName;
 
@@ -205,6 +213,7 @@ namespace DEMO
                         ProjectSate = 0;
                         //重置实体类
                         ProjectInfo.Clear();
+                        ScaffoldPara.Clear();
                     }                                                      
                 }
                 

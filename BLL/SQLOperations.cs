@@ -22,19 +22,24 @@ namespace BLL
         /// 其中工程ID值已经在AddInfo中输入实体类
         /// 数据库的错误通过弹窗处理
         /// </summary>
-        public int AddEntityToDatabase()
+        public void AddEntityToDatabase()
         {
             //将工程信息部分数据存入数据库，生成一个工程Id值
             ProjinfoHandle projinfoHandle = new ProjinfoHandle();
+            ScaffordParaHandle scafdparaHandle = new ScaffordParaHandle();
             int pro_Id = projinfoHandle.AddInfo();//程序调用这个函数时，实体类已经从窗体获取了数据
             if (pro_Id == -1)//判断插入数据库是否成功
             {
-                ErrorService.Show("保存新数据发生错误");
+                ErrorService.Show("添加新数据发生错误,保存失败！");
             }
-
-            //以下再写脚手架参数和材料库的添加逻辑。。。
-
-            return pro_Id;
+            else
+            {
+                //脚手架参数
+                scafdparaHandle.AddPara(pro_Id);
+                //材料库
+            }
+            ProjectInfo.Pro_Id = pro_Id;
+            
         }
 
 
@@ -45,14 +50,15 @@ namespace BLL
         public void UpdateDatabaseFromEntity(int pro_Id)
         {
             ProjinfoHandle projinfoHandle = new ProjinfoHandle();
+            ScaffordParaHandle scaf = new ScaffordParaHandle();
             bool isSuccess = projinfoHandle.UpdateInfo(pro_Id);
-            if (!isSuccess)
+            bool isSuccessPara = scaf.UpdatePara(pro_Id);
+            //材料库
+            if (!isSuccess&&!isSuccessPara)
             {
                 ErrorService.Show("刷新数据时出现问题");
                 return;
             }
-
-            //以下再写更新脚手架参数和材料库的更新逻辑。。。。
         }
 
 
@@ -60,15 +66,18 @@ namespace BLL
         /// 这个函数的作用就是打开文件时，将数据库中的所有记录填写到窗体上
         /// </summary>
         /// <param name="pro_Id"></param>
-        public void SearchDatabaseFillEntity(int pro_Id)
+        public bool SearchDatabaseFillEntity(int pro_Id)
         {
             ProjinfoHandle projinfoHandle = new ProjinfoHandle();
+            ScaffordParaHandle scaf = new ScaffordParaHandle();
             DataTable dt = projinfoHandle.SearchInfo(pro_Id);
+            DataTable dtPara = scaf.SearchPara(pro_Id);
             //判断dt的合理性
-            if (dt.Rows.Count == 1)//正确的dt会只查询出一行
+            if (dt.Rows.Count == 1&&dtPara.Rows.Count==1)//正确的dt会只查询出一行
             {
                 try
                 {
+                    //工程信息
                     ProjectInfo.Clear();
                     ProjectInfo.Pro_Id = pro_Id;
                     ProjectInfo.Pro_Name = dt.Rows[0]["pro_name"].ToString();
@@ -81,17 +90,44 @@ namespace BLL
                     ProjectInfo.Con_Area = double.Parse(dt.Rows[0]["con_area"].ToString());
                     ProjectInfo.Con_Height = double.Parse(dt.Rows[0]["con_height"].ToString());
                     ProjectInfo.Des_Unit = dt.Rows[0]["des_unit"].ToString();
+
+                    //脚手架参数
+                    ScaffoldPara.Clear();
+                    ScaffoldPara.Sca_Type = dtPara.Rows[0]["sca_type"].ToString();
+                    ScaffoldPara.Con_Layers = (int)dtPara.Rows[0]["con_layers"];
+                    ScaffoldPara.Act_Layers = (int)dtPara.Rows[0]["act_layers"];
+                    ScaffoldPara.Base_Type = dtPara.Rows[0]["base_type"].ToString();
+                    ScaffoldPara.Soil_Types = dtPara.Rows[0]["soil_types"].ToString();
+                    ScaffoldPara.Rough_Level = dtPara.Rows[0]["rough_level"].ToString();
+                    ScaffoldPara.Cha_Value = (double)dtPara.Rows[0]["cha_value"];
+                    ScaffoldPara.Pad_Area = (double)dtPara.Rows[0]["pad_area"];
+                    ScaffoldPara.Anchor_Style = dtPara.Rows[0]["anchor_style"].ToString();
+                    ScaffoldPara.Anchor_Type = dtPara.Rows[0]["anchor_type"].ToString();
+                    ScaffoldPara.Anchor_Model = dtPara.Rows[0]["anchor_model"].ToString();
+                    ScaffoldPara.Anchor_Connect = dtPara.Rows[0]["anchor_connect"].ToString();
+                    ScaffoldPara.Sca_Situation = dtPara.Rows[0]["sca_situation"].ToString();
+                    ScaffoldPara.Bui_Status = dtPara.Rows[0]["bui_status"].ToString();
+                    ScaffoldPara.Bui_Distance = (double)dtPara.Rows[0]["bui_distance"];
+                    ScaffoldPara.Per_Brace = (int)dtPara.Rows[0]["per_brace"];
+                    ScaffoldPara.Per_Level = (int)dtPara.Rows[0]["per_level"];
+                    ScaffoldPara.Per_Set = (int)dtPara.Rows[0]["per_set"];
+                    ScaffoldPara.La = (double)dtPara.Rows[0]["la"];
+                    ScaffoldPara.Lb = (double)dtPara.Rows[0]["lb"];
+                    ScaffoldPara.H = (double)dtPara.Rows[0]["h"];
+
+                    //材料库
+                    return true;
                 }
                 catch
                 {
                     ErrorService.Show("写入了不合法字符");
-                    return;
+                    return false;
                 }
             }
             else
             {
                 ErrorService.Show("本机数据库与工程文件不匹配");
-                return;
+                return false;
             }
         }
 

@@ -103,7 +103,7 @@ namespace DEMO
                 string name = "";
                 XMLOperation xmlo = new XMLOperation();
                 name=xmlo.XmlOpen(listBox1.SelectedValue.ToString());
-                if (name != "")
+                if (name != "无")
                 {
                     this.Close();
                     this.Dispose();

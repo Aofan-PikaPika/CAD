@@ -28,11 +28,16 @@ namespace DAL
             //拼凑Sql语句的方法无法存null串，只能存入空字符串
             string sqlInsertInfo = "insert into tb_projinfo(pro_name,pro_type,con_province,con_city,unit,con_unit,sup_unit,con_area,con_height,des_unit)"
                         + " values('"+ProjectInfo.Pro_Name+"','"+ ProjectInfo.Pro_Type+"','"+ProjectInfo.Con_Province+"','"+ProjectInfo.Con_City+"','"+ProjectInfo.Unit+"','"+ProjectInfo.Sup_Unit+"','"+ProjectInfo.Sup_Unit+"','"+ProjectInfo.Con_Area+"','"+ProjectInfo.Con_Height+"','"+ProjectInfo.Des_Unit+"')";
-            SQLiteConnection conn = _connBase.connectToDatabase();
+            int isIn = -1;
+            SQLiteConnection conn = null;
+            try
+            {
+                conn = _connBase.connectToDatabase();
          
-            //执行插入语句，同时Sqlite自动生成一个ID值
-            int isIn = SQLiteHelper.ExecuteNonQuery(conn, sqlInsertInfo);
-            
+                //执行插入语句，同时Sqlite自动生成一个ID值
+                isIn = SQLiteHelper.ExecuteNonQuery(conn, sqlInsertInfo);
+            }
+            catch { }
             //插入成功则找到ID值
             if (isIn == 1)
             {
@@ -40,8 +45,7 @@ namespace DAL
                 string sqlFindLastId = "select max(pro_id) from tb_projinfo";
                 SQLiteCommand cmd =  SQLiteHelper.CreateCommand(conn, sqlFindLastId);
                 DataTable dt = SQLiteHelper.ExecuteDataset(cmd).Tables[0];
-                ProjectInfo.Pro_Id = int.Parse(dt.Rows[dt.Rows.Count - 1][0].ToString());
-                return ProjectInfo.Pro_Id;
+                return int.Parse(dt.Rows[dt.Rows.Count - 1][0].ToString());
             }
             else
             {

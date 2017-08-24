@@ -6,6 +6,7 @@ using Model;
 using DAL;
 using System.Xml;
 using Model.Entity;
+using BLL.Service;
 
 namespace BLL
 {
@@ -69,7 +70,11 @@ namespace BLL
                 projectID = int.Parse(list.Item(2).InnerText);
                 projectName = list.Item(0).InnerText;
                 //根据ID，填充实体类
-                sqlo.SearchDatabaseFillEntity(projectID);
+                if (!sqlo.SearchDatabaseFillEntity(projectID)) 
+                {
+                    XmlDoc.doc = null;
+                    return "无";
+                }
             }
             return projectName;        
         }
@@ -98,6 +103,7 @@ namespace BLL
                     //添加数据
                     sqlo.AddEntityToDatabase();
                     //将工程id值写入XML文档
+                    //底层DAL失败返回-1，在BLL层将实体赋值-1
                     list.Item(2).InnerText = ProjectInfo.Pro_Id.ToString();
                 }               
                                            
@@ -118,7 +124,7 @@ namespace BLL
             string localFilePath = "";
             string localTime = "";
             string fileName = "";
-            if (xmlstore.XmlSave(path))
+            if (xmlstore.XmlSave(path)&&ProjectInfo.Pro_Id != -1)
             {
                 //获得当前保存xml文件的路径
                 localFilePath = path.ToString();

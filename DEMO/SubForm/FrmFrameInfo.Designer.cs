@@ -255,7 +255,7 @@
             this.skinTextBox2.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
             this.skinTextBox2.SkinTxt.Location = new System.Drawing.Point(5, 5);
             this.skinTextBox2.SkinTxt.Name = "BaseText";
-            this.skinTextBox2.SkinTxt.Size = new System.Drawing.Size(159, 18);
+            this.skinTextBox2.SkinTxt.Size = new System.Drawing.Size(156, 18);
             this.skinTextBox2.SkinTxt.TabIndex = 0;
             this.skinTextBox2.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.skinTextBox2.SkinTxt.WaterText = "";
@@ -1197,6 +1197,7 @@
             this.skinButton1.TabIndex = 9;
             this.skinButton1.Text = "确  定";
             this.skinButton1.UseVisualStyleBackColor = false;
+            this.skinButton1.Click += new System.EventHandler(this.skinButton1_Click);
             // 
             // FrmFrameInfo
             // 

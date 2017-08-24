@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Model;
 using System.Xml;
-using Model;
+using Model.Entity;
 
 namespace DAL
 {
@@ -69,7 +69,7 @@ namespace DAL
         /// <returns></returns>
         public bool XmlSave(string XMLPath) 
         {
-            if (XmlDoc.doc != null)
+            if (XmlDoc.doc != null && ProjectInfo.Pro_Id != -1)
             {
                 try
                 {
