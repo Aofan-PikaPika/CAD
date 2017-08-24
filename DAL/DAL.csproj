@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InterfaceConn.cs" />
+    <Compile Include="materiallibHandle.cs" />
     <Compile Include="ProjinfoHandle.cs" />
     <Compile Include="ProjlogHandle.cs" />
     <Compile Include="ScaffoldParaHandle.cs" />
