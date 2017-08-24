@@ -87,6 +87,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.skinButton2 = new CCWin.SkinControl.SkinButton();
             this.skinButton1 = new CCWin.SkinControl.SkinButton();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider3 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -109,6 +112,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -507,6 +513,7 @@
             // skinComboBox13
             // 
             this.skinComboBox13.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.skinComboBox13.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.skinComboBox13.FormattingEnabled = true;
             this.skinComboBox13.Items.AddRange(new object[] {
             "1.2",
@@ -535,6 +542,7 @@
             // skinComboBox14
             // 
             this.skinComboBox14.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.skinComboBox14.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.skinComboBox14.FormattingEnabled = true;
             this.skinComboBox14.Items.AddRange(new object[] {
             "0.9",
@@ -562,6 +570,7 @@
             // skinComboBox12
             // 
             this.skinComboBox12.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.skinComboBox12.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.skinComboBox12.FormattingEnabled = true;
             this.skinComboBox12.Items.AddRange(new object[] {
             "1.5",
@@ -1174,6 +1183,7 @@
             this.skinButton2.TabIndex = 10;
             this.skinButton2.Text = "取  消";
             this.skinButton2.UseVisualStyleBackColor = false;
+            this.skinButton2.Click += new System.EventHandler(this.skinButton2_Click);
             // 
             // skinButton1
             // 
@@ -1198,6 +1208,18 @@
             this.skinButton1.Text = "确  定";
             this.skinButton1.UseVisualStyleBackColor = false;
             this.skinButton1.Click += new System.EventHandler(this.skinButton1_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
+            // 
+            // errorProvider3
+            // 
+            this.errorProvider3.ContainerControl = this;
             // 
             // FrmFrameInfo
             // 
@@ -1238,6 +1260,9 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1302,5 +1327,8 @@
         private CCWin.SkinControl.SkinComboBox skinComboBox12;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.ErrorProvider errorProvider3;
     }
 }

@@ -35,6 +35,7 @@ namespace Model.Entity
             //Pro_Id = 0;
             Sca_Type = null;
             Act_Layers=0;
+            Con_Layers = 0;
             Base_Type=null;
             Soil_Types=null;
             Rough_Level=null;

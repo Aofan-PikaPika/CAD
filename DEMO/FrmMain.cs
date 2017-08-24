@@ -265,7 +265,7 @@ namespace DEMO
         //脚手架参数
         private void skinButton7_Click(object sender, EventArgs e)
         {
-            FrmFrameInfo f = new FrmFrameInfo();
+            FrmFrameInfo f = new FrmFrameInfo(ProjectSate);
             f.ShowDialog();
         }
 

@@ -9,6 +9,9 @@ using CCWin;
 
 namespace BLL.Service
 {
+    /// <summary>
+    /// 匹配数值
+    /// </summary>
     public class ErrorService
     {
 
@@ -20,6 +23,24 @@ namespace BLL.Service
                 return false;
             }
             else 
+            {
+                return true;
+            }
+        }
+
+
+        /// <summary>
+        /// 匹配整数
+        /// </summary>
+        const string patternInt = @"^[0-9]*[1-9][0-9]*$";
+
+        public bool textboxIntValidating(string content)
+        {
+            if (!(Regex.IsMatch(content, patternInt)))
+            {
+                return false;
+            }
+            else
             {
                 return true;
             }
