@@ -60,7 +60,7 @@ namespace BLL
         public string  XmlOpen(string path) 
         {
             int  projectID=0;
-            string projectName = "";
+            string projectName = "无";
             if (xmlstore.XmlOpen(path))
             {
                 XmlNode root = XmlDoc.doc.SelectSingleNode("Project");

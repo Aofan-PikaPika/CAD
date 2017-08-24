@@ -160,7 +160,8 @@ namespace BLL
             ProjlogHandle projlogHandle = new ProjlogHandle();
             if (!projlogHandle.UpdateLog(pro_Id, pro_Name, sto_Path, rec_Time))
             {
-                ErrorService.Show("更新最近文件记录错误");
+                //更新失败说明记录已经被删除，重新添加
+                AddLog(pro_Id, pro_Name, sto_Path, rec_Time);
             }
         }
 
