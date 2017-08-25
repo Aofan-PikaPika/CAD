@@ -54,5 +54,45 @@ namespace BLL.Service
         {
             MessageBoxEx.Show("错误：" + errStr, "错误提示");
         }
+
+
+        #region 横距限制逻辑
+        public bool lbValid(int indexH,int indexLb)
+        {
+            if (indexH == 1)
+            {
+                if (indexLb == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        #endregion
+
+        #region 内立杆最大值限制逻辑
+        public bool distanceValid(int distanceValue)
+        {
+            if (distanceValue<= 300)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+        #endregion
+
     }
 }

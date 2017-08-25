@@ -44,19 +44,22 @@ namespace DEMO.SubForm
         private void initializePara() 
         {
             //基本参数
-
-            //脚手架类型
-            switch (ScaffoldPara.Sca_Type.ToString())
+            if (ScaffoldPara.Sca_Type!=null)
             {
-                case "结构": skinComboBox1.SelectedIndex = 0;
-                    break;
-                case "防护": skinComboBox1.SelectedIndex = 1;
-                    break;
-                case "装修": skinComboBox1.SelectedIndex = 2;
-                    break;
+                //脚手架类型
+                switch (ScaffoldPara.Sca_Type.ToString())
+                {
+                    case "结构": skinComboBox1.SelectedIndex = 0;
+                        break;
+                    case "防护": skinComboBox1.SelectedIndex = 1;
+                        break;
+                    case "装修": skinComboBox1.SelectedIndex = 2;
+                        break;
+                }
             }
 
             //同时施工层数
+          
             if (ScaffoldPara.Con_Layers.ToString() != "0")
             {
                 skinTextBox1.Text = ScaffoldPara.Con_Layers.ToString();
@@ -66,51 +69,61 @@ namespace DEMO.SubForm
                 skinTextBox1.Text = "2";
             }
 
-
+            
             //实际铺设脚手板层数
-            switch (ScaffoldPara.Act_Layers.ToString())
-            {
-                case "2": skinComboBox2.SelectedIndex = 0;
-                    break;
-                case "3": skinComboBox2.SelectedIndex = 1;
-                    break;
-            }
+            
+                switch (ScaffoldPara.Act_Layers.ToString())
+                {
+                    case "2": skinComboBox2.SelectedIndex = 0;
+                        break;
+                    case "3": skinComboBox2.SelectedIndex = 1;
+                        break;
+                }
+            
+           
 
             //地面粗糙程度
-            switch (ScaffoldPara.Rough_Level.ToString())
-            {
-                case "A": skinComboBox5.SelectedIndex = 0;
-                    break;
-                case "B": skinComboBox5.SelectedIndex = 1;
-                    break;
-                case "C": skinComboBox5.SelectedIndex = 2;
-                    break;
-                case "D": skinComboBox5.SelectedIndex = 3;
-                    break;
-            }
+                if (ScaffoldPara.Rough_Level!=null)
+                {
+                    switch (ScaffoldPara.Rough_Level.ToString())
+                    {
+                        case "A": skinComboBox5.SelectedIndex = 0;
+                            break;
+                        case "B": skinComboBox5.SelectedIndex = 1;
+                            break;
+                        case "C": skinComboBox5.SelectedIndex = 2;
+                            break;
+                        case "D": skinComboBox5.SelectedIndex = 3;
+                            break;
+                    }
+                }
+            
 
             //地基土类型
-            switch (ScaffoldPara.Soil_Types.ToString())
-            {
-                case "岩石": skinComboBox4.SelectedIndex = 0;
-                    break;
-                case "碎石土": skinComboBox4.SelectedIndex = 1;
-                    break;
-                case "粉土": skinComboBox4.SelectedIndex = 2;
-                    break;
-                case "粘性土": skinComboBox4.SelectedIndex = 3;
-                    break;
-                case "淤泥土": skinComboBox4.SelectedIndex = 4;
-                    break;
-                case "红黏土": skinComboBox4.SelectedIndex = 5;
-                    break;
-                case "素填土": skinComboBox4.SelectedIndex = 6;
-                    break;
-                case "砂土": skinComboBox4.SelectedIndex = 7;
-                    break;
-                case "卵石圆砾": skinComboBox4.SelectedIndex = 8;
-                    break;
-            }
+                if (ScaffoldPara.Soil_Types!=null)
+                {
+                    switch (ScaffoldPara.Soil_Types.ToString())
+                    {
+                        case "岩石": skinComboBox4.SelectedIndex = 0;
+                            break;
+                        case "碎石土": skinComboBox4.SelectedIndex = 1;
+                            break;
+                        case "砂土": skinComboBox4.SelectedIndex = 2;
+                            break;
+                        case "粉土": skinComboBox4.SelectedIndex = 3;
+                            break;
+                        case "素填土": skinComboBox4.SelectedIndex = 4;
+                            break;
+                        case "红黏土": skinComboBox4.SelectedIndex = 5;
+                            break;
+                        case "粘性土": skinComboBox4.SelectedIndex = 6;
+                            break;
+                        case "淤泥土": skinComboBox4.SelectedIndex = 7;
+                            break;
+
+                    }
+                }
+            
 
             //地基承载力特征值
             skinTextBox2.Text = ScaffoldPara.Cha_Value.ToString();
@@ -119,7 +132,7 @@ namespace DEMO.SubForm
             skinTextBox3.Text = ScaffoldPara.Pad_Area.ToString();
 
             //立杆纵距
-            switch (ScaffoldPara.La.ToString())
+            switch (ScaffoldPara.La.ToString("#0.0"))
             {
                 case "1.2": skinComboBox13.SelectedIndex = 0;
                     break;
@@ -146,7 +159,7 @@ namespace DEMO.SubForm
 
 
             //水平杆步距
-            switch (ScaffoldPara.H.ToString())
+            switch (ScaffoldPara.H.ToString("#0.0"))
             {
                 case "1.5": skinComboBox12.SelectedIndex = 0;
                     break;
@@ -158,74 +171,96 @@ namespace DEMO.SubForm
             //连墙件
 
             //连墙件的布置方式
-            switch (ScaffoldPara.Anchor_Style.ToString())
+            if (ScaffoldPara.Anchor_Style!=null)
             {
-                case "2步2跨": skinComboBox6.SelectedIndex = 0;
-                    break;
-                case "2步3跨": skinComboBox6.SelectedIndex = 1;
-                    break;
-                case "3步3跨": skinComboBox6.SelectedIndex = 2;
-                    break;
+                switch (ScaffoldPara.Anchor_Style.ToString())
+                {
+                    case "2步2跨": skinComboBox6.SelectedIndex = 0;
+                        break;
+                    case "2步3跨": skinComboBox6.SelectedIndex = 1;
+                        break;
+                    case "3步3跨": skinComboBox6.SelectedIndex = 2;
+                        break;
+                }
             }
+           
             //连墙件类型
-            switch (ScaffoldPara.Anchor_Type.ToString())
+            if (ScaffoldPara.Anchor_Type!=null)
             {
-                case "钢管": skinComboBox7.SelectedIndex = 0;
-                    break;
-                case "角钢": skinComboBox7.SelectedIndex = 1;
-                    break;
-                case "槽钢": skinComboBox7.SelectedIndex = 2;
-                    break;
-                case "工字钢": skinComboBox7.SelectedIndex = 3;
-                    break;
+                switch (ScaffoldPara.Anchor_Type.ToString())
+                {
+                    case "钢管": skinComboBox7.SelectedIndex = 0;
+                        break;
+                    case "角钢": skinComboBox7.SelectedIndex = 1;
+                        break;
+                    case "槽钢": skinComboBox7.SelectedIndex = 2;
+                        break;
+                    case "工字钢": skinComboBox7.SelectedIndex = 3;
+                        break;
+                }
             }
+            
 
             //连墙件型号
-            switch (ScaffoldPara.Anchor_Model.ToString())
+            if (ScaffoldPara.Anchor_Model!=null)
             {
-                case "结构": skinComboBox8.SelectedIndex = 0;
-                    break;
-                case "防护": skinComboBox8.SelectedIndex = 1;
-                    break;
-                case "装修": skinComboBox8.SelectedIndex = 2;
-                    break;
+                switch (ScaffoldPara.Anchor_Model.ToString())
+                {
+                    case "结构": skinComboBox8.SelectedIndex = 0;
+                        break;
+                    case "防护": skinComboBox8.SelectedIndex = 1;
+                        break;
+                    case "装修": skinComboBox8.SelectedIndex = 2;
+                        break;
+                }
             }
+            
 
-            //连墙件的连接方式     
-            switch (ScaffoldPara.Anchor_Connect.ToString())
+            //连墙件的连接方式
+            if (ScaffoldPara.Anchor_Connect!=null)
             {
-                case "扣件": skinComboBox9.SelectedIndex = 0;
-                    break;
-                case "螺栓": skinComboBox9.SelectedIndex = 1;
-                    break;
-                case "焊接": skinComboBox9.SelectedIndex = 2;
-                    break;
-                case "膨胀螺栓": skinComboBox9.SelectedIndex = 3;
-                    break;
-                case "软接硬撑": skinComboBox9.SelectedIndex = 4;
-                    break;
+                switch (ScaffoldPara.Anchor_Connect.ToString())
+                {
+                    case "扣件": skinComboBox9.SelectedIndex = 0;
+                        break;
+                    case "螺栓": skinComboBox9.SelectedIndex = 1;
+                        break;
+                    case "焊接": skinComboBox9.SelectedIndex = 2;
+                        break;
+                    case "膨胀螺栓": skinComboBox9.SelectedIndex = 3;
+                        break;
+                    case "软接硬撑": skinComboBox9.SelectedIndex = 4;
+                        break;
+                }
             }
+           
 
             //荷载参数
 
             //脚手架状况
-            switch (ScaffoldPara.Sca_Situation.ToString())
+            if (ScaffoldPara.Sca_Situation!=null)
             {
-                case "全封闭、半封闭": skinComboBox10.SelectedIndex = 0;
-                    break;
-                case "敞开": skinComboBox10.SelectedIndex = 1;
-                    break;
-
+                switch (ScaffoldPara.Sca_Situation.ToString())
+                {
+                    case "全封闭、半封闭": skinComboBox10.SelectedIndex = 0;
+                        break;
+                    case "敞开": skinComboBox10.SelectedIndex = 1;
+                        break;
+                }
             }
+           
             //背靠建筑物状况
-            switch (ScaffoldPara.Bui_Status.ToString())
+            if (ScaffoldPara.Bui_Status!=null)
             {
-                case "全封闭墙": skinComboBox11.SelectedIndex = 0;
-                    break;
-                case "敞开、框架、开洞墙": skinComboBox11.SelectedIndex = 1;
-                    break;
-
+                switch (ScaffoldPara.Bui_Status.ToString())
+                {
+                    case "全封闭墙": skinComboBox11.SelectedIndex = 0;
+                        break;
+                    case "敞开、框架、开洞墙": skinComboBox11.SelectedIndex = 1;
+                        break;
+                }
             }
+           
 
             //脚手架内立杆距建筑物距离
             if (ScaffoldPara.Bui_Distance.ToString()!= "0")
@@ -403,7 +438,8 @@ namespace DEMO.SubForm
         ShowPic sp;
         private void pictureBox4_MouseHover(object sender, EventArgs e)
         {
-            sp = new ShowPic();
+            int soilType = skinComboBox4.SelectedIndex;
+            sp = new ShowPic(soilType);
             sp.Show();
         }
 
@@ -415,6 +451,30 @@ namespace DEMO.SubForm
             }
 
         }
+        private void skinComboBox4_DropDownClosed(object sender, EventArgs e)
+        {
+            switch (skinComboBox4.SelectedIndex)
+            {
+                case 0: skinTextBox2.Text = "200";
+                    break;
+                case 1: skinTextBox2.Text = "200";
+                    break;
+                case 2: skinTextBox2.Text = "140";
+                    break;
+                case 3: skinTextBox2.Text = "100";
+                    break;
+                case 4: skinTextBox2.Text = "80";
+                    break;
+                case 5: skinTextBox2.Text = "120";
+                    break;
+                case 6: skinTextBox2.Text = "120";
+                    break;
+                case 7: skinTextBox2.Text = "60";
+                    break;
+
+
+            }
+        }
         #endregion
 
         #region 按钮逻辑
@@ -425,7 +485,9 @@ namespace DEMO.SubForm
         /// <param name="e"></param>
         private void skinButton1_Click(object sender, EventArgs e)
         {
-            ErrorService es=new ErrorService();
+            #region 参数验证逻辑
+            ErrorService es = new ErrorService();
+            //文本框整数验证逻辑
             if (!es.textboxIntValidating(skinTextBox1.Text))
             {
                 this.errorProvider1.SetError(this.skinTextBox1, "请输入正整数！");
@@ -450,8 +512,61 @@ namespace DEMO.SubForm
             {
                 this.errorProvider3.SetError(this.skinTextBox3, "");
             }
+            if (!es.textboxIntValidating(skinTextBox4.Text))
+            {
+                this.errorProvider4.SetError(this.skinTextBox4, "请输入正整数！");
+            }
+            else
+            {
+                this.errorProvider4.SetError(this.skinTextBox4, "");
+            }
+            if (!es.textboxIntValidating(skinTextBox5.Text))
+            {
+                this.errorProvider5.SetError(this.skinTextBox5, "请输入正整数！");
+            }
+            else
+            {
+                this.errorProvider5.SetError(this.skinTextBox5, "");
+            }
+            if (!es.textboxIntValidating(skinTextBox6.Text))
+            {
+                this.errorProvider6.SetError(this.skinTextBox6, "请输入正整数！");
+            }
+            else
+            {
+                this.errorProvider6.SetError(this.skinTextBox6, "");
+            }
+            if (!es.textboxIntValidating(skinTextBox8.Text))
+            {
+                this.errorProvider7.SetError(this.skinTextBox8, "请输入正整数！");
+            }
+            else
+            {
+                this.errorProvider7.SetError(this.skinTextBox8, "");
+            }
 
-            if (es.textboxIntValidating(skinTextBox1.Text) && es.textboxIntValidating(skinTextBox2.Text) && es.textboxIntValidating(skinTextBox3.Text))
+            //其他逻辑
+            if (!es.lbValid(skinComboBox12.SelectedIndex,skinComboBox14.SelectedIndex))
+            {
+                this.errorProvider8.SetError(this.skinComboBox14, "在水平步距为2.0m的情况下，立杆横距只能为1.2m");
+            }
+            else
+            {
+                this.errorProvider8.SetError(this.skinComboBox14, "");
+            }
+            if (!es.distanceValid(int.Parse(skinTextBox4.Text)) && es.textboxIntValidating(skinTextBox4.Text))
+            {
+                this.errorProvider4.SetError(this.skinTextBox4, "该值最大值为300mm");
+            }
+            else
+            {
+                this.errorProvider4.SetError(this.skinTextBox4, "");
+            }
+
+
+            #endregion
+
+            if (es.textboxIntValidating(skinTextBox1.Text) && es.textboxIntValidating(skinTextBox2.Text) && es.textboxIntValidating(skinTextBox3.Text) && es.textboxIntValidating(skinTextBox4.Text) && es.textboxIntValidating(skinTextBox5.Text) && es.textboxIntValidating(skinTextBox6.Text) && es.textboxIntValidating(skinTextBox8.Text) && es.lbValid(skinComboBox12.SelectedIndex, skinComboBox14.SelectedIndex) && es.distanceValid(int.Parse(skinTextBox4.Text)))
             {
                 try
                 {
@@ -462,8 +577,12 @@ namespace DEMO.SubForm
                 catch (Exception)
                 {
 
-                    MessageBoxEx.Show("脚手架参数不能为空！");
+                    MessageBoxEx.Show("输入参数不能为空！");
                 }
+            }
+            else
+            {
+                MessageBoxEx.Show("输入参数不符合规范，请检查刚才输入的参数！");
             }
             
             
@@ -479,5 +598,8 @@ namespace DEMO.SubForm
             this.Close();
         }
         #endregion
+
+       
+
     }
 }
