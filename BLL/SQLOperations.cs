@@ -120,7 +120,9 @@ namespace BLL
                     ScaffoldPara.H = (double)dtPara.Rows[0]["h"];
 
                     //材料库
-                    MaterialLib.dtMaterial = new SQLOperations().GetMateriallib(ProjectInfo.Pro_Id);
+                    MaterialLib.clearMaterialLib();
+                    MaterialLib.dtMaterial = new SQLOperations().GetMateriallib(ProjectInfo.Pro_Id);//为复现dgv中的内容，于数据库查询dt
+                    new SQLOperations().FillValidArray(MaterialLib.dtMaterial);//为解决不打开材料库时数据消失的问题，复现validArray
                     return true;
                 }
                 catch
@@ -244,6 +246,12 @@ namespace BLL
         {
             MateriallibHandle materiallibHandle = new MateriallibHandle();
             return materiallibHandle.SearchMateriallibRec(pro_Id);
+        }
+
+        public void FillValidArray(DataTable dt)
+        {
+            for (int i = 0; i < dt.Rows.Count;i++ )
+                MaterialLib.validArray[int.Parse(dt.Rows[i]["fitting_id"].ToString())] = int.Parse(dt.Rows[i]["inventory"].ToString());
         }
         
 

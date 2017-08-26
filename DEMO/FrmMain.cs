@@ -276,7 +276,15 @@ namespace DEMO
         private void skinButton5_Click(object sender, EventArgs e)
         {
             FrmInfo info = new FrmInfo(ProjectSate);
+            //主窗体订阅委托
+            info.toolbartextFunction += new toolbartextHandle(toolbartxt);
             info.ShowDialog();
+        }
+
+        //由子窗体的委托得到工程名称。
+        private void toolbartxt(string txt) 
+        {
+            toolStripLabel2.Text = txt;
         }
        
         //材料库

@@ -19,7 +19,7 @@ namespace DEMO.SubForm
         /// <summary>
         /// 验证数组
         /// </summary>
-        private int[] validArray = Enumerable.Repeat(-1, 105).ToArray();
+        //private int[] validArray = Enumerable.Repeat(-1, 105).ToArray();
 
         private int pjState = 0;
         public FrmMaterial(int projectState)
@@ -72,9 +72,6 @@ namespace DEMO.SubForm
         {
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                //还原验证数组
-                validArray[int.Parse(dt.Rows[i]["fitting_id"].ToString())] = 1;
-
                 //为datagridview的每一行赋值
                 string name = dt.Rows[i]["name"].ToString();
                 string model = dt.Rows[i]["model"].ToString();
@@ -87,6 +84,7 @@ namespace DEMO.SubForm
                 dataGridView1.Rows[i].Tag = int.Parse(dt.Rows[i]["fitting_id"].ToString());
             }
         }
+
 
         /// <summary>
         /// 删除标志位
@@ -120,7 +118,7 @@ namespace DEMO.SubForm
                 //验证数组赋值
                 int thisFitting_id = int.Parse(dt.Rows[0]["fitting_id"].ToString());
                 //int thisInventory = int.Parse(dataGridView1.CurrentRow.Cells[5].Value.ToString());
-                if (validArray[thisFitting_id] > 0)
+                if (MaterialLib.validArray[thisFitting_id] > 0)
                 {
                     //massagebox
                     ErrorService.Show("出现了重复的材料");
@@ -134,7 +132,7 @@ namespace DEMO.SubForm
                 {
                     //在model对应的conbobox提交时，不涉及将库存往数组录入
                     //仅将数组对应标志位置1，表示有材料
-                    validArray[thisFitting_id] = 1;
+                    MaterialLib.validArray[thisFitting_id] = 1;
                     dataGridView1.CurrentRow.Tag = thisFitting_id;                   
                 }             
             }        
@@ -189,9 +187,9 @@ namespace DEMO.SubForm
                     if (dataGridView1.CurrentRow.Tag != null)
                     {
                         int tag = int.Parse(dataGridView1.CurrentRow.Tag.ToString());
-                        if (validArray[tag] >0)
+                        if (MaterialLib.validArray[tag] >0)
                         {
-                            validArray[tag] = -1;
+                            MaterialLib.validArray[tag] = -1;
                         }
                     }
                     removed = 1;
@@ -286,16 +284,17 @@ namespace DEMO.SubForm
             dataGridView1.Refresh();
             MaterialLib.clearMaterialLib();
             MaterialLib.dtMaterial = GetDgvToTable(dataGridView1);
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                int fitting_idFromTag = 0;
-                if (dataGridView1.Rows[i].Tag == null)
-                    continue;
-                else                   
-                    fitting_idFromTag = int.Parse(dataGridView1.Rows[i].Tag.ToString());
-                int thisInventory = int.Parse(dataGridView1.Rows[i].Cells["inventory"].Value.ToString());
-                MaterialLib.validArray[fitting_idFromTag] = thisInventory;
-            }
+            //for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            //{
+            //    int fitting_idFromTag = 0;
+            //    if (dataGridView1.Rows[i].Tag == null)
+            //        continue;
+            //    else                   
+            //        fitting_idFromTag = int.Parse(dataGridView1.Rows[i].Tag.ToString());
+            //    int thisInventory = int.Parse(dataGridView1.Rows[i].Cells["inventory"].Value.ToString());
+            //    MaterialLib.validArray[fitting_idFromTag] = thisInventory;
+            //}
+            new SQLOperations().FillValidArray(MaterialLib.dtMaterial);
             this.Close();
             this.Dispose();
         }

@@ -13,6 +13,8 @@ using BLL;
 
 namespace DEMO.SubForm
 {
+    //声明一个委托。
+    public delegate void toolbartextHandle(string txtName);
     public partial class FrmInfo : Skin_Mac
     {
         /// <summary>
@@ -64,6 +66,9 @@ namespace DEMO.SubForm
 
         #region 按钮控制
 
+
+        public toolbartextHandle toolbartextFunction;
+
         ErrorService es = new ErrorService();
         private void skinButton1_Click(object sender, EventArgs e)
         {
@@ -94,9 +99,13 @@ namespace DEMO.SubForm
                 ProjectInfo.Con_Unit = skinTextBox4.Text;
                 ProjectInfo.Sup_Unit = skinTextBox6.Text;
                 ProjectInfo.Des_Unit = skinTextBox7.Text;
+
+                //委托，修改主窗体的状态栏
+                toolbartextFunction(skinTextBox1.Text);
+
+
                 this.DialogResult = DialogResult.OK;
                 this.Close();
-
             }
 
         }
