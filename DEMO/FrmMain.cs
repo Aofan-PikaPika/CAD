@@ -94,7 +94,10 @@ namespace DEMO
             ProjectSate = 2;
             _fileName = filePath.Substring(filePath.LastIndexOf("\\") + 1);
             toolStripLabel2.Text = proName;
+            _filePath = filePath;
         }
+
+        private string _filePath = "";
 
 
 
@@ -171,6 +174,8 @@ namespace DEMO
                      {
                          //设置工程状态位为：打开
                          ProjectSate = 2;
+                         //获取保存路径
+                         _filePath = ofd.FileName;
                      }
                      else 
                      {
@@ -197,25 +202,47 @@ namespace DEMO
         {
             if (XmlDoc.doc != null)
             {
-                SaveFileDialog sfd = new SaveFileDialog();
-                sfd.FileName = _fileName;
-                sfd.Filter = "工程文档(*.xml)|*.xml";
-                if (sfd.ShowDialog()==DialogResult.OK)
+                if (ProjectSate==1)
                 {
-                    if (xo.XmlSave(sfd.FileName,ProjectSate)) 
+                    SaveFileDialog sfd = new SaveFileDialog();
+                    sfd.FileName = _fileName;
+                    sfd.Filter = "工程文档(*.xml)|*.xml";
+                    if (sfd.ShowDialog() == DialogResult.OK)
                     {
-                        MessageBoxEx.Show("保存完毕！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //清空XML文档
-                        xo.XmlClear();
-                        //修改状态栏
-                        toolStripLabel2.Text = "无";
-                        //修改工程状态位
-                        ProjectSate = 0;
-                        //重置实体类
-                        ProjectInfo.Clear();
-                        ScaffoldPara.Clear();
-                    }                                                      
+                        if (xo.XmlSave(sfd.FileName, ProjectSate))
+                        {
+                            MessageBoxEx.Show("保存完毕！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //清空XML文档
+                            xo.XmlClear();
+                            //修改状态栏
+                            toolStripLabel2.Text = "无";
+                            //修改工程状态位
+                            ProjectSate = 0;
+                            //重置实体类
+                            ProjectInfo.Clear();
+                            ScaffoldPara.Clear();
+                            MaterialLib.clearMaterialLib();
+                        }
+                    }
                 }
+                else if (ProjectSate==2)
+                {
+                     if (xo.XmlSave(_filePath, ProjectSate))
+                        {
+                            MessageBoxEx.Show("保存完毕！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //清空XML文档
+                            xo.XmlClear();
+                            //修改状态栏
+                            toolStripLabel2.Text = "无";
+                            //修改工程状态位
+                            ProjectSate = 0;
+                            //重置实体类
+                            ProjectInfo.Clear();
+                            ScaffoldPara.Clear();
+                            MaterialLib.clearMaterialLib();
+                        }
+                }
+                
                 
             }
             else
@@ -255,7 +282,7 @@ namespace DEMO
         //材料库
         private void skinButton6_Click(object sender, EventArgs e)
         {
-            FrmMaterial frmM = new FrmMaterial();
+            FrmMaterial frmM = new FrmMaterial(ProjectSate);
             frmM.ShowDialog();
         }
         #endregion

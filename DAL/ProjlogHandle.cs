@@ -29,7 +29,11 @@ namespace DAL
         }
         public DataTable SearchLog()
         {
-            string sqlSearchLog = "select pro_name,sto_path,rec_time from tb_projlog order by rec_time desc limit 0,5";
+            //这儿用grupby可以暂时实现保存文件时冲掉已有工程文件，在最近文件里旧的工程文件也被冲掉
+            //groupby会按文件名和文件路径将数据库中冗余的内容压缩、
+            //但压缩后无论order by如何，均显示rec_time最晚的一条记录
+            //利用max（rec_time）保证压缩后的时间是最晚的
+            string sqlSearchLog = "select pro_name,sto_path,max(rec_time) from tb_projlog group by sto_path order by rec_time desc limit 0,5";
             SQLiteConnection conn = con.connectToDatabase();
             DataTable dt = SQLiteHelper.ExecuteDataSet(conn, sqlSearchLog, null).Tables[0];
             return dt;

@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\MaterialLib.cs" />
     <Compile Include="Entity\ProjectInfo.cs" />
     <Compile Include="Entity\ScaffoldPara.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

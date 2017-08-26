@@ -24,6 +24,15 @@ namespace DAL
             return dt;
         }
 
+        //根据名称，型号，查询与一个杆件相关的一行所有记录，返回一个datatab
+        public DataTable SearchAll(string Name, string Model)
+        {
+            string sqlSearch = "select fitting_id,name,model,specifications,material,the_weight from tb_materialkind where name='" + Name + "' and model='" + Model + "'";
+            SQLiteConnection conn = sqliteConnectionBase.connectToDatabase();
+            DataTable dt = SQLiteHelper.ExecuteDataSet(conn, sqlSearch, null).Tables[0];
+            return dt;
+
+        }
 
         //根据工程ID删除材料库列表中“脏数据”的函数
         public void DeleteRecord(int pro_id)
@@ -36,15 +45,6 @@ namespace DAL
             //这里不打算返回值，定义为void类型
         }
 
-        //根据名称，型号，查询与一个杆件相关的一行所有记录，返回一个datatab
-        public DataTable SearchAll(string Name, string Model)
-        {
-            string sqlSearch = "select fitting_id,name,model,specifications,material,the_weight from tb_materialkind where name='" + Name + "' and model='" + Model + "'";
-            SQLiteConnection conn = sqliteConnectionBase.connectToDatabase();
-            DataTable dt = SQLiteHelper.ExecuteDataSet(conn, sqlSearch, null).Tables[0];
-            return dt;
-
-        }
 
 
         //插入到材料库里一条记录，已经在内部进行了try-catch
@@ -62,5 +62,16 @@ namespace DAL
                 return false;
             }
         }
+
+        public DataTable SearchMateriallibRec(int pro_Id)
+        {
+            string sql ="select lb.[fitting_id], m.[name],m.[model],m.[specifications],m.[material],m.[the_weight],lb.[inventory] "+
+                        " from tb_materialkind m,tb_materiallib lb "+
+                        " where m.[fitting_id] = lb.[fitting_id] and pro_id = "+pro_Id;
+            SQLiteConnection conn = sqliteConnectionBase.connectToDatabase();
+            DataTable dt = SQLiteHelper.ExecuteDataSet(conn, sql, null).Tables[0];
+            return dt;
+        }
+        
     }
 }

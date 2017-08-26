@@ -37,8 +37,11 @@ namespace BLL
                 //脚手架参数
                 scafdparaHandle.AddPara(pro_Id);
                 //材料库
+                AddAllMaterialInfo(pro_Id);
             }
+            //无论如何也要往外传值，-1也要往外传
             ProjectInfo.Pro_Id = pro_Id;
+           
             
         }
 
@@ -53,6 +56,7 @@ namespace BLL
             ScaffordParaHandle scaf = new ScaffordParaHandle();
             bool isSuccess = projinfoHandle.UpdateInfo(pro_Id);
             bool isSuccessPara = scaf.UpdatePara(pro_Id);
+            AddAllMaterialInfo(pro_Id);
             //材料库
             if (!isSuccess&&!isSuccessPara)
             {
@@ -116,6 +120,7 @@ namespace BLL
                     ScaffoldPara.H = (double)dtPara.Rows[0]["h"];
 
                     //材料库
+                    MaterialLib.dtMaterial = new SQLOperations().GetMateriallib(ProjectInfo.Pro_Id);
                     return true;
                 }
                 catch
@@ -221,8 +226,26 @@ namespace BLL
             return materiallibHandle.SearchAll(name, model);//简单封装
             //不存在错误的情况，因为值都是于检查表中查到的
         }
+  
+        public void AddAllMaterialInfo(int pro_Id)
+        {
+            MateriallibHandle materiallibHandle = new MateriallibHandle();
+            //数组下标即为材料标号
+            //大于零说明被设置过材料的数量
+            materiallibHandle.DeleteRecord(pro_Id);
+            for (int i = 0; i < MaterialLib.validArray.Length; i++)
+            {
+                if (MaterialLib.validArray[i] > 0)
+                    materiallibHandle.InsertRecord(i, pro_Id, MaterialLib.validArray[i]);
+            }
 
-
+        }
+        public DataTable GetMateriallib(int pro_Id)
+        {
+            MateriallibHandle materiallibHandle = new MateriallibHandle();
+            return materiallibHandle.SearchMateriallibRec(pro_Id);
+        }
+        
 
         #endregion 
 

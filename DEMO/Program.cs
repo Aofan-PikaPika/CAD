@@ -17,11 +17,11 @@ namespace DEMO
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //打开载入界面，并在另一线程加载主界面
-            Splash.LoadAndRun(new FrmMain());
+           Splash.LoadAndRun(new FrmMain());
 
             //调试程序
            // Application.Run(new FrmMain());
-           // Application.Run(new SubForm.FrmFrameInfo());
+            //Application.Run(new SubForm.FrmMaterial());
         }
     }
 }

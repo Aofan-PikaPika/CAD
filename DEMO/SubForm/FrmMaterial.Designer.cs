@@ -34,12 +34,6 @@
             this.skinTabControl1 = new CCWin.SkinControl.SkinTabControl();
             this.skinTabPage1 = new CCWin.SkinControl.SkinTabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.skinTabPage2 = new CCWin.SkinControl.SkinTabPage();
             this.skinTabPage3 = new CCWin.SkinControl.SkinTabPage();
             this.skinComboBox1 = new CCWin.SkinControl.SkinComboBox();
@@ -47,6 +41,12 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.skinButton2 = new CCWin.SkinControl.SkinButton();
             this.skinButton1 = new CCWin.SkinControl.SkinButton();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.model = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.specifications = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.material = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.the_weight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.skinTabControl1.SuspendLayout();
             this.skinTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -102,12 +102,12 @@
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6});
+            this.name,
+            this.model,
+            this.specifications,
+            this.material,
+            this.the_weight,
+            this.inventory});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
@@ -125,51 +125,6 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CurrentCellChanged += new System.EventHandler(this.dataGridView1_CurrentCellChanged);
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "名称";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "型号";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "规格";
-            this.Column3.Name = "Column3";
-            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "材质";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "理论重量(kg)";
-            this.Column5.Name = "Column5";
-            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.HeaderText = "库存(根)";
-            this.Column6.Name = "Column6";
-            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // skinTabPage2
             // 
@@ -204,6 +159,7 @@
             this.skinComboBox1.TabIndex = 1;
             this.skinComboBox1.WaterText = "";
             this.skinComboBox1.SelectionChangeCommitted += new System.EventHandler(this.skinComboBox1_SelectionChangeCommitted);
+            this.skinComboBox1.Leave += new System.EventHandler(this.skinComboBox1_Leave);
             // 
             // pictureBox1
             // 
@@ -249,6 +205,7 @@
             this.skinButton2.TabIndex = 8;
             this.skinButton2.Text = "取  消";
             this.skinButton2.UseVisualStyleBackColor = false;
+            this.skinButton2.Click += new System.EventHandler(this.skinButton2_Click);
             // 
             // skinButton1
             // 
@@ -272,6 +229,64 @@
             this.skinButton1.TabIndex = 7;
             this.skinButton1.Text = "确  定";
             this.skinButton1.UseVisualStyleBackColor = false;
+            this.skinButton1.Click += new System.EventHandler(this.skinButton1_Click);
+            // 
+            // name
+            // 
+            this.name.FillWeight = 73.09645F;
+            this.name.HeaderText = "名称";
+            this.name.MinimumWidth = 100;
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // model
+            // 
+            this.model.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.model.FillWeight = 234.5178F;
+            this.model.HeaderText = "型号";
+            this.model.MinimumWidth = 120;
+            this.model.Name = "model";
+            this.model.ReadOnly = true;
+            this.model.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.model.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // specifications
+            // 
+            this.specifications.FillWeight = 73.09645F;
+            this.specifications.HeaderText = "规格";
+            this.specifications.MinimumWidth = 80;
+            this.specifications.Name = "specifications";
+            this.specifications.ReadOnly = true;
+            this.specifications.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.specifications.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // material
+            // 
+            this.material.FillWeight = 73.09645F;
+            this.material.HeaderText = "材质";
+            this.material.Name = "material";
+            this.material.ReadOnly = true;
+            this.material.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.material.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // the_weight
+            // 
+            this.the_weight.FillWeight = 73.09645F;
+            this.the_weight.HeaderText = "理论重量(kg)";
+            this.the_weight.Name = "the_weight";
+            this.the_weight.ReadOnly = true;
+            this.the_weight.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // inventory
+            // 
+            this.inventory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.inventory.FillWeight = 73.09645F;
+            this.inventory.HeaderText = "库存(根)";
+            this.inventory.Name = "inventory";
+            this.inventory.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.inventory.Width = 97;
             // 
             // FrmMaterial
             // 
@@ -311,11 +326,11 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private CCWin.SkinControl.SkinButton skinButton2;
         private CCWin.SkinControl.SkinButton skinButton1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn model;
+        private System.Windows.Forms.DataGridViewTextBoxColumn specifications;
+        private System.Windows.Forms.DataGridViewTextBoxColumn material;
+        private System.Windows.Forms.DataGridViewTextBoxColumn the_weight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn inventory;
     }
 }

@@ -105,6 +105,7 @@ namespace BLL
                     //将工程id值写入XML文档
                     //底层DAL失败返回-1，在BLL层将实体赋值-1
                     list.Item(2).InnerText = ProjectInfo.Pro_Id.ToString();
+                    
                 }               
                                            
             }
