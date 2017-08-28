@@ -100,7 +100,6 @@ namespace BLL
                     ScaffoldPara.Sca_Type = dtPara.Rows[0]["sca_type"].ToString();
                     ScaffoldPara.Con_Layers = (int)dtPara.Rows[0]["con_layers"];
                     ScaffoldPara.Act_Layers = (int)dtPara.Rows[0]["act_layers"];
-                    ScaffoldPara.Base_Type = dtPara.Rows[0]["base_type"].ToString();
                     ScaffoldPara.Soil_Types = dtPara.Rows[0]["soil_types"].ToString();
                     ScaffoldPara.Rough_Level = dtPara.Rows[0]["rough_level"].ToString();
                     ScaffoldPara.Cha_Value = (double)dtPara.Rows[0]["cha_value"];
@@ -118,6 +117,9 @@ namespace BLL
                     ScaffoldPara.La = (double)dtPara.Rows[0]["la"];
                     ScaffoldPara.Lb = (double)dtPara.Rows[0]["lb"];
                     ScaffoldPara.H = (double)dtPara.Rows[0]["h"];
+                    ScaffoldPara.fast_num = (int)dtPara.Rows[0]["fast_num"];
+                    ScaffoldPara.fitting_model = dtPara.Rows[0]["fitting_model"].ToString();
+                    ScaffoldPara.step_num = (int)dtPara.Rows[0]["step_num"];
 
                     //材料库
                     MaterialLib.clearMaterialLib();
