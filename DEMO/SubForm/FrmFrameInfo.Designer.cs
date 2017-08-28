@@ -33,6 +33,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label26 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.skinTextBox2 = new CCWin.SkinControl.SkinTextBox();
@@ -55,11 +56,17 @@
             this.label21 = new System.Windows.Forms.Label();
             this.skinComboBox12 = new CCWin.SkinControl.SkinComboBox();
             this.label22 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.skinTextBox7 = new CCWin.SkinControl.SkinTextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label25 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.skinComboBox6 = new CCWin.SkinControl.SkinComboBox();
@@ -68,6 +75,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.skinComboBox8 = new CCWin.SkinControl.SkinComboBox();
             this.skinComboBox9 = new CCWin.SkinControl.SkinComboBox();
+            this.skinComboBox3 = new CCWin.SkinControl.SkinComboBox();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -95,14 +103,7 @@
             this.errorProvider6 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider7 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider8 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label7 = new System.Windows.Forms.Label();
-            this.skinTextBox7 = new CCWin.SkinControl.SkinTextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.skinComboBox3 = new CCWin.SkinControl.SkinComboBox();
+            this.errorProvider9 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -111,6 +112,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -133,7 +135,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider8)).BeginInit();
-            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider9)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -213,8 +215,8 @@
             this.tableLayoutPanel1.Controls.Add(this.skinComboBox12, 1, 9);
             this.tableLayoutPanel1.Controls.Add(this.label22, 0, 9);
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 10);
-            this.tableLayoutPanel1.Controls.Add(this.skinTextBox7, 1, 10);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 11);
+            this.tableLayoutPanel1.Controls.Add(this.skinTextBox7, 1, 10);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(60, 10);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 12;
@@ -233,6 +235,18 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(531, 460);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // label26
+            // 
+            this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label26.Location = new System.Drawing.Point(194, 434);
+            this.label26.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(68, 17);
+            this.label26.TabIndex = 28;
+            this.label26.Text = "构配件型号";
             // 
             // panel2
             // 
@@ -619,6 +633,92 @@
             this.label22.TabIndex = 21;
             this.label22.Text = "水平杆步距(m)";
             // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label7.Location = new System.Drawing.Point(230, 392);
+            this.label7.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(32, 17);
+            this.label7.TabIndex = 26;
+            this.label7.Text = "步数";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.radioButton2);
+            this.panel3.Controls.Add(this.radioButton1);
+            this.panel3.Location = new System.Drawing.Point(269, 427);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(167, 29);
+            this.panel3.TabIndex = 29;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(116, 8);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(29, 16);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "B";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(19, 8);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(29, 16);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "A";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // skinTextBox7
+            // 
+            this.skinTextBox7.BackColor = System.Drawing.Color.Transparent;
+            this.skinTextBox7.DownBack = null;
+            this.skinTextBox7.Icon = null;
+            this.skinTextBox7.IconIsButton = false;
+            this.skinTextBox7.IconMouseState = CCWin.SkinClass.ControlState.Normal;
+            this.skinTextBox7.IsPasswordChat = '\0';
+            this.skinTextBox7.IsSystemPasswordChar = false;
+            this.skinTextBox7.Lines = new string[0];
+            this.skinTextBox7.Location = new System.Drawing.Point(266, 387);
+            this.skinTextBox7.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.skinTextBox7.MaxLength = 32767;
+            this.skinTextBox7.MinimumSize = new System.Drawing.Size(28, 28);
+            this.skinTextBox7.MouseBack = null;
+            this.skinTextBox7.MouseState = CCWin.SkinClass.ControlState.Normal;
+            this.skinTextBox7.Multiline = false;
+            this.skinTextBox7.Name = "skinTextBox7";
+            this.skinTextBox7.NormlBack = null;
+            this.skinTextBox7.Padding = new System.Windows.Forms.Padding(5);
+            this.skinTextBox7.ReadOnly = false;
+            this.skinTextBox7.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.skinTextBox7.Size = new System.Drawing.Size(169, 28);
+            // 
+            // 
+            // 
+            this.skinTextBox7.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.skinTextBox7.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.skinTextBox7.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
+            this.skinTextBox7.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.skinTextBox7.SkinTxt.Name = "BaseText";
+            this.skinTextBox7.SkinTxt.Size = new System.Drawing.Size(159, 18);
+            this.skinTextBox7.SkinTxt.TabIndex = 0;
+            this.skinTextBox7.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.skinTextBox7.SkinTxt.WaterText = "";
+            this.skinTextBox7.TabIndex = 27;
+            this.skinTextBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.skinTextBox7.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.skinTextBox7.WaterText = "";
+            this.skinTextBox7.WordWrap = true;
+            this.skinTextBox7.Validated += new System.EventHandler(this.skinTextBox7_Validated);
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
@@ -706,6 +806,18 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(531, 181);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // label25
+            // 
+            this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label25.Location = new System.Drawing.Point(206, 159);
+            this.label25.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(56, 17);
+            this.label25.TabIndex = 27;
+            this.label25.Text = "扣件个数";
             // 
             // label15
             // 
@@ -819,6 +931,21 @@
             this.skinComboBox9.Size = new System.Drawing.Size(166, 22);
             this.skinComboBox9.TabIndex = 9;
             this.skinComboBox9.WaterText = "";
+            // 
+            // skinComboBox3
+            // 
+            this.skinComboBox3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.skinComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.skinComboBox3.FormattingEnabled = true;
+            this.skinComboBox3.Items.AddRange(new object[] {
+            "1",
+            "2"});
+            this.skinComboBox3.Location = new System.Drawing.Point(269, 156);
+            this.skinComboBox3.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
+            this.skinComboBox3.Name = "skinComboBox3";
+            this.skinComboBox3.Size = new System.Drawing.Size(166, 22);
+            this.skinComboBox3.TabIndex = 28;
+            this.skinComboBox3.WaterText = "";
             // 
             // splitContainer3
             // 
@@ -1267,128 +1394,9 @@
             // 
             this.errorProvider8.ContainerControl = this;
             // 
-            // label7
+            // errorProvider9
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(230, 392);
-            this.label7.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 17);
-            this.label7.TabIndex = 26;
-            this.label7.Text = "步数";
-            // 
-            // skinTextBox7
-            // 
-            this.skinTextBox7.BackColor = System.Drawing.Color.Transparent;
-            this.skinTextBox7.DownBack = null;
-            this.skinTextBox7.Icon = null;
-            this.skinTextBox7.IconIsButton = false;
-            this.skinTextBox7.IconMouseState = CCWin.SkinClass.ControlState.Normal;
-            this.skinTextBox7.IsPasswordChat = '\0';
-            this.skinTextBox7.IsSystemPasswordChar = false;
-            this.skinTextBox7.Lines = new string[0];
-            this.skinTextBox7.Location = new System.Drawing.Point(266, 387);
-            this.skinTextBox7.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.skinTextBox7.MaxLength = 32767;
-            this.skinTextBox7.MinimumSize = new System.Drawing.Size(28, 28);
-            this.skinTextBox7.MouseBack = null;
-            this.skinTextBox7.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.skinTextBox7.Multiline = false;
-            this.skinTextBox7.Name = "skinTextBox7";
-            this.skinTextBox7.NormlBack = null;
-            this.skinTextBox7.Padding = new System.Windows.Forms.Padding(5);
-            this.skinTextBox7.ReadOnly = false;
-            this.skinTextBox7.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.skinTextBox7.Size = new System.Drawing.Size(169, 28);
-            // 
-            // 
-            // 
-            this.skinTextBox7.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.skinTextBox7.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.skinTextBox7.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
-            this.skinTextBox7.SkinTxt.Location = new System.Drawing.Point(5, 5);
-            this.skinTextBox7.SkinTxt.Name = "BaseText";
-            this.skinTextBox7.SkinTxt.Size = new System.Drawing.Size(159, 18);
-            this.skinTextBox7.SkinTxt.TabIndex = 0;
-            this.skinTextBox7.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.skinTextBox7.SkinTxt.WaterText = "";
-            this.skinTextBox7.TabIndex = 27;
-            this.skinTextBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.skinTextBox7.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.skinTextBox7.WaterText = "";
-            this.skinTextBox7.WordWrap = true;
-            // 
-            // label25
-            // 
-            this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label25.Location = new System.Drawing.Point(206, 159);
-            this.label25.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(56, 17);
-            this.label25.TabIndex = 27;
-            this.label25.Text = "扣件个数";
-            // 
-            // label26
-            // 
-            this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label26.Location = new System.Drawing.Point(194, 434);
-            this.label26.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(68, 17);
-            this.label26.TabIndex = 28;
-            this.label26.Text = "构配件型号";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.radioButton2);
-            this.panel3.Controls.Add(this.radioButton1);
-            this.panel3.Location = new System.Drawing.Point(269, 427);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(167, 29);
-            this.panel3.TabIndex = 29;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(19, 8);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(29, 16);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "A";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(116, 8);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(29, 16);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "B";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // skinComboBox3
-            // 
-            this.skinComboBox3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.skinComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.skinComboBox3.FormattingEnabled = true;
-            this.skinComboBox3.Items.AddRange(new object[] {
-            "1",
-            "2"});
-            this.skinComboBox3.Location = new System.Drawing.Point(269, 156);
-            this.skinComboBox3.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
-            this.skinComboBox3.Name = "skinComboBox3";
-            this.skinComboBox3.Size = new System.Drawing.Size(166, 22);
-            this.skinComboBox3.TabIndex = 28;
-            this.skinComboBox3.WaterText = "";
+            this.errorProvider9.ContainerControl = this;
             // 
             // FrmFrameInfo
             // 
@@ -1411,6 +1419,8 @@
             this.tableLayoutPanel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
@@ -1437,8 +1447,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider8)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider9)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1519,5 +1528,6 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label25;
         private CCWin.SkinControl.SkinComboBox skinComboBox3;
+        private System.Windows.Forms.ErrorProvider errorProvider9;
     }
 }

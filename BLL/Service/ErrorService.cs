@@ -91,7 +91,20 @@ namespace BLL.Service
             }
         }
 
+        #endregion
 
+        #region 搭设高度限制
+        public bool HeightLimte(int step, double stepDistance) 
+        {
+            if (step * stepDistance <= 24.0)
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+        }
         #endregion
 
     }

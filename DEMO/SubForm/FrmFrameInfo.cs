@@ -167,6 +167,22 @@ namespace DEMO.SubForm
                     break;
             }
 
+            //步数
+            skinTextBox7.Text = ScaffoldPara.step_num.ToString();
+
+            //构配件型号
+            
+            switch (ScaffoldPara.fitting_model.ToString())
+            {
+                case "A": radioButton1.Checked = true;
+                    break;
+                case "B": 
+                    {
+                        radioButton1.Checked = false;
+                        radioButton2.Checked = true;
+                    }
+                    break;
+            }
 
             //连墙件
 
@@ -201,7 +217,7 @@ namespace DEMO.SubForm
             }
             
 
-            //连墙件型号
+            //连墙件型号(待定)
             if (ScaffoldPara.Anchor_Model!=null)
             {
                 switch (ScaffoldPara.Anchor_Model.ToString())
@@ -232,6 +248,15 @@ namespace DEMO.SubForm
                     case "软接硬撑": skinComboBox9.SelectedIndex = 4;
                         break;
                 }
+            }
+
+            //扣件个数
+            switch (ScaffoldPara.fast_num.ToString())
+            {
+                case "1": skinComboBox2.SelectedIndex = 0;
+                    break;
+                case "2": skinComboBox2.SelectedIndex = 1;
+                    break;
             }
            
 
@@ -316,12 +341,22 @@ namespace DEMO.SubForm
             ScaffoldPara.La = double.Parse(skinComboBox13.SelectedItem.ToString());
             ScaffoldPara.Lb = double.Parse(skinComboBox14.SelectedItem.ToString());
             ScaffoldPara.H = double.Parse(skinComboBox12.SelectedItem.ToString());
+            ScaffoldPara.step_num = int.Parse(skinTextBox7.Text);
+            if (radioButton1.Checked)
+            {
+                ScaffoldPara.fitting_model = "A";
+            }
+            else 
+            {
+                ScaffoldPara.fitting_model = "B";
+            }
 
             //连墙件
             ScaffoldPara.Anchor_Style = skinComboBox6.SelectedItem.ToString();
             ScaffoldPara.Anchor_Type = skinComboBox7.SelectedItem.ToString();
             ScaffoldPara.Anchor_Model = skinComboBox8.SelectedItem.ToString();
             ScaffoldPara.Anchor_Connect = skinComboBox9.SelectedItem.ToString();
+            ScaffoldPara.fast_num = int.Parse(skinComboBox3.SelectedItem.ToString());
 
             //荷载参数
             ScaffoldPara.Sca_Situation = skinComboBox10.SelectedItem.ToString();
@@ -545,7 +580,18 @@ namespace DEMO.SubForm
                 this.errorProvider7.SetError(this.skinTextBox8, "");
             }
 
+            if (!es.textboxIntValidating(skinTextBox7.Text))
+            {
+                this.errorProvider9.SetError(this.skinTextBox7, "请输入正整数！");
+            }
+            else
+            {
+                this.errorProvider9.SetError(this.skinTextBox7, "");
+            }
+
+
             //其他逻辑
+            //立杆横距控制
             if (!es.lbValid(skinComboBox12.SelectedIndex,skinComboBox14.SelectedIndex))
             {
                 this.errorProvider8.SetError(this.skinComboBox14, "在水平步距为2.0m的情况下，立杆横距只能为1.2m");
@@ -554,6 +600,7 @@ namespace DEMO.SubForm
             {
                 this.errorProvider8.SetError(this.skinComboBox14, "");
             }
+            //距建筑物距离控制
             if (!es.distanceValid(int.Parse(skinTextBox4.Text)) && es.textboxIntValidating(skinTextBox4.Text))
             {
                 this.errorProvider4.SetError(this.skinTextBox4, "该值最大值为300mm");
@@ -561,6 +608,16 @@ namespace DEMO.SubForm
             else
             {
                 this.errorProvider4.SetError(this.skinTextBox4, "");
+            }
+
+            //搭设高度控制
+            if (!es.HeightLimte(int.Parse(skinTextBox7.Text), double.Parse(skinComboBox12.SelectedItem.ToString())))
+            {
+                this.errorProvider9.SetError(this.skinTextBox7, "脚手架搭设高度不宜超过24m");
+            }
+            else 
+            {
+                this.errorProvider9.SetError(this.skinTextBox7, "");
             }
 
 
@@ -598,6 +655,11 @@ namespace DEMO.SubForm
             this.Close();
         }
         #endregion
+
+        private void skinTextBox7_Validated(object sender, EventArgs e)
+        {
+            MessageBox.Show("asdfad");
+        }
 
        
 
