@@ -171,18 +171,21 @@ namespace DEMO.SubForm
             skinTextBox7.Text = ScaffoldPara.step_num.ToString();
 
             //构配件型号
-            
-            switch (ScaffoldPara.fitting_model.ToString())
+            if (ScaffoldPara.fitting_model!=null)
             {
-                case "A": radioButton1.Checked = true;
-                    break;
-                case "B": 
-                    {
-                        radioButton1.Checked = false;
-                        radioButton2.Checked = true;
-                    }
-                    break;
+                switch (ScaffoldPara.fitting_model.ToString())
+                {
+                    case "A": radioButton1.Checked = true;
+                        break;
+                    case "B":
+                        {
+                            radioButton1.Checked = false;
+                            radioButton2.Checked = true;
+                        }
+                        break;
+                }
             }
+            
 
             //连墙件
 
@@ -222,12 +225,9 @@ namespace DEMO.SubForm
             {
                 switch (ScaffoldPara.Anchor_Model.ToString())
                 {
-                    case "结构": skinComboBox8.SelectedIndex = 0;
+                    case "待定": skinComboBox8.SelectedIndex = 0;
                         break;
-                    case "防护": skinComboBox8.SelectedIndex = 1;
-                        break;
-                    case "装修": skinComboBox8.SelectedIndex = 2;
-                        break;
+                  
                 }
             }
             
@@ -253,9 +253,9 @@ namespace DEMO.SubForm
             //扣件个数
             switch (ScaffoldPara.fast_num.ToString())
             {
-                case "1": skinComboBox2.SelectedIndex = 0;
+                case "1": skinComboBox3.SelectedIndex = 0;
                     break;
-                case "2": skinComboBox2.SelectedIndex = 1;
+                case "2": skinComboBox3.SelectedIndex = 1;
                     break;
             }
            
@@ -610,15 +610,7 @@ namespace DEMO.SubForm
                 this.errorProvider4.SetError(this.skinTextBox4, "");
             }
 
-            //搭设高度控制
-            if (!es.HeightLimte(int.Parse(skinTextBox7.Text), double.Parse(skinComboBox12.SelectedItem.ToString())))
-            {
-                this.errorProvider9.SetError(this.skinTextBox7, "脚手架搭设高度不宜超过24m");
-            }
-            else 
-            {
-                this.errorProvider9.SetError(this.skinTextBox7, "");
-            }
+           
 
 
             #endregion
@@ -658,7 +650,36 @@ namespace DEMO.SubForm
 
         private void skinTextBox7_Validated(object sender, EventArgs e)
         {
-            MessageBox.Show("asdfad");
+            ErrorService es = new ErrorService();
+            //搭设高度控制
+            if (skinComboBox12.SelectedItem != null)
+            {
+                if (!es.HeightLimte(int.Parse(skinTextBox7.Text), double.Parse(skinComboBox12.SelectedItem.ToString())))
+                {
+                    this.errorProvider9.SetError(this.skinTextBox7, "脚手架搭设高度不宜超过24m");
+                }
+                else
+                {
+                    this.errorProvider9.SetError(this.skinTextBox7, "");
+                }
+            }
+
+        }
+
+        private void skinComboBox12_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ErrorService es = new ErrorService();
+            if (skinTextBox7.Text!="")
+            {
+                if (!es.HeightLimte(int.Parse(skinTextBox7.Text), double.Parse(skinComboBox12.SelectedItem.ToString())))
+                {
+                    this.errorProvider9.SetError(this.skinTextBox7, "脚手架搭设高度不宜超过24m");
+                }
+                else
+                {
+                    this.errorProvider9.SetError(this.skinTextBox7, "");
+                }
+            }
         }
 
        

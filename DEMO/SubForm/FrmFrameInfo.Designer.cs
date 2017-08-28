@@ -620,6 +620,7 @@
             this.skinComboBox12.Size = new System.Drawing.Size(166, 22);
             this.skinComboBox12.TabIndex = 25;
             this.skinComboBox12.WaterText = "";
+            this.skinComboBox12.SelectedIndexChanged += new System.EventHandler(this.skinComboBox12_SelectedIndexChanged);
             // 
             // label22
             // 
