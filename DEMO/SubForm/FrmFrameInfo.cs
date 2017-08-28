@@ -615,7 +615,7 @@ namespace DEMO.SubForm
 
             #endregion
 
-            if (es.textboxIntValidating(skinTextBox1.Text) && es.textboxIntValidating(skinTextBox2.Text) && es.textboxIntValidating(skinTextBox3.Text) && es.textboxIntValidating(skinTextBox4.Text) && es.textboxIntValidating(skinTextBox5.Text) && es.textboxIntValidating(skinTextBox6.Text) && es.textboxIntValidating(skinTextBox8.Text) && es.lbValid(skinComboBox12.SelectedIndex, skinComboBox14.SelectedIndex) && es.distanceValid(int.Parse(skinTextBox4.Text)))
+            if (es.textboxIntValidating(skinTextBox1.Text) && es.textboxIntValidating(skinTextBox2.Text) && es.textboxIntValidating(skinTextBox3.Text) && es.textboxIntValidating(skinTextBox4.Text) && es.textboxIntValidating(skinTextBox5.Text) && es.textboxIntValidating(skinTextBox6.Text) && es.textboxIntValidating(skinTextBox8.Text) && es.lbValid(skinComboBox12.SelectedIndex, skinComboBox14.SelectedIndex) && es.distanceValid(int.Parse(skinTextBox4.Text))&&es.textboxIntValidating(skinTextBox7.Text))
             {
                 try
                 {
