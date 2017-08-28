@@ -12,7 +12,6 @@ namespace Model.Entity
         public static string Sca_Type { get; set; }//脚手架类型
         public static int Con_Layers { get; set; }//同时施工的层数
         public static int Act_Layers { get; set; }//实际铺设脚手板层数
-        public static string Base_Type { get; set; }//基础类型
         public static string Soil_Types { get; set; }//地基土类型
         public static string Rough_Level { get; set; }//地面粗糙层度
         public static double Cha_Value { get; set; }//地基承载力特征值
@@ -39,7 +38,6 @@ namespace Model.Entity
             Sca_Type = null;
             Act_Layers=0;
             Con_Layers = 0;
-            Base_Type=null;
             Soil_Types=null;
             Rough_Level=null;
             Cha_Value=0.0;
