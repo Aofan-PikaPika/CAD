@@ -274,6 +274,7 @@ namespace DEMO.SubForm
             e.Graphics.DrawString(rowIdx, this.Font, SystemBrushes.ControlText, headerBounds, centerFormat);  
         }
 
+        //BLL.ComputeUnits.F1.F_Lmd = null;
         /// <summary>
         /// 确定事件
         /// </summary>
@@ -297,6 +298,17 @@ namespace DEMO.SubForm
             new SQLOperations().FillValidArray(MaterialLib.dtMaterial);
             this.Close();
             this.Dispose();
+            //BLL.ComputeUnits.F1.F_Lmd = new BLL.ComputeUnits.F1.F_Lmd(ScaffoldPara.Act_Layers,ScaffoldPara.fast_num);
+            //double lambda = BLL.ComputeUnits.F1.F_Lmd.ComputeValue();
+            //BLL.ComputeUnits.F1.F_N F_N = new BLL.ComputeUnits.F1.F_N(2, 3, 4);
+            //double N =  F_N.ComputeValue();
+            //if (F_N.IsComputed) { 
+            //    double z = F_N.TargetValue;
+            
+            //}
+            //string s = F_N.ToString();
+
+
         }
 
         /// <summary>
