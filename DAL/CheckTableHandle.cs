@@ -33,5 +33,21 @@ namespace DAL
             DataTable dt = SQLiteHelper.ExecuteDataSet(conn, sqlCmd, null).Tables[0];
             return dt;
         }
+        /// <summary>
+        /// 根据λ的值查询φ的值
+        /// </summary>
+        /// <param name="tens">十位</param>
+        /// <param name="units">个位</param>
+        /// <returns></returns>
+        public double SearchFi(int tens,int units) 
+        {
+            string sqlCmd = "select [" + units + "] from tb_q345fi where λ=" + tens;
+            SQLiteConnection conn = new SQLiteConnectionBase().connectToDatabase();
+            DataTable dt = SQLiteHelper.ExecuteDataSet(conn, sqlCmd, null).Tables[0];
+            double fi = (double)dt.Rows[0][0];
+            return fi;
+        }
+
+
     }
 }

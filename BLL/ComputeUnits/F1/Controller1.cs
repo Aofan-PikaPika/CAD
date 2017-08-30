@@ -7,7 +7,6 @@ namespace BLL.ComputeUnits.F1
 {
     public class Controller1
     {
-        
-
+     
     }
 }

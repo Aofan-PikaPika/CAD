@@ -44,7 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComputeUnits\UnitConversion.cs" />
+    <Compile Include="ComputeUnits\1DLoadUnitConversion.cs" />
+    <Compile Include="ComputeUnits\2DLoadUnitConversion.cs" />
+    <Compile Include="ComputeUnits\BendingMomentUnitConversion.cs" />
+    <Compile Include="ComputeUnits\LengthUnitConversion.cs" />
     <Compile Include="ComputeUnits\ComputeElement.cs" />
     <Compile Include="ComputeUnits\F1\Controller1.cs" />
     <Compile Include="ComputeUnits\F1\F_Lmd.cs" />
@@ -57,6 +60,7 @@
     <Compile Include="ComputeUnits\F1\TFM1_Miu.cs" />
     <Compile Include="ComputeUnits\F1\TFS_Fitting.cs" />
     <Compile Include="ComputeUnits\Formula.cs" />
+    <Compile Include="ComputeUnits\PowerUnitConversion.cs" />
     <Compile Include="ComputeUnits\Table.cs" />
     <Compile Include="ComputeUnits\TableFromMemoryTwoDim.cs" />
     <Compile Include="ComputeUnits\F1\TFS_FiQ345.cs" />
