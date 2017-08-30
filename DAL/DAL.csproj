@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckTableHandle.cs" />
     <Compile Include="InterfaceConn.cs" />
     <Compile Include="MateriallibHandle.cs" />
     <Compile Include="ProjinfoHandle.cs" />
