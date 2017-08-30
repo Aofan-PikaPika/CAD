@@ -328,11 +328,7 @@ namespace DEMO
 
         private void skinButton13_Click(object sender, EventArgs e)
         {
-            长度换算类 lb = new 长度换算类();
-            长度换算类 h = new 长度换算类();
-            lb.厘米 = 7.7;
-           
-            
+                    
         }
 
     }
