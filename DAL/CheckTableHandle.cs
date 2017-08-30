@@ -10,20 +10,27 @@ namespace DAL
 {
     public class CheckTableHandle
     {
-
-        public DataTable SearchFitting(double la, double lb, double h ,string fitting_model)
+        /// <summary>
+        /// 查询材料质量以及其特性的函数
+        /// </summary>
+        /// <param name="la">mm</param>
+        /// <param name="lb">mm</param>
+        /// <param name="h">mm</param>
+        /// <param name="fitting_model"></param>
+        /// <returns></returns>
+        public DataTable SearchFitting(int la, int lb, int h ,string fitting_model)
         {
-            string sqlCommand = " select m.[name],m.[model],m.[specifications],m.[material],m.[the_weight],c.[A],c.[I],c.[W],c.[radius] " +
-                                " from tb_materialkind m ,tb_tubeCharacter c " +
-                                " where m.[model] like '"+fitting_model+"%' and( " +
-                                "   (m.[name] = '立杆' and m.[model] like '%-"+h+"' )or " +
-                                "   (m.[name] = '竖向斜杆' and m.[model] like '%-"+la+"×"+h+"') or " +
-                                "   (m.[name] = '纵向水平杆' and m.[model] like '%-"+la+"') or  " +
-                                "   (m.[name] = '横向水平杆' and m.[model] like '%-"+lb+"')   or  " +
-                                "   (m.[name] = '水平斜杆' and m.[model] like '%-"+lb+"×"+la+"') " +
-                                "  ) and m.[character_id] = c.[character_id] ";
+            string sqlCmd = " select m.[name],m.[model],m.[specifications],m.[material],m.[the_weight],c.[A],c.[I],c.[W],c.[radius] " +
+                            " from tb_materialkind m,tb_tubeCharacter c " +
+                            " where m.[model] like '" + fitting_model + "%' and ( " +
+                            " (m.[name] = '立杆' and m.[model] like '%-" + h + "') or " +
+                            " (m.[name] = '竖向斜杆' and m.[model] like '%-" + la + "×" + h + "') or " +
+                            " (m.[name] = '水平斜杆' and m.[model] like '%-" + lb + "×" + la + "') or " +
+                            " (m.[name] = '横向水平杆' and m.[model] like '%-" + lb + "') or  " +
+                            "  (m.[name] = '纵向水平杆' and m.[model] like '%-" + la + "')" +
+                            " ) and m.[character_id] = c.[character_id]";
             SQLiteConnection conn = new SQLiteConnectionBase().connectToDatabase();
-            DataTable dt = SQLiteHelper.ExecuteDataSet(conn, sqlCommand, null).Tables[0];
+            DataTable dt = SQLiteHelper.ExecuteDataSet(conn, sqlCmd, null).Tables[0];
             return dt;
         }
     }

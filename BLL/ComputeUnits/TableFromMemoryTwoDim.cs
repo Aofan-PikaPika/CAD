@@ -14,6 +14,6 @@ namespace BLL.ComputeUnits
         protected int _vIndex;
         protected double[] _hArray;
         protected double[] _vArray;
-        protected double [,] TwoDimTable;
+        protected double [,] _twoDimTable;
     }
 }

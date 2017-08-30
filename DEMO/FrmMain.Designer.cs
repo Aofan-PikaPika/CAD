@@ -452,6 +452,7 @@
             this.skinButton13.Text = "计算书";
             this.skinButton13.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.skinButton13.UseVisualStyleBackColor = false;
+            this.skinButton13.Click += new System.EventHandler(this.skinButton13_Click);
             // 
             // skinButton14
             // 

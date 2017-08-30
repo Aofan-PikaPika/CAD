@@ -15,6 +15,8 @@ using System.Diagnostics;
 using Model.Entity;
 using Model;
 using BLL;
+using BLL.ComputeUnits.F1;
+using BLL.ComputeUnits;
 
 namespace DEMO
 {
@@ -323,6 +325,15 @@ namespace DEMO
         }
 
         #endregion
+
+        private void skinButton13_Click(object sender, EventArgs e)
+        {
+            长度换算类 lb = new 长度换算类();
+            长度换算类 h = new 长度换算类();
+            lb.厘米 = 7.7;
+           
+            
+        }
 
     }
 

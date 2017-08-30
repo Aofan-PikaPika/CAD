@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComputeUnits\UnitConversion.cs" />
     <Compile Include="ComputeUnits\ComputeElement.cs" />
     <Compile Include="ComputeUnits\F1\Controller1.cs" />
     <Compile Include="ComputeUnits\F1\F_Lmd.cs" />
