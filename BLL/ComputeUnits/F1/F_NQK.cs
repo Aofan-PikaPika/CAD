@@ -12,6 +12,14 @@ namespace BLL.ComputeUnits.F1
         private double lb;//单位：米
         private double q;//单位：千牛/米
         private int con_layers;//同时施工层数
+
+        /// <summary>
+        /// 构造器
+        /// </summary>
+        /// <param name="la">m</param>
+        /// <param name="lb">m</param>
+        /// <param name="q">KN/m</param>
+        /// <param name="con_layers"></param>
         public F_NQK(double la, double lb, double q, int con_layers)
         {
             this.la=la;
@@ -19,6 +27,10 @@ namespace BLL.ComputeUnits.F1
             this.q=q; //单位：千牛/米
             this.con_layers = con_layers;//同时施工层数
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>KN</returns>
         public override double ComputeValue()
         {
             _targetValue = la * lb * q * con_layers / 2;
@@ -28,7 +40,7 @@ namespace BLL.ComputeUnits.F1
         public override string ToString()
         {
             if (_isComputed)
-                return  la.ToString("#0.0") + "×" + lb.ToString("#0.0") + "×" + q.ToString("#0.0") + "×" + con_layers.ToString("#0") + "÷2";
+                return  la.ToString("#0.0") + "×" + lb.ToString("#0.0") + "×" + q.ToString("#0.0") + "×" + con_layers.ToString() + "/2="+_targetValue.ToString("#0.0");
             else
                 return "";
         }

@@ -40,6 +40,10 @@ namespace BLL.ComputeUnits.F1
             this.Step = Step;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>KN</returns>
         public override double ComputeValue()
         {
             _targetValue = (GStandingTube + GVLedger + (GHLedger + GVBrace + GHBrace) * 0.5) * Step;

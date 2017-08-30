@@ -17,6 +17,14 @@ namespace BLL.ComputeUnits.F1
         private double NQK;
         //公式的传值仅通过构造器传值，不给出空参构造器
         //一旦new 则表示此公式可以执行ComputeValue方法，计算得出的值有意义
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="NG1K">KN</param>
+        /// <param name="NG2K">KN</param>
+        /// <param name="NQK">KN</param>
+
         public F_N(double NG1K, double NG2K, double NQK)
         {
             this.NG1K = NG1K;
@@ -25,6 +33,10 @@ namespace BLL.ComputeUnits.F1
         }
         //重写父类Formula的抽象方法，在其中写一个公式具体的算法
         //不能忘记结果要赋给_targetValue和_isComputed标志位置true
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>KN</returns>
         public override double ComputeValue()
         {
             _targetValue = 1.2 * (NG1K + NG2K) + 1.4 * NQK;
@@ -36,7 +48,7 @@ namespace BLL.ComputeUnits.F1
         public override string ToString()
         {
             if (_isComputed)
-                return "1.2×(" + NG1K.ToString("#0.0") + "+" + NG2K.ToString("#0.0") + ")+1.4×" + NQK.ToString("#0.0");
+                return "1.2×(" + NG1K.ToString("#0.0") + "+" + NG2K.ToString("#0.0") + ")+1.4×" + NQK.ToString("#0.0")+"="+_targetValue.ToString("#0.0");
             else
                 return "";
         }
