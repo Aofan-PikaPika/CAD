@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using BLL.ComputeUnits.F1;
 using Model.Entity;
+using CCWin;
 
 namespace BLL.ComputeUnits.F1
 {
@@ -42,9 +43,23 @@ namespace BLL.ComputeUnits.F1
             //计算构配件自重标准值产生的轴力：单位kN
             F_NG2K f_NG2K = new F_NG2K(la.M,lb.M,ScaffoldPara.Act_Layers,h.M*ScaffoldPara.step_num);
             f_NG2K.ComputeValue();
+            //查施工均布活荷载的表
+            TFM1_ConsLoad tfm1_ConsLoad = new TFM1_ConsLoad(ScaffoldPara.Sca_Type+"脚手架");
+            tfm1_ConsLoad.Search();
             //计算施工均布荷载标准值产生的轴力：单位kN
-            //F_NQK f_NQK = new F_NQK(la.M,lb.M,)
-            return 0.0;
+            F_NQK f_NQK = new F_NQK(la.M, lb.M, (double)tfm1_ConsLoad.TargetValue, ScaffoldPara.Con_Layers);
+            f_NQK.ComputeValue();
+            //计算立杆承受的轴力设计值N
+            F_N f_N = new F_N(f_NG1K.TargetValue, f_NG2K.TargetValue, f_NQK.TargetValue);
+            f_N.ComputeValue();
+
+            string calcWord = "FNG1K = " + f_NG1K.ToString() + "\n" +
+                              "FNG2K = " + f_NG2K.ToString() + "\n" +
+                              "ΣFNQK = " + f_NQK.ToString() + "\n" +
+                              "FN = " + f_N.ToString();
+
+            MessageBoxEx.Show(calcWord);
+            return 0;
             
         }
         public double CalcRight()

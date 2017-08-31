@@ -48,7 +48,7 @@ namespace BLL.ComputeUnits.F1
         public override string ToString()
         {
             if (_isComputed)
-                return "1.2×(" + NG1K.ToString("#0.0") + "+" + NG2K.ToString("#0.0") + ")+1.4×" + NQK.ToString("#0.0")+"="+_targetValue.ToString("#0.0");
+                return "1.2×(" + NG1K.ToString("#0.00") + "+" + NG2K.ToString("#0.00") + ")+1.4×" + NQK.ToString("#0.00")+"="+_targetValue.ToString("#0.00");
             else
                 return "";
         }

@@ -34,7 +34,7 @@ namespace BLL.ComputeUnits.F1
         {
             this.GStandingTube = GStandingTube;
             this.GVLedger = GVLedger;
-            this.GHLedger = GVLedger;
+            this.GHLedger = GHLedger;
             this.GVBrace = GVBrace;
             this.GHBrace = GHBrace;
             this.Step = Step;
@@ -55,7 +55,7 @@ namespace BLL.ComputeUnits.F1
         {
             if (_isComputed)
             {
-                return "[" + GStandingTube.ToString("#0.0") + "+" + GVLedger.ToString("#0.0") + "+(" + GHLedger.ToString("#0.0") + "+" + GVBrace.ToString("#0.0") + "+" + GHBrace.ToString("#0.0") + ")×0.5]×" + Step.ToString() + "=" + _targetValue.ToString("#0.0");
+                return "[" + GStandingTube.ToString("#0.00") + "+" + GVLedger.ToString("#0.00") + "+(" + GHLedger.ToString("#0.00") + "+" + GVBrace.ToString("#0.00") + "+" + GHBrace.ToString("#0.00") + ")×0.5]×" + Step.ToString() + "=" + _targetValue.ToString("#0.00");
             }
             else
                 return "";

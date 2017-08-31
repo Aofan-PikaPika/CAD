@@ -132,7 +132,7 @@ namespace DEMO.SubForm
             skinTextBox3.Text = ScaffoldPara.Pad_Area.ToString();
 
             //立杆纵距
-            switch (ScaffoldPara.La.ToString("#0.0"))
+            switch (ScaffoldPara.La.ToString("#0.00"))
             {
                 case "1.2": skinComboBox13.SelectedIndex = 0;
                     break;
@@ -159,7 +159,7 @@ namespace DEMO.SubForm
 
 
             //水平杆步距
-            switch (ScaffoldPara.H.ToString("#0.0"))
+            switch (ScaffoldPara.H.ToString("#0.00"))
             {
                 case "1.5": skinComboBox12.SelectedIndex = 0;
                     break;
