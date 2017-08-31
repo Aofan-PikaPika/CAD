@@ -55,7 +55,7 @@
     <Compile Include="ComputeUnits\F1\F_NG1K.cs" />
     <Compile Include="ComputeUnits\F1\F_NG2K.cs" />
     <Compile Include="ComputeUnits\F1\F_NQK.cs" />
-    <Compile Include="ComputeUnits\F1\TFM1_ConsLoad.cs" />
+    <Compile Include="ComputeUnits\F1\TFM1_qConsLoad.cs" />
     <Compile Include="ComputeUnits\F1\TFM1_f.cs" />
     <Compile Include="ComputeUnits\F1\TFM1_Miu.cs" />
     <Compile Include="ComputeUnits\F1\TFS_Fitting.cs" />
@@ -79,7 +79,15 @@
       <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ComputeUnits\F2\" />
+    <Folder Include="ComputeUnits\F3\" />
+    <Folder Include="ComputeUnits\F4\" />
+    <Folder Include="ComputeUnits\F5\" />
+    <Folder Include="ComputeUnits\F6\" />
+    <Folder Include="ComputeUnits\F7\" />
+    <Folder Include="ComputeUnits\F8\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

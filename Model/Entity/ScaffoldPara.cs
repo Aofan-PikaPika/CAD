@@ -29,9 +29,9 @@ namespace Model.Entity
         public static double La { get; set; }//立杆纵距
         public static double Lb { get; set; }//立杆横距
         public static double H { get; set; }//相邻水平杆竖向步距
-        public static int fast_num { get; set; }//扣件个数
-        public static string fitting_model { get; set; }//构配件型号
-        public static int step_num { get; set; }//步数
+        public static int Fast_Num { get; set; }//扣件个数
+        public static string Fitting_Model { get; set; }//构配件型号
+        public static int Step_Num { get; set; }//步数
         public static void Clear()
         {
             //Pro_Id = 0;
@@ -55,9 +55,9 @@ namespace Model.Entity
             La=0.0;
             Lb=0.0;
             H = 0.0;
-            fast_num=0;
-            fitting_model=null;
-            step_num = 0;
+            Fast_Num=0;
+            Fitting_Model=null;
+            Step_Num = 0;
         }
     }
 

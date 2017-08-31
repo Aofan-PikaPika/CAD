@@ -117,9 +117,9 @@ namespace BLL
                     ScaffoldPara.La = (double)dtPara.Rows[0]["la"];
                     ScaffoldPara.Lb = (double)dtPara.Rows[0]["lb"];
                     ScaffoldPara.H = (double)dtPara.Rows[0]["h"];
-                    ScaffoldPara.fast_num = (int)dtPara.Rows[0]["fast_num"];
-                    ScaffoldPara.fitting_model = dtPara.Rows[0]["fitting_model"].ToString();
-                    ScaffoldPara.step_num = (int)dtPara.Rows[0]["step_num"];
+                    ScaffoldPara.Fast_Num = (int)dtPara.Rows[0]["fast_num"];
+                    ScaffoldPara.Fitting_Model = dtPara.Rows[0]["fitting_model"].ToString();
+                    ScaffoldPara.Step_Num = (int)dtPara.Rows[0]["step_num"];
 
                     //材料库
                     MaterialLib.clearMaterialLib();

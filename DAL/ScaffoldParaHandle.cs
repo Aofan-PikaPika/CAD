@@ -19,7 +19,7 @@ namespace DAL
             //ScaffoldPara.Sca_Type="dad";
 
             string sqlInsert = "insert into tb_scaffoldPara(pro_id,sca_type,con_layers,act_layers,soil_types,rough_level,cha_value,pad_area,anchor_style,anchor_type,anchor_model,anchor_connect,sca_situation,bui_status,bui_distance ,per_brace,per_level,per_set,la,lb,h,fast_num,fitting_model,step_num)"
-+ "values(" + pro_Id + ",'" + ScaffoldPara.Sca_Type + "'," + ScaffoldPara.Con_Layers + "," + ScaffoldPara.Act_Layers + ",'" + ScaffoldPara.Soil_Types + "','" + ScaffoldPara.Rough_Level + "'," + ScaffoldPara.Cha_Value + "," + ScaffoldPara.Pad_Area + ",'" + ScaffoldPara.Anchor_Style + "','" + ScaffoldPara.Anchor_Type + "','" + ScaffoldPara.Anchor_Model + "','" + ScaffoldPara.Anchor_Connect + "','" + ScaffoldPara.Sca_Situation + "','" + ScaffoldPara.Bui_Status + "'," + ScaffoldPara.Bui_Distance + "," + ScaffoldPara.Per_Brace + "," + ScaffoldPara.Per_Level + "," + ScaffoldPara.Per_Set + "," + ScaffoldPara.La + "," + ScaffoldPara.Lb + "," + ScaffoldPara.H + "," + ScaffoldPara.fast_num + ",'"+ScaffoldPara.fitting_model+"',"+ScaffoldPara.step_num+")";
++ "values(" + pro_Id + ",'" + ScaffoldPara.Sca_Type + "'," + ScaffoldPara.Con_Layers + "," + ScaffoldPara.Act_Layers + ",'" + ScaffoldPara.Soil_Types + "','" + ScaffoldPara.Rough_Level + "'," + ScaffoldPara.Cha_Value + "," + ScaffoldPara.Pad_Area + ",'" + ScaffoldPara.Anchor_Style + "','" + ScaffoldPara.Anchor_Type + "','" + ScaffoldPara.Anchor_Model + "','" + ScaffoldPara.Anchor_Connect + "','" + ScaffoldPara.Sca_Situation + "','" + ScaffoldPara.Bui_Status + "'," + ScaffoldPara.Bui_Distance + "," + ScaffoldPara.Per_Brace + "," + ScaffoldPara.Per_Level + "," + ScaffoldPara.Per_Set + "," + ScaffoldPara.La + "," + ScaffoldPara.Lb + "," + ScaffoldPara.H + "," + ScaffoldPara.Fast_Num + ",'"+ScaffoldPara.Fitting_Model+"',"+ScaffoldPara.Step_Num+")";
             SQLiteConnection conn = con.connectToDatabase();
             int i = SQLiteHelper.ExecuteNonQuery(conn,sqlInsert);
             if (i == 1)
@@ -66,9 +66,9 @@ namespace DAL
                                 ",la=" + ScaffoldPara.La +
                                 ",lb=" + ScaffoldPara.Lb +
                                 ",h=" + ScaffoldPara.H +
-                                ",fast_num="+ScaffoldPara.fast_num+
-                                ",fitting_model='"+ScaffoldPara.fitting_model+
-                                "',step_num="+ScaffoldPara.step_num+
+                                ",fast_num="+ScaffoldPara.Fast_Num+
+                                ",fitting_model='"+ScaffoldPara.Fitting_Model+
+                                "',step_num="+ScaffoldPara.Step_Num+
                                 " where  pro_id ="+pro_Id;
             SQLiteConnection conn =con.connectToDatabase();
             SQLiteCommand cmd = SQLiteHelper.CreateCommand(conn, sqlUpdate);

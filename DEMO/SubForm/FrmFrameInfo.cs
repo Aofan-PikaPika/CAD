@@ -168,12 +168,12 @@ namespace DEMO.SubForm
             }
 
             //步数
-            skinTextBox7.Text = ScaffoldPara.step_num.ToString();
+            skinTextBox7.Text = ScaffoldPara.Step_Num.ToString();
 
             //构配件型号
-            if (ScaffoldPara.fitting_model!=null)
+            if (ScaffoldPara.Fitting_Model!=null)
             {
-                switch (ScaffoldPara.fitting_model.ToString())
+                switch (ScaffoldPara.Fitting_Model.ToString())
                 {
                     case "A": radioButton1.Checked = true;
                         break;
@@ -251,7 +251,7 @@ namespace DEMO.SubForm
             }
 
             //扣件个数
-            switch (ScaffoldPara.fast_num.ToString())
+            switch (ScaffoldPara.Fast_Num.ToString())
             {
                 case "1": skinComboBox3.SelectedIndex = 0;
                     break;
@@ -341,14 +341,14 @@ namespace DEMO.SubForm
             ScaffoldPara.La = double.Parse(skinComboBox13.SelectedItem.ToString());
             ScaffoldPara.Lb = double.Parse(skinComboBox14.SelectedItem.ToString());
             ScaffoldPara.H = double.Parse(skinComboBox12.SelectedItem.ToString());
-            ScaffoldPara.step_num = int.Parse(skinTextBox7.Text);
+            ScaffoldPara.Step_Num = int.Parse(skinTextBox7.Text);
             if (radioButton1.Checked)
             {
-                ScaffoldPara.fitting_model = "A";
+                ScaffoldPara.Fitting_Model = "A";
             }
             else 
             {
-                ScaffoldPara.fitting_model = "B";
+                ScaffoldPara.Fitting_Model = "B";
             }
 
             //连墙件
@@ -356,7 +356,7 @@ namespace DEMO.SubForm
             ScaffoldPara.Anchor_Type = skinComboBox7.SelectedItem.ToString();
             ScaffoldPara.Anchor_Model = skinComboBox8.SelectedItem.ToString();
             ScaffoldPara.Anchor_Connect = skinComboBox9.SelectedItem.ToString();
-            ScaffoldPara.fast_num = int.Parse(skinComboBox3.SelectedItem.ToString());
+            ScaffoldPara.Fast_Num = int.Parse(skinComboBox3.SelectedItem.ToString());
 
             //荷载参数
             ScaffoldPara.Sca_Situation = skinComboBox10.SelectedItem.ToString();

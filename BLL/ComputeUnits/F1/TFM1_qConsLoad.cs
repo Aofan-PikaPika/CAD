@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BLL.ComputeUnits.F1
 {
-    public class TFM1_ConsLoad : Table<int>
+    public class TFM1_qConsLoad : Table<int>
     {
    
         private string sca_type;
@@ -13,14 +13,14 @@ namespace BLL.ComputeUnits.F1
         /// 
         /// </summary>
         /// <param name="sca_type">只能是"防护脚手架"，"装修脚手架"，"结构脚手架"三种</param>
-        public TFM1_ConsLoad(string sca_type)
+        public TFM1_qConsLoad(string sca_type)
         {
             this.sca_type = sca_type;
         }
         /// <summary>
         /// 查询活荷载的函数
         /// </summary>
-        /// <returns>KN</returns>
+        /// <returns>KN/M2</returns>
         public override int Search()
         {
             int N= -1;

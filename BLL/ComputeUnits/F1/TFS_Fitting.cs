@@ -14,6 +14,13 @@ namespace BLL.ComputeUnits.F1
         int lb;
         int h;
         string fitting_model;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="la">mm</param>
+        /// <param name="lb">mm</param>
+        /// <param name="h">mm</param>
+        /// <param name="fitting_model">字符串A或B</param>
         public TFS_Fitting(int la ,int lb ,int h ,string fitting_model)
         {
             this.la = la;
@@ -40,6 +47,12 @@ namespace BLL.ComputeUnits.F1
             return dt;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="colName"></param>
+        /// <returns>规范上查到的单位</returns>
         public double FindMaterialPara(string name, string colName)
         {
             if (_isSearched)

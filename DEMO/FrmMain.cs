@@ -309,8 +309,7 @@ namespace DEMO
         //计算书
         private void skinButton8_Click(object sender, EventArgs e)
         {
-            Controller1 c1 = new Controller1();
-            c1.CalcLeft();
+
         }
 
         //用料统计

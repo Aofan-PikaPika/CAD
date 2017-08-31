@@ -10,7 +10,7 @@ namespace BLL.ComputeUnits.F1
     {
         private double la;//单位：米
         private double lb;//单位：米
-        private double q;//单位：千牛/米
+        private double q;//单位：千牛/平方米
         private int con_layers;//同时施工层数
 
         /// <summary>
@@ -18,13 +18,13 @@ namespace BLL.ComputeUnits.F1
         /// </summary>
         /// <param name="la">m</param>
         /// <param name="lb">m</param>
-        /// <param name="q">KN/m</param>
+        /// <param name="q">KN/m2</param>
         /// <param name="con_layers"></param>
         public F_NQK(double la, double lb, double q, int con_layers)
         {
             this.la=la;
             this.lb=lb;
-            this.q=q; //单位：千牛/米
+            this.q=q; 
             this.con_layers = con_layers;//同时施工层数
         }
         /// <summary>
