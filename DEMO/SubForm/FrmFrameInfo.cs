@@ -132,7 +132,7 @@ namespace DEMO.SubForm
             skinTextBox3.Text = ScaffoldPara.Pad_Area.ToString();
 
             //立杆纵距
-            switch (ScaffoldPara.La.ToString("#0.00"))
+            switch (ScaffoldPara.La.ToString("#0.0"))
             {
                 case "1.2": skinComboBox13.SelectedIndex = 0;
                     break;
@@ -159,7 +159,7 @@ namespace DEMO.SubForm
 
 
             //水平杆步距
-            switch (ScaffoldPara.H.ToString("#0.00"))
+            switch (ScaffoldPara.H.ToString("#0.0"))
             {
                 case "1.5": skinComboBox12.SelectedIndex = 0;
                     break;
@@ -592,9 +592,9 @@ namespace DEMO.SubForm
 
             //其他逻辑
             //立杆横距控制
-            if (!es.lbValid(skinComboBox12.SelectedIndex,skinComboBox14.SelectedIndex))
+            if (!es.lbValid(skinComboBox13.SelectedIndex,skinComboBox14.SelectedIndex))
             {
-                this.errorProvider8.SetError(this.skinComboBox14, "在水平步距为2.0m的情况下，立杆横距只能为1.2m");
+                this.errorProvider8.SetError(this.skinComboBox14, "在立杆纵距为2.0m的情况下，立杆横距只能为1.5m\n"+"在立杆纵距为1.8m的情况下，立杆横距只能为1.5m或1.2m");
             }
             else
             {
@@ -615,7 +615,7 @@ namespace DEMO.SubForm
 
             #endregion
 
-            if (es.textboxIntValidating(skinTextBox1.Text) && es.textboxIntValidating(skinTextBox2.Text) && es.textboxIntValidating(skinTextBox3.Text) && es.textboxIntValidating(skinTextBox4.Text) && es.textboxIntValidating(skinTextBox5.Text) && es.textboxIntValidating(skinTextBox6.Text) && es.textboxIntValidating(skinTextBox8.Text) && es.lbValid(skinComboBox12.SelectedIndex, skinComboBox14.SelectedIndex) && es.distanceValid(int.Parse(skinTextBox4.Text))&&es.textboxIntValidating(skinTextBox7.Text))
+            if (es.textboxIntValidating(skinTextBox1.Text) && es.textboxIntValidating(skinTextBox2.Text) && es.textboxIntValidating(skinTextBox3.Text) && es.textboxIntValidating(skinTextBox4.Text) && es.textboxIntValidating(skinTextBox5.Text) && es.textboxIntValidating(skinTextBox6.Text) && es.textboxIntValidating(skinTextBox8.Text) && es.lbValid(skinComboBox13.SelectedIndex, skinComboBox14.SelectedIndex) && es.distanceValid(int.Parse(skinTextBox4.Text))&&es.textboxIntValidating(skinTextBox7.Text))
             {
                 try
                 {

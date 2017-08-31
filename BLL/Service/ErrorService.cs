@@ -57,11 +57,11 @@ namespace BLL.Service
 
 
         #region 横距限制逻辑
-        public bool lbValid(int indexH,int indexLb)
+        public bool lbValid(int indexLa,int indexLb)
         {
-            if (indexH == 1)
+            if (indexLa == 3)
             {
-                if (indexLb == 1)
+                if (indexLb == 2)
                 {
                     return true;
                 }
@@ -70,10 +70,19 @@ namespace BLL.Service
                     return false;
                 }
             }
-            else
+            else if (indexLa==2)
             {
-                return true;
+                if (indexLb == 2 || indexLb == 1)
+                {
+                    return true;
+                }
+                else 
+                {
+                    return false;
+                }
             }
+            return true;
+           
         }
 
         #endregion
