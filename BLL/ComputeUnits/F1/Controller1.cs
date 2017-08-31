@@ -10,9 +10,13 @@ namespace BLL.ComputeUnits.F1
 {
     public class Controller1
     {
-        public double N;
+        public double N = -1;
+        public double φ = -1;
+        public double A  = -1;
+        public double f = -1;
         public string CalculateSolve;
-        public void CalcN()
+        public TFS_Fitting tfs_Fitting = null;//公开查询到的材料表，很多计算都要用到杆件的资料
+        private void CalcN()
         {
             //进行脚手架尺寸的单位换算
             LengthUnitConversion la = new LengthUnitConversion();
@@ -21,7 +25,8 @@ namespace BLL.ComputeUnits.F1
             la.M = ScaffoldPara.La;
             lb.M = ScaffoldPara.Lb;
             h.M = ScaffoldPara.H;
-            TFS_Fitting tfs_Fitting = new TFS_Fitting((int)la.MM, (int)lb.MM, (int)h.MM, ScaffoldPara.Fitting_Model);
+            //根据纵距，横距步距查杆件
+            tfs_Fitting = new TFS_Fitting((int)la.MM, (int)lb.MM, (int)h.MM, ScaffoldPara.Fitting_Model);
             tfs_Fitting.Search();
             if (!tfs_Fitting.IsSearched) return;
             //进行各杆自重的单位换算
@@ -61,10 +66,65 @@ namespace BLL.ComputeUnits.F1
             */
         }
 
+        /// <summary>
+        /// 计算立杆长度系数φ的公式，必须在计算完N之后再用，计算N的方
+        /// </summary>
+        private void Calcφ()
+        {
+            if (!tfs_Fitting.IsSearched) return;//没查到表就不算了
+            //查询立杆的长度系数
+            TFM1_Miu tfm1_Miu= new TFM1_Miu(ScaffoldPara.Anchor_Style);
+            tfm1_Miu.Search();
+            //计算立杆的柔度 没有单位
+            LengthUnitConversion H = new LengthUnitConversion();
+            H.M = ScaffoldPara.H;//这里要进行一步单位换算
+            F_Lmd f_Lmd = new F_Lmd(tfm1_Miu.TargetValue,H.CM,tfs_Fitting.FindMaterialPara("立杆","radius"));
+            f_Lmd.ComputeValue();
+            //根据柔度查稳定系数 没有单位
+            TFS_FiQ345 f_FiQ345 = new TFS_FiQ345(f_Lmd.TargetValue);
+            φ = f_FiQ345.Search();
+        }
+
+        /// <summary>
+        /// 计算立杆截面积的方法
+        /// </summary>
+        private void CalcA()
+        {
+            if (tfs_Fitting.IsSearched)
+            {
+                A = tfs_Fitting.FindMaterialPara("立杆", "A");//单位：平方厘米
+            }
+        }
+
+        private void Calcf()
+        {
+            TFM1_f tfm1_f = new TFM1_f("Q345");
+            f = tfm1_f.Search();
+        }
+
+
         public void Compare()
         {
-            
+            CalcN();//这个因为包含查表的过程，永远在最前面，剩下几个的顺序可以变化的
+            Calcφ();
+            CalcA();
+            Calcf();
+            if (N < 0 || A < 0 || φ < 0 || f < 0) return;//设置一道坎，检测到运算失败时返回
+            //转换单位
+            N = N * 1000;//由千牛转换成牛
+            A = A * 100;//由平方厘米转换为平方毫米
+            if (N / (A * φ) <= f)
+            {
+                lString = N.ToString("#0.00") + "/(" + A.ToString("#0.00") + "×" + φ.ToString("#0.00") + ")=" + (N / (A * φ)).ToString("#0.00");
+                rString = f.ToString("#0.00");
+            }
+            else
+            {
+                throw new Exception("立杆验算");
+            }
         }
+        public string lString = "";//这个是表达公式左边立杆承受应力的字符串 
+        public string rString = "";//这个表达公式右边f的字符串
 
     }
 }

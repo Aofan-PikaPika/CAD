@@ -17,7 +17,7 @@ using Model;
 using BLL;
 using BLL.ComputeUnits.F1;
 using BLL.ComputeUnits;
-
+using BLL.Service;
 namespace DEMO
 {
     public partial class FrmMain : Skin_Mac
@@ -309,7 +309,19 @@ namespace DEMO
         //计算书
         private void skinButton8_Click(object sender, EventArgs e)
         {
-
+            /*第一个控制类测试
+            Controller1 c1 = new Controller1();
+            try
+            {
+                c1.Compare();
+            }
+            catch (Exception ex)
+            {
+                ErrorService.Show(ex.Message + "未通过");
+            }
+            MessageBox.Show(c1.lString);
+            MessageBox.Show(c1.rString);
+            */
         }
 
         //用料统计

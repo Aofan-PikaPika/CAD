@@ -48,7 +48,7 @@ namespace BLL.ComputeUnits.F1
         }
 
         /// <summary>
-        /// 
+        /// 根据级联查询出的杆件表，获得其对应的杆件特性
         /// </summary>
         /// <param name="name"></param>
         /// <param name="colName"></param>
