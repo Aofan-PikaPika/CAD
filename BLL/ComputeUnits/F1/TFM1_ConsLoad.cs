@@ -5,24 +5,37 @@ using System.Text;
 
 namespace BLL.ComputeUnits.F1
 {
-    public static class TFM1_ConsLoad 
+    public class TFM1_ConsLoad : Table<int>
     {
-        private const int q_defence = 1;
-        private const int q_decoration = 2;
-        private const int q_structure = 3;
-
+   
+        private string sca_type;
         /// <summary>
-        /// 防护脚手架 施工均布活荷载标准值 单位：kN/m2
+        /// 
         /// </summary>
-        public static  int Q_Defence { get { return q_defence; } }
+        /// <param name="sca_type">只能是"防护脚手架"，"装修脚手架"，"结构脚手架"三种</param>
+        public TFM1_ConsLoad(string sca_type)
+        {
+            this.sca_type = sca_type;
+        }
         /// <summary>
-        /// 装修脚手架 施工均布活荷载标准值 单位：kN/m2
+        /// 查询活荷载的函数
         /// </summary>
-        public static  int Q_Decoration { get { return q_decoration; } }
-        /// <summary>
-        /// 结构脚手架 施工均布活荷载标准值 单位：kN/m2
-        /// </summary>
-        public static int Q_Structure { get { return q_structure; } }
-
+        /// <returns>KN</returns>
+        public override int Search()
+        {
+            int N= -1;
+            switch (sca_type)
+            {
+                case "防护脚手架": N = 1;break;
+                case "装修脚手架": N = 2;break;
+                case "结构脚手架": N = 3 ;break;
+            }
+            if (N > 0)
+            {
+                _isSearched = true;
+                _targetValue = N;
+            }
+            return N;
+        }
     }
 }
