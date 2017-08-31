@@ -49,52 +49,65 @@ namespace BLL.ComputeUnits.F1
 
     //    }
     //}
-
-    public static class TFM1_f
+  
+    public class TFM1_f :Table<int>
     {
-        private const  int q345=300;
+        //材质或者弹性模量
+        string texture;
         /// <summary>
-        /// Q345钢材抗拉、抗压、抗弯强度设计值 N/mm2
+        /// 构造函数
         /// </summary>
-        public static int Q345
+        /// <param name="model">string</param>
+        public TFM1_f(string texture) 
         {
-            get {return q345;}
+            this.texture = texture;
         }
-
-        private const int q235=205;
-
-        /// <summary>
-        /// Q235钢材抗拉、抗压、抗弯强度设计值 N/mm2
-        /// </summary>
-        public static int Q235
+        public override int Search()
         {
-            get{ return q235;}
+            
+            switch (texture)
+            {
+                //Q345钢材抗拉、抗压、抗弯强度设计值 N/mm2
+                case "Q345":
+                    {   _targetValue = 300;
+                        _isSearched = true;
+                    }
+                    break;
+                //Q235钢材抗拉、抗压、抗弯强度设计值 N/mm2
+                case "Q235": 
+                    {
+                        _targetValue = 205;
+                        _isSearched = true;
+                    }
+                    break;
+                //Q195钢材抗拉、抗压、抗弯强度设计值 N/mm2
+                case "Q195":
+                    {
+                        _targetValue = 175;
+                        _isSearched = true;
+                    }
+                    break;
+                // 弹性模量 N/mm2
+                case "E": 
+                    {
+                        _targetValue = 206000;
+                        _isSearched = true;
+                    }
+                    break;              
+            }
+            if (_isSearched)
+            {
+                return _targetValue;
+            }
+            else 
+            {
+                return -1;
+            }
         }
-
-        private const int q195 = 175;
-
-        /// <summary>
-        /// Q195钢材抗拉、抗压、抗弯强度设计值 N/mm2
-        /// </summary>
-        public static int Q195 
-        {
-            get { return q195; }
-        }
-
-        private const int e = 206000;
-
-        /// <summary>
-        /// 弹性模量 N/mm2
-        /// </summary>
-        public static int E 
-        {
-            get { return e; }
-        }
-      
-
-
-
+        
     }
+
+
 
 
 }
