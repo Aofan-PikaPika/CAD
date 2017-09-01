@@ -5,7 +5,17 @@ using System.Text;
 
 namespace BLL.ComputeUnits.F2
 {
-    class F_Mw
+    public class F_Mw : Formula<double>
     {
+
+        public override double ComputeValue()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
