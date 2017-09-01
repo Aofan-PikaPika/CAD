@@ -7,15 +7,38 @@ namespace BLL.ComputeUnits.F2
 {
     public class F_Mw : Formula<double>
     {
+        double _ωk = -1;
+        double la = -1;
+        double h = -1;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_ωk">kN/M2</param>
+        /// <param name="la">M</param>
+        /// <param name="h">M</param>
+        public F_Mw(double _ωk ,double la ,double h)
+        {
+            this._ωk = _ωk;
+            this.la = la;
+            this.h = h;
+        }
         public override double ComputeValue()
         {
-            throw new NotImplementedException();
+            _targetValue = (0.9 * 1.4 * _ωk * la * h * h) / 10;
+            if (_targetValue > 0)
+            {
+                _isComputed = true;
+            }
+            return _targetValue;
         }
 
         public override string ToString()
         {
-            throw new NotImplementedException();
+            if (_isComputed)
+                return "(0.9×1.4×" + _ωk.ToString("#0.000") + "×" + la.ToString("#0.000") + "×" + h.ToString("#0.000") + "^2)/10=" + _targetValue.ToString("#0.00");
+            else
+                return "";
         }
     }
 }

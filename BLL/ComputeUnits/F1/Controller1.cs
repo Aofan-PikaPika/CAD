@@ -10,11 +10,11 @@ namespace BLL.ComputeUnits.F1
 {
     public class Controller1
     {
-        public double N = -1;
-        public double φ = -1;
-        public double A  = -1;
-        public double f = -1;
-        public string CalculateSolve;
+        //稳定性计算需要用到NφAf，全部公开
+        public static double N = -1;
+        public static double φ = -1;
+        public static double A  = -1;
+        public static double f = -1;
         public static TFS_Fitting tfs_Fitting = null;//公开查询到的材料表，很多计算都要用到杆件的资料
         private void CalcN()
         {
@@ -123,8 +123,8 @@ namespace BLL.ComputeUnits.F1
                 throw new Exception("立杆验算");
             }
         }
-        public string lString = "";//这个是表达公式左边立杆承受应力的字符串 
-        public string rString = "";//这个表达公式右边f的字符串
+        public static string lString = "";//这个是表达公式左边立杆承受应力的字符串 
+        public static string rString = "";//这个表达公式右边f的字符串
 
     }
 }
