@@ -15,7 +15,7 @@ namespace BLL.ComputeUnits.F1
         public double A  = -1;
         public double f = -1;
         public string CalculateSolve;
-        public TFS_Fitting tfs_Fitting = null;//公开查询到的材料表，很多计算都要用到杆件的资料
+        public static TFS_Fitting tfs_Fitting = null;//公开查询到的材料表，很多计算都要用到杆件的资料
         private void CalcN()
         {
             //进行脚手架尺寸的单位换算
