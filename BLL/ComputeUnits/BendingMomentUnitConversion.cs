@@ -23,8 +23,8 @@ namespace BLL.ComputeUnits
         /// </summary>
         public double KNmultiplyM
         {
-            set { nmultiplyMM = value / 1000000; }
-            get { return nmultiplyMM * 1000000; }
+            set { nmultiplyMM = value * 1000000; }
+            get { return nmultiplyMM / 1000000 ; }
         }
     }
 }
