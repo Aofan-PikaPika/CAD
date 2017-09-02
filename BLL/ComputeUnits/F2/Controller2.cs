@@ -18,6 +18,8 @@ namespace BLL.ComputeUnits.F2
         //生成计算书需要的公式
         public static F_ωk f_ωk = null;
         public static F_Mw f_Mw = null;
+
+        //公式2单项依赖公式1
         //测试controller1有没有计算完毕的函数
         private bool TestController1Para()
         {
