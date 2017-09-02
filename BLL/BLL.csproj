@@ -50,6 +50,10 @@
     <Compile Include="ComputeUnits\F4\Controller4.cs" />
     <Compile Include="ComputeUnits\F4\F_Q1.cs" />
     <Compile Include="ComputeUnits\F4\F_V.cs" />
+    <Compile Include="ComputeUnits\F5\Controller5.cs" />
+    <Compile Include="ComputeUnits\F5\F_N1.cs" />
+    <Compile Include="ComputeUnits\F5\F_N1W.cs" />
+    <Compile Include="ComputeUnits\F5\TFS_Anchor.cs" />
     <Compile Include="ComputeUnits\LengthUnitConversion.cs" />
     <Compile Include="ComputeUnits\ComputeElement.cs" />
     <Compile Include="ComputeUnits\F1\Controller1.cs" />
@@ -85,7 +89,6 @@
   <ItemGroup>
     <Folder Include="ComputeUnits\F2\" />
     <Folder Include="ComputeUnits\F3\" />
-    <Folder Include="ComputeUnits\F5\" />
     <Folder Include="ComputeUnits\F6\" />
     <Folder Include="ComputeUnits\F7\" />
     <Folder Include="ComputeUnits\F8\" />

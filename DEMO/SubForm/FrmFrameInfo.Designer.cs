@@ -558,7 +558,8 @@
             "1.2",
             "1.5",
             "1.8",
-            "2.0"});
+            "2.0",
+            "未知"});
             this.skinComboBox13.Location = new System.Drawing.Point(269, 276);
             this.skinComboBox13.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.skinComboBox13.Name = "skinComboBox13";
@@ -586,7 +587,8 @@
             this.skinComboBox14.Items.AddRange(new object[] {
             "0.9",
             "1.2",
-            "1.5"});
+            "1.5",
+            "未知"});
             this.skinComboBox14.Location = new System.Drawing.Point(269, 313);
             this.skinComboBox14.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.skinComboBox14.Name = "skinComboBox14";
@@ -613,7 +615,8 @@
             this.skinComboBox12.FormattingEnabled = true;
             this.skinComboBox12.Items.AddRange(new object[] {
             "1.5",
-            "2.0"});
+            "2.0",
+            "未知"});
             this.skinComboBox12.Location = new System.Drawing.Point(269, 350);
             this.skinComboBox12.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.skinComboBox12.Name = "skinComboBox12";
@@ -932,6 +935,7 @@
             this.skinComboBox9.Size = new System.Drawing.Size(166, 22);
             this.skinComboBox9.TabIndex = 9;
             this.skinComboBox9.WaterText = "";
+            this.skinComboBox9.SelectedIndexChanged += new System.EventHandler(this.skinComboBox9_SelectedIndexChanged);
             // 
             // skinComboBox3
             // 
