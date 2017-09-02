@@ -48,6 +48,24 @@ namespace DAL
             return fi;
         }
 
+        /// <summary>
+        /// 封装在TFS_
+        /// </summary>
+        /// <param name="province">省份</param>
+        /// <param name="city">城市</param>
+        /// <returns>KN/M2</returns>
+        public double Searchω0(string province, string city)
+        {
+            double _ω0 = -1;
+            string sqlCmd = "select w0 from tb_windpress where con_province='" + province + "' and  con_city='" + city+"'";
+            SQLiteConnection conn = new SQLiteConnectionBase().connectToDatabase();
+            DataTable dt = SQLiteHelper.ExecuteDataSet(conn, sqlCmd, null).Tables[0];
+            if (dt.Columns.Count > 0)
+            {
+                _ω0 = (double)dt.Rows[0][0];
+            }
+            return _ω0;
+        }
 
     }
 }

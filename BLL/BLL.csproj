@@ -47,6 +47,12 @@
     <Compile Include="ComputeUnits\1DLoadUnitConversion.cs" />
     <Compile Include="ComputeUnits\2DLoadUnitConversion.cs" />
     <Compile Include="ComputeUnits\BendingMomentUnitConversion.cs" />
+    <Compile Include="ComputeUnits\F2\Controller2.cs" />
+    <Compile Include="ComputeUnits\F2\F_Mw.cs" />
+    <Compile Include="ComputeUnits\F2\F_ωk.cs" />
+    <Compile Include="ComputeUnits\F2\TFM_μzStandingTube.cs" />
+    <Compile Include="ComputeUnits\F2\TFM_μs.cs" />
+    <Compile Include="ComputeUnits\F2\TFS_ω0.cs" />
     <Compile Include="ComputeUnits\F4\Controller4.cs" />
     <Compile Include="ComputeUnits\F4\F_Q1.cs" />
     <Compile Include="ComputeUnits\F4\F_V.cs" />
@@ -83,7 +89,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ComputeUnits\F2\" />
     <Folder Include="ComputeUnits\F3\" />
     <Folder Include="ComputeUnits\F5\" />
     <Folder Include="ComputeUnits\F6\" />

@@ -10,12 +10,19 @@ namespace BLL.ComputeUnits.F1
 {
     public class Controller1
     {
-        public double N = -1;
-        public double φ = -1;
-        public double A  = -1;
-        public double f = -1;
-        public string CalculateSolve;
+        //稳定性计算需要用到NφAf，全部公开
+        public static double N = -1;
+        public static double φ = -1;
+        public static double A  = -1;
+        public static double f = -1;
         public static TFS_Fitting tfs_Fitting = null;//公开查询到的材料表，很多计算都要用到杆件的资料
+
+        //公开公式，供调用计算书使用
+        public static F_NG1K f_NG1K = null;
+        public static F_NG2K f_NG2K = null;
+        public static F_NQK f_NQK = null;
+        public static F_N f_N = null;
+
         private void CalcN()
         {
             //进行脚手架尺寸的单位换算
@@ -41,29 +48,21 @@ namespace BLL.ComputeUnits.F1
             GVBrace.N=tfs_Fitting.FindMaterialPara("竖向斜杆","the_weight")*9.8;
             GHBrace.N=tfs_Fitting.FindMaterialPara("水平斜杆","the_weight")*9.8;
             //计算脚手架结构自重标准值产生的轴力 单位：KN
-            F_NG1K f_NG1K = new F_NG1K(GStandingTube.KN, GVLedger.KN, GHLedger.KN, GVBrace.KN, GHBrace.KN, ScaffoldPara.Step_Num);
+            f_NG1K = new F_NG1K(GStandingTube.KN, GVLedger.KN, GHLedger.KN, GVBrace.KN, GHBrace.KN, ScaffoldPara.Step_Num);
             f_NG1K.ComputeValue();
             //计算NG2k：构配件自重标准值产生的轴力 单位：KN
-            F_NG2K f_NG2K = new F_NG2K(la.M, lb.M, ScaffoldPara.Act_Layers, ScaffoldPara.Step_Num * h.M);
+            f_NG2K = new F_NG2K(la.M, lb.M, ScaffoldPara.Act_Layers, ScaffoldPara.Step_Num * h.M);
             f_NG2K.ComputeValue();
             //查询施工均布活荷载标准值q 单位： KN / m2
             TFM1_qConsLoad tfm1_qConsLoad = new TFM1_qConsLoad(ScaffoldPara.Sca_Type.Trim() + "脚手架");
             tfm1_qConsLoad.Search();
             //∑NQK：施工荷载标准值产生的轴向力总和
-            F_NQK f_NQK = new F_NQK(la.M, lb.M, tfm1_qConsLoad.TargetValue, ScaffoldPara.Con_Layers);
+            f_NQK = new F_NQK(la.M, lb.M, tfm1_qConsLoad.TargetValue, ScaffoldPara.Con_Layers);
             f_NQK.ComputeValue();
             //计算N：支架立杆轴向力设计值 单位：KN
-            F_N f_N = new F_N(f_NG1K.TargetValue, f_NG2K.TargetValue, f_NQK.TargetValue);
+            f_N = new F_N(f_NG1K.TargetValue, f_NG2K.TargetValue, f_NQK.TargetValue);
             f_N.ComputeValue();
             N = f_N.TargetValue;
-            /*
-            //测试效果
-            string solve = "NG1K = " + f_NG1K.ToString() + "\n" +
-                            "NG2K = " + f_NG2K.ToString() + "\n" +
-                            "∑NQK = " + f_NQK.ToString() + "\n" +
-                            "N =" + f_N.ToString() + "\n";
-            MessageBoxEx.Show(solve);
-            */
         }
 
         /// <summary>
@@ -120,11 +119,11 @@ namespace BLL.ComputeUnits.F1
             }
             else
             {
-                throw new Exception("立杆验算");
+                throw new Exception("立杆不组合风荷载稳定性计算未通过");
             }
         }
-        public string lString = "";//这个是表达公式左边立杆承受应力的字符串 
-        public string rString = "";//这个表达公式右边f的字符串
+        public static string lString = "";//这个是表达公式左边立杆承受应力的字符串 
+        public static string rString = "";//这个表达公式右边f的字符串
 
     }
 }
