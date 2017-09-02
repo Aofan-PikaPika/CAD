@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Model.Entity;
 using BLL.ComputeUnits.F1;
+using BLL.ComputeUnits.F2;
 
 namespace BLL.ComputeUnits.F5
 {
@@ -65,7 +66,7 @@ namespace BLL.ComputeUnits.F5
             double H1 = step * ScaffoldPara.H;
             //风荷载标准值KN/M2
             //从公式2获取
-            double wk=0.0;
+            double wk = Controller2.f_ωk.TargetValue;
             F_N1W f_n1w = new F_N1W(L1,H1,wk);
             f_n1w.ComputeValue();
             //变形所产生的轴向力3KN；
@@ -95,9 +96,23 @@ namespace BLL.ComputeUnits.F5
             f = tfm1_f.Search();
         }
 
-        public void Compare() 
+        public void Compare()
         {
-
+            CalcN1();
+            CalcAn();
+            Calcf();
+            //公式转换
+            _2DLoadUnitConversion newN1 = new _2DLoadUnitConversion();
+            newN1.KNperM2 = this.N1;
+            this.N1 = newN1.NperMM2;
+            if ((this.N1 / this.An) <= this.f)
+            {
+                //通过返回字符串
+            }
+            else 
+            {
+                //不通过，抛出异常
+            }
         }
 
     }
