@@ -63,14 +63,6 @@ namespace BLL.ComputeUnits.F1
             f_N = new F_N(f_NG1K.TargetValue, f_NG2K.TargetValue, f_NQK.TargetValue);
             f_N.ComputeValue();
             N = f_N.TargetValue;
-            /*
-            //测试效果
-            string solve = "NG1K = " + f_NG1K.ToString() + "\n" +
-                            "NG2K = " + f_NG2K.ToString() + "\n" +
-                            "∑NQK = " + f_NQK.ToString() + "\n" +
-                            "N =" + f_N.ToString() + "\n";
-            MessageBoxEx.Show(solve);
-            */
         }
 
         /// <summary>
@@ -127,7 +119,7 @@ namespace BLL.ComputeUnits.F1
             }
             else
             {
-                throw new Exception("立杆验算");
+                throw new Exception("立杆不组合风荷载稳定性计算未通过");
             }
         }
         public static string lString = "";//这个是表达公式左边立杆承受应力的字符串 

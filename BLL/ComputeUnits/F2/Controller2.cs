@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Model.Entity;//需要用到ScaffPara全局实体类中的参数
 using BLL.ComputeUnits.F1;//F2的控制类用到了F1中已经含有的变量
+using BLL.ComputeUnits;
 
 namespace BLL.ComputeUnits.F2
 {
@@ -44,8 +45,12 @@ namespace BLL.ComputeUnits.F2
             f_ωk.ComputeValue();
             //计算风荷载设计值产生的弯矩
             f_Mw = new F_Mw(f_ωk.TargetValue, ScaffoldPara.La, ScaffoldPara.H);
-            f_ωk.ComputeValue();
-            Mw = f_ωk.TargetValue;//KN * M
+            f_Mw.ComputeValue();
+            //这里的单位是千牛*米
+            //换算成牛每毫米
+            BendingMomentUnitConversion ConvertMw = new BendingMomentUnitConversion();
+            ConvertMw.KNmultiplyM = f_Mw.TargetValue;
+            Mw = ConvertMw.NmultiplyMM;
         }
         private void CalcW()
         {
@@ -60,10 +65,16 @@ namespace BLL.ComputeUnits.F2
         {
             bool isController1Finish = TestController1Para();
             if (!isController1Finish) return;//由于F1和F2有着耦合关系，如果F1未经计算，不可能计算F2
-            if ((Controller1.N / (Controller1.A * Controller1.φ)) + Mw / W  <= Controller1.f)
+            CalcMw();
+            CalcW();
+            if (Mw < 0 || W < 0 || (Controller1.N / (Controller1.A * Controller1.φ)) + Mw / W <= Controller1.f)
             {
-                lString = Controller1.N.ToString("#0.000") + "/(" + Controller1.A.ToString("#0.000") + "×" + Controller1.φ + ")+" + Mw + "/" + W + "=" + ((Controller1.N / (Controller1.A * Controller1.φ)) + Mw / W).ToString("#0.00");
+                lString = Controller1.N.ToString("#0.000") + "/(" + Controller1.A.ToString("#0.000") + "×" + Controller1.φ.ToString("#0.000") + ")+" + Mw.ToString("#0.000") + "/" + W.ToString("#0.000") + "=" + ((Controller1.N / (Controller1.A * Controller1.φ)) + Mw / W).ToString("#0.00");
                 rString = Controller1.rString;//直接就是F
+            }
+            else
+            {
+                throw new Exception("立杆组合风荷载稳定性计算未通过");
             }
         }
         public static string  lString = "";

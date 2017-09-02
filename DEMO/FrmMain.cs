@@ -16,6 +16,7 @@ using Model.Entity;
 using Model;
 using BLL;
 using BLL.ComputeUnits.F1;
+using BLL.ComputeUnits.F2;
 using BLL.ComputeUnits;
 using BLL.Service;
 namespace DEMO
@@ -309,19 +310,22 @@ namespace DEMO
         //计算书
         private void skinButton8_Click(object sender, EventArgs e)
         {
-            /*第一个控制类测试
             Controller1 c1 = new Controller1();
+            Controller2 c2 = new Controller2();
             try
             {
                 c1.Compare();
+                c2.Compare();
+
             }
             catch (Exception ex)
             {
-                ErrorService.Show(ex.Message + "未通过");
+                ErrorService.Show(ex.Message);
             }
-            MessageBox.Show(c1.lString);
-            MessageBox.Show(c1.rString);
-            */
+            MessageBox.Show(Controller1.lString);
+            MessageBox.Show(Controller1.rString);
+            MessageBox.Show(Controller2.lString);
+            MessageBox.Show(Controller2.rString);
         }
 
         //用料统计
