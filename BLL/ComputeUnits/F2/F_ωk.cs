@@ -23,7 +23,10 @@ namespace BLL.ComputeUnits.F2
             this._μs = _μs;
             this._ω0 = _ω0;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>KN/M2</returns>
         public override double ComputeValue()
         {
             _targetValue = _μz * _μs * _ω0;
