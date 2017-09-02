@@ -5,7 +5,33 @@ using System.Text;
 
 namespace BLL.ComputeUnits.F4
 {
-    class F_Q1
+    public class F_Q1:Formula<double>
     {
+        private double m;
+        private double lb;
+        private double la;
+        private double q;
+        public F_Q1(double m, double lb, double la,double q)
+        {
+            this.m = m;
+            this.lb = lb;
+            this.la = la;
+            this.q = q;
+        }
+        public override double ComputeValue()
+        {
+            _targetValue = m * 9.8 / lb + 0.35 * la + q * la;
+            _isComputed = true;
+            return _targetValue;
+        }
+        public override string ToString()
+        {
+            if(_isComputed)
+                return "" + m.ToString("#0.00") + "×9.8/" + lb.ToString("#0.00") + "+0.35×" + la.ToString("#0.00") + "+" + q.ToString("#0.00") + "×" + la.ToString("#0.00") + "=" + _targetValue.ToString("#0.00");
+            else
+                return "";
+        }
     }
+
+      
 }
