@@ -142,18 +142,22 @@ namespace DEMO.SubForm
                     break;
                 case "2.0": skinComboBox13.SelectedIndex = 3;
                     break;
+                case "-1.0": skinComboBox13.SelectedIndex = 4;
+                    break;
             }
 
 
 
             //立杆横距
-            switch (ScaffoldPara.Lb.ToString())
+            switch (ScaffoldPara.Lb.ToString("#0.0"))
             {
                 case "0.9": skinComboBox14.SelectedIndex = 0;
                     break;
                 case "1.2": skinComboBox14.SelectedIndex = 1;
                     break;
                 case "1.5": skinComboBox14.SelectedIndex = 2;
+                    break;
+                case "-1.0": skinComboBox14.SelectedIndex = 3;
                     break;
             }
 
@@ -164,6 +168,8 @@ namespace DEMO.SubForm
                 case "1.5": skinComboBox12.SelectedIndex = 0;
                     break;
                 case "2.0": skinComboBox12.SelectedIndex = 1;
+                    break;
+                case "-1.0": skinComboBox12.SelectedIndex = 2;
                     break;
             }
 
@@ -251,13 +257,17 @@ namespace DEMO.SubForm
             }
 
             //扣件个数
-            switch (ScaffoldPara.Fast_Num.ToString())
+            if (skinComboBox9.SelectedIndex==0)
             {
-                case "1": skinComboBox3.SelectedIndex = 0;
-                    break;
-                case "2": skinComboBox3.SelectedIndex = 1;
-                    break;
+                switch (ScaffoldPara.Fast_Num.ToString())
+                {
+                    case "1": skinComboBox3.SelectedIndex = 0;
+                        break;
+                    case "2": skinComboBox3.SelectedIndex = 1;
+                        break;
+                }
             }
+           
            
 
             //荷载参数
@@ -338,9 +348,33 @@ namespace DEMO.SubForm
             ScaffoldPara.Soil_Types = skinComboBox4.SelectedItem.ToString();
             ScaffoldPara.Cha_Value = double.Parse(skinTextBox2.Text);
             ScaffoldPara.Pad_Area = double.Parse(skinTextBox3.Text);
-            ScaffoldPara.La = double.Parse(skinComboBox13.SelectedItem.ToString());
-            ScaffoldPara.Lb = double.Parse(skinComboBox14.SelectedItem.ToString());
-            ScaffoldPara.H = double.Parse(skinComboBox12.SelectedItem.ToString());
+            if (skinComboBox13.SelectedIndex != 4)
+            {
+                ScaffoldPara.La = double.Parse(skinComboBox13.SelectedItem.ToString());
+            }
+            else 
+            {
+                ScaffoldPara.La = -1.0;
+            }
+
+            if (skinComboBox14.SelectedIndex != 3)
+            {
+                ScaffoldPara.Lb = double.Parse(skinComboBox14.SelectedItem.ToString());
+            }
+            else 
+            {
+                ScaffoldPara.Lb = -1.0;
+            }
+            if (skinComboBox12.SelectedIndex != 2)
+            {
+                ScaffoldPara.H = double.Parse(skinComboBox12.SelectedItem.ToString());
+            }
+            else 
+            {
+                ScaffoldPara.H = -1.0;
+            }
+           
+            
             ScaffoldPara.Step_Num = int.Parse(skinTextBox7.Text);
             if (radioButton1.Checked)
             {
@@ -356,7 +390,15 @@ namespace DEMO.SubForm
             ScaffoldPara.Anchor_Type = skinComboBox7.SelectedItem.ToString();
             ScaffoldPara.Anchor_Model = skinComboBox8.SelectedItem.ToString();
             ScaffoldPara.Anchor_Connect = skinComboBox9.SelectedItem.ToString();
-            ScaffoldPara.Fast_Num = int.Parse(skinComboBox3.SelectedItem.ToString());
+            if (skinComboBox3.SelectedItem != null)
+            {
+                ScaffoldPara.Fast_Num = int.Parse(skinComboBox3.SelectedItem.ToString());
+            }
+            else 
+            {
+                ScaffoldPara.Fast_Num = 1;
+            }
+           
 
             //荷载参数
             ScaffoldPara.Sca_Situation = skinComboBox10.SelectedItem.ToString();
@@ -652,7 +694,7 @@ namespace DEMO.SubForm
         {
             ErrorService es = new ErrorService();
             //搭设高度控制
-            if (skinComboBox12.SelectedItem != null)
+            if (skinComboBox12.SelectedItem != null&&skinComboBox12.SelectedIndex!=2)
             {
                 if (!es.HeightLimte(int.Parse(skinTextBox7.Text), double.Parse(skinComboBox12.SelectedItem.ToString())))
                 {
@@ -669,7 +711,7 @@ namespace DEMO.SubForm
         private void skinComboBox12_SelectedIndexChanged(object sender, EventArgs e)
         {
             ErrorService es = new ErrorService();
-            if (skinTextBox7.Text!="")
+            if (skinTextBox7.Text!=""&&skinComboBox12.SelectedIndex!=2)
             {
                 if (!es.HeightLimte(int.Parse(skinTextBox7.Text), double.Parse(skinComboBox12.SelectedItem.ToString())))
                 {
@@ -679,6 +721,19 @@ namespace DEMO.SubForm
                 {
                     this.errorProvider9.SetError(this.skinTextBox7, "");
                 }
+            }
+        }
+
+        private void skinComboBox9_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (skinComboBox9.SelectedIndex != 0)
+            {
+                skinComboBox3.SelectedItem = null; 
+                skinComboBox3.Enabled = false;
+            }
+            else 
+            {
+                skinComboBox3.Enabled = true;
             }
         }
 
