@@ -60,6 +60,8 @@
     <Compile Include="ComputeUnits\F4\Controller4.cs" />
     <Compile Include="ComputeUnits\F4\F_Q1.cs" />
     <Compile Include="ComputeUnits\F4\F_V.cs" />
+    <Compile Include="ComputeUnits\F8\Controller8.cs" />
+    <Compile Include="ComputeUnits\F8\F_PCF.cs" />
     <Compile Include="ComputeUnits\LengthUnitConversion.cs" />
     <Compile Include="ComputeUnits\ComputeElement.cs" />
     <Compile Include="ComputeUnits\F1\Controller1.cs" />
@@ -96,7 +98,6 @@
     <Folder Include="ComputeUnits\F5\" />
     <Folder Include="ComputeUnits\F6\" />
     <Folder Include="ComputeUnits\F7\" />
-    <Folder Include="ComputeUnits\F8\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

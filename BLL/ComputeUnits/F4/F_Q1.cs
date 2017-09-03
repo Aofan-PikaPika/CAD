@@ -7,6 +7,7 @@ namespace BLL.ComputeUnits.F4
 {
     public class F_Q1:Formula<double>
     {
+        //将公式需要的所有变量封装
         private double m;
         private double lb;
         private double la;
@@ -18,12 +19,18 @@ namespace BLL.ComputeUnits.F4
             this.la = la;
             this.q = q;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>N/MM</returns>
+        //结果要赋给_targetValue和_isComputed标志位置true
         public override double ComputeValue()
         {
             _targetValue = m * 9.8 / lb + 0.35 * la + q * la;
             _isComputed = true;
             return _targetValue;
         }
+        //输出拼凑字符串
         public override string ToString()
         {
             if(_isComputed)

@@ -7,6 +7,7 @@ namespace BLL.ComputeUnits.F4
 {
     public class F_V : Formula<double>
     {
+        //输出拼凑字符串
         private double q1;
         private double lb;
         private double E;
@@ -18,6 +19,11 @@ namespace BLL.ComputeUnits.F4
             this.E = E;
             this.I = I;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>MM</returns>
+        //结果要赋给_targetValue和_isComputed标志位置true
         public override double ComputeValue()
         {
             double a=Math.Pow(lb, 4);
@@ -25,6 +31,7 @@ namespace BLL.ComputeUnits.F4
             _isComputed = true;
             return _targetValue;
         }
+        //输出拼凑字符串
         public override string ToString()
         {
             if (_isComputed)
