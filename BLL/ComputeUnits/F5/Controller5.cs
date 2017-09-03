@@ -13,16 +13,16 @@ namespace BLL.ComputeUnits.F5
         /// <summary>
         /// 支架立杆轴向力设计值
         /// </summary>
-        private  double N1 = -1.0;
+        public static  double N1 = -1.0;
         /// <summary>
         /// 连墙件净截面面积
         /// </summary>
-        private double An = -1.0;
+        public static  double An = -1.0;
 
         /// <summary>
         /// f抗拉弯设计值
         /// </summary>
-        private double  f=-1.0;
+        public static  double  f=-1.0;
 
         /// <summary>
         /// 公开连墙件查询类
@@ -103,9 +103,9 @@ namespace BLL.ComputeUnits.F5
             Calcf();
             //公式转换
             _2DLoadUnitConversion newN1 = new _2DLoadUnitConversion();
-            newN1.KNperM2 = this.N1;
-            this.N1 = newN1.NperMM2;
-            if ((this.N1 / this.An) <= this.f)
+            newN1.KNperM2 = N1;
+            N1 = newN1.NperMM2;
+            if ((N1 / An) <= f)
             {
                 //通过返回字符串
             }
