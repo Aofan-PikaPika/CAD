@@ -36,6 +36,7 @@ namespace BLL.ComputeUnits.F3
         {
             PowerUnitConversion GHLedger = new PowerUnitConversion();
             //这里涉及到了横向水平杆自重的换算
+            //原则上不能在公式中有单位换算，但外面传值为质量的单位，内部单位换算不可避免
             GHLedger.N = m * 9.8;
             _targetValue = 1.2 * (GHLedger.KN / lb + 0.35 * la) + 1.4 * qConsload * la;
             if (_targetValue > 0)
@@ -48,7 +49,7 @@ namespace BLL.ComputeUnits.F3
         public override string ToString()
         {
             if (_isComputed)
-                return "1.2×((" + m.ToString("#0.000") + "×9.8/1000)/" + lb.ToString("#0.000") + "+0.35×" + la.ToString("#0.000") + ")+1.4×" + qConsload.ToString("#0.000") + "×" + la.ToString("#0.000");
+                return "1.2×((" + m.ToString("#0.000") + "×9.8/1000)/" + lb.ToString("#0.000") + "+0.35×" + la.ToString("#0.000") + ")+1.4×" + qConsload.ToString("#0.000") + "×" + la.ToString("#0.000")+"="+_targetValue.ToString("#0.00");
             else
                 return "";
         }
