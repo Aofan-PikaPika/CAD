@@ -64,6 +64,13 @@
     <Compile Include="ComputeUnits\F5\F_N1.cs" />
     <Compile Include="ComputeUnits\F5\F_N1W.cs" />
     <Compile Include="ComputeUnits\F5\TFS_Anchor.cs" />
+    <Compile Include="ComputeUnits\F6\Controller6.cs" />
+    <Compile Include="ComputeUnits\F6\F_LmdAnchor.cs" />
+    <Compile Include="ComputeUnits\F6\TFS_FiAnchor.cs" />
+    <Compile Include="ComputeUnits\F7\Controller7.cs" />
+    <Compile Include="ComputeUnits\F7\F_Rc.cs" />
+    <Compile Include="ComputeUnits\F8\Controller8.cs" />
+    <Compile Include="ComputeUnits\F8\F_PCF.cs" />
     <Compile Include="ComputeUnits\LengthUnitConversion.cs" />
     <Compile Include="ComputeUnits\ComputeElement.cs" />
     <Compile Include="ComputeUnits\F1\Controller1.cs" />
@@ -96,11 +103,6 @@
       <Project>{473a9e95-214e-4b23-96ec-ec733adff586}</Project>
       <Name>Model</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ComputeUnits\F6\" />
-    <Folder Include="ComputeUnits\F7\" />
-    <Folder Include="ComputeUnits\F8\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Interop.Word">
