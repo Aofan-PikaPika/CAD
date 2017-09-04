@@ -212,6 +212,45 @@ namespace BLL
         }
         #endregion
 
+
+        #region 连墙件型号查询
+
+        public DataTable GetSteelModel(string anchorType) 
+        {
+            AnchorHandle anchorhandle = new AnchorHandle();
+            DataTable dt = null;
+            switch (anchorType)
+            {
+                case "钢管":
+                    {
+                        dt = anchorhandle.GetAnchorModelFromTubeCharacter();
+                    }
+                    break;
+                case "角钢": 
+                    {
+                        dt = anchorhandle.GetAnchorModelFromJSteel();
+                    }
+                    break;
+                case "槽钢": 
+                    {
+                        dt = anchorhandle.GetAnchorModelFromCSteel();
+                    }
+                    break;
+                case "工字钢": 
+                    {
+                        dt = anchorhandle.GetAnchorModelFromGSteel();
+                    }
+                    break;
+            }
+            return dt;
+                  
+
+        }
+
+        #endregion
+
+
+
         #region 封装DAL层与材料库查询有关的函数
         /**
          * 其中一部分函数要直接供窗体层调用，显示对应杆件的值

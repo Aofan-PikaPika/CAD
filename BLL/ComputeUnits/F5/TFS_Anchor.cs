@@ -34,7 +34,30 @@ namespace BLL.ComputeUnits.F5
             DataTable dt = null;
             try
             {
-                //  从dal 查表
+                CheckTableHandle cth = new CheckTableHandle();
+                switch (anchorType)
+                {
+                    case "钢管":
+                        {
+                            dt = cth.SearchAnchorFromTube(anchorModel);
+                        }
+                        break;
+                    case "角钢":
+                        {
+                            dt = cth.SearchAnchorFromJSteel(anchorModel);
+                        }
+                        break;
+                    case "槽钢":
+                        {
+                            dt = cth.SearchAnchorFromCSteel(anchorModel);
+                        }
+                        break;
+                    case "工字钢":
+                        {
+                            dt = cth.SearchAnchorFromGSteel(anchorModel);
+                        }
+                        break;
+                }
             }
             catch 
             { }
@@ -46,6 +69,11 @@ namespace BLL.ComputeUnits.F5
             return dt;
         }
 
+        /// <summary>
+        /// 查询函数
+        /// </summary>
+        /// <param name="colName">A的单位cm；i的单位cm</param>
+        /// <returns></returns>
         public double FindAnchorPara(string colName) 
         {
             if (_isSearched)

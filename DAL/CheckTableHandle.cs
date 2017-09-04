@@ -67,5 +67,39 @@ namespace DAL
             return _ω0;
         }
 
+
+        public DataTable SearchAnchorFromGSteel(string anchorModel) 
+        {
+            SQLiteConnection conn = new SQLiteConnectionBase().connectToDatabase();
+            string sql = "select A , radius from tb_gsteel where model ='"+anchorModel+"'";
+            DataTable dt = SQLiteHelper.ExecuteDataSet(conn, sql, null).Tables[0];
+            return dt;
+        }
+
+        public DataTable SearchAnchorFromJSteel(string anchorModel)
+        {
+            SQLiteConnection conn = new SQLiteConnectionBase().connectToDatabase();
+            string sql = "select A , radius from tb_jsteel where model ='" + anchorModel + "'";
+            DataTable dt = SQLiteHelper.ExecuteDataSet(conn, sql, null).Tables[0];
+            return dt;
+        }
+
+        public DataTable SearchAnchorFromCSteel(string anchorModel)
+        {
+            SQLiteConnection conn = new SQLiteConnectionBase().connectToDatabase();
+            string sql = "select A , radius from tb_csteel where model ='" + anchorModel + "'";
+            DataTable dt = SQLiteHelper.ExecuteDataSet(conn, sql, null).Tables[0];
+            return dt;
+        }
+
+        public DataTable SearchAnchorFromTube(string anchorModel)
+        {
+            SQLiteConnection conn = new SQLiteConnectionBase().connectToDatabase();
+            string sql = "select A , radius from tb_tubeCharacter where model ='" + anchorModel + "'";
+            DataTable dt = SQLiteHelper.ExecuteDataSet(conn, sql, null).Tables[0];
+            return dt;
+        }
+
+
     }
 }

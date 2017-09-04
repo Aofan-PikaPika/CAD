@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using CCWin;
 using Model.Entity;
 using BLL.Service;
+using BLL;
 
 namespace DEMO.SubForm
 {
@@ -229,12 +230,7 @@ namespace DEMO.SubForm
             //连墙件型号(待定)
             if (ScaffoldPara.Anchor_Model!=null)
             {
-                switch (ScaffoldPara.Anchor_Model.ToString())
-                {
-                    case "待定": skinComboBox8.SelectedIndex = 0;
-                        break;
-                  
-                }
+                skinComboBox8.Text = ScaffoldPara.Anchor_Model;
             }
             
 
@@ -388,7 +384,7 @@ namespace DEMO.SubForm
             //连墙件
             ScaffoldPara.Anchor_Style = skinComboBox6.SelectedItem.ToString();
             ScaffoldPara.Anchor_Type = skinComboBox7.SelectedItem.ToString();
-            ScaffoldPara.Anchor_Model = skinComboBox8.SelectedItem.ToString();
+            ScaffoldPara.Anchor_Model = skinComboBox8.Text.ToString();
             ScaffoldPara.Anchor_Connect = skinComboBox9.SelectedItem.ToString();
             if (skinComboBox3.SelectedItem != null)
             {
@@ -581,9 +577,9 @@ namespace DEMO.SubForm
             {
                 this.errorProvider2.SetError(this.panel2, "");
             }
-            if (!es.textboxIntValidating(skinTextBox3.Text))
+            if (!es.textboxValidating(skinTextBox3.Text))
             {
-                this.errorProvider3.SetError(this.skinTextBox3, "请输入正整数！");
+                this.errorProvider3.SetError(this.skinTextBox3, "请输入数值！");
             }
             else
             {
@@ -630,6 +626,14 @@ namespace DEMO.SubForm
             {
                 this.errorProvider9.SetError(this.skinTextBox7, "");
             }
+            if (skinComboBox8.Text == "请先确定连墙件类型" || skinComboBox8.Text == "请选择连墙件型号")
+            {
+                this.errorProvider10.SetError(this.skinComboBox8, "请确定连墙件型号！");
+            }
+            else 
+            {
+                this.errorProvider10.SetError(this.skinComboBox8, "");
+            }
 
 
             //其他逻辑
@@ -657,7 +661,7 @@ namespace DEMO.SubForm
 
             #endregion
 
-            if (es.textboxIntValidating(skinTextBox1.Text) && es.textboxIntValidating(skinTextBox2.Text) && es.textboxIntValidating(skinTextBox3.Text) && es.textboxIntValidating(skinTextBox4.Text) && es.textboxIntValidating(skinTextBox5.Text) && es.textboxIntValidating(skinTextBox6.Text) && es.textboxIntValidating(skinTextBox8.Text) && es.lbValid(skinComboBox13.SelectedIndex, skinComboBox14.SelectedIndex) && es.distanceValid(int.Parse(skinTextBox4.Text))&&es.textboxIntValidating(skinTextBox7.Text))
+            if (es.textboxIntValidating(skinTextBox1.Text) && es.textboxIntValidating(skinTextBox2.Text) && es.textboxValidating(skinTextBox3.Text) && es.textboxIntValidating(skinTextBox4.Text) && es.textboxIntValidating(skinTextBox5.Text) && es.textboxIntValidating(skinTextBox6.Text) && es.textboxIntValidating(skinTextBox8.Text) && es.lbValid(skinComboBox13.SelectedIndex, skinComboBox14.SelectedIndex) && es.distanceValid(int.Parse(skinTextBox4.Text))&&es.textboxIntValidating(skinTextBox7.Text)&&skinComboBox8.Text != "请先确定连墙件类型" &&skinComboBox8.Text != "请选择连墙件型号")
             {
                 try
                 {
@@ -735,6 +739,22 @@ namespace DEMO.SubForm
             {
                 skinComboBox3.Enabled = true;
             }
+        }
+
+        private void skinComboBox8_DropDown(object sender, EventArgs e)
+        {
+            SQLOperations sqlo=new SQLOperations();
+            
+            if (skinComboBox7.SelectedItem!=null)
+            {
+                skinComboBox8.DataSource = sqlo.GetSteelModel(skinComboBox7.SelectedItem.ToString());
+                skinComboBox8.DisplayMember = "model";
+            }
+        }
+
+        private void skinComboBox7_DropDownClosed(object sender, EventArgs e)
+        {
+            skinComboBox8.Text = "请选择连墙件型号";
         }
 
        

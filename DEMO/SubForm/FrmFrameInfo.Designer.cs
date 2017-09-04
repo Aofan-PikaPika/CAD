@@ -104,6 +104,7 @@
             this.errorProvider7 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider8 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider9 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider10 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -136,6 +137,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider10)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -542,10 +544,10 @@
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label11.Location = new System.Drawing.Point(184, 241);
+            this.label11.Location = new System.Drawing.Point(183, 241);
             this.label11.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(78, 17);
+            this.label11.Size = new System.Drawing.Size(79, 17);
             this.label11.TabIndex = 15;
             this.label11.Text = "垫板面积(㎡)";
             // 
@@ -879,6 +881,7 @@
             this.skinComboBox7.Size = new System.Drawing.Size(166, 22);
             this.skinComboBox7.TabIndex = 4;
             this.skinComboBox7.WaterText = "";
+            this.skinComboBox7.DropDownClosed += new System.EventHandler(this.skinComboBox7_DropDownClosed);
             // 
             // label13
             // 
@@ -907,16 +910,16 @@
             // skinComboBox8
             // 
             this.skinComboBox8.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.skinComboBox8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.skinComboBox8.FormattingEnabled = true;
             this.skinComboBox8.Items.AddRange(new object[] {
-            "待定"});
+            "请先确定连墙件类型"});
             this.skinComboBox8.Location = new System.Drawing.Point(269, 83);
             this.skinComboBox8.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.skinComboBox8.Name = "skinComboBox8";
             this.skinComboBox8.Size = new System.Drawing.Size(166, 22);
             this.skinComboBox8.TabIndex = 7;
             this.skinComboBox8.WaterText = "";
+            this.skinComboBox8.DropDown += new System.EventHandler(this.skinComboBox8_DropDown);
             // 
             // skinComboBox9
             // 
@@ -1403,6 +1406,10 @@
             // 
             this.errorProvider9.ContainerControl = this;
             // 
+            // errorProvider10
+            // 
+            this.errorProvider10.ContainerControl = this;
+            // 
             // FrmFrameInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1453,6 +1460,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider10)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1534,5 +1542,6 @@
         private System.Windows.Forms.Label label25;
         private CCWin.SkinControl.SkinComboBox skinComboBox3;
         private System.Windows.Forms.ErrorProvider errorProvider9;
+        private System.Windows.Forms.ErrorProvider errorProvider10;
     }
 }

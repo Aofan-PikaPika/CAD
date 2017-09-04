@@ -105,6 +105,9 @@ namespace BLL.ComputeUnits.F5
             _2DLoadUnitConversion newN1 = new _2DLoadUnitConversion();
             newN1.KNperM2 = N1;
             N1 = newN1.NperMM2;
+
+            //CM2变为MM2
+            An = An * 100;
             if ((N1 / An) <= f)
             {
                 //通过返回字符串
