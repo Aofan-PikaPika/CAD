@@ -25,7 +25,7 @@ namespace BLL.ComputeUnits.F6
             this.i = i;
         }
 
-        public override double ComputeValue()
+        public override int ComputeValue()
         {
             Lmd = h / i;
             _targetValue = (int)Math.Ceiling(Lmd);

@@ -26,7 +26,7 @@ namespace BLL.ComputeUnits.F4
         //结果要赋给_targetValue和_isComputed标志位置true
         public override double ComputeValue()
         {
-            _targetValue = m * 9.8 / lb + 0.35 * la + q * la;
+            _targetValue = m * 9.8/1000 / lb + 0.35 * la + q * la;
             _isComputed = true;
             return _targetValue;
         }

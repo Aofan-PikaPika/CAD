@@ -36,6 +36,14 @@ namespace BLL.ComputeUnits.F8
             _isComputed = true;
             return _targetValue;
         }
+
+        public override string ToString()
+        {
+            if (_isComputed)
+                return NK.ToString("#0.00") + "/" + Pad_Area.ToString("#0.00") + "=" + _targetValue.ToString("#0.0");
+            else
+                return "";
+        }
     }
 }
 

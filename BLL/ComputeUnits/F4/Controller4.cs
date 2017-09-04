@@ -16,13 +16,13 @@ namespace BLL.ComputeUnits.F4
         private void CalcQ1()
         {
           double m = Controller1.tfs_Fitting.FindMaterialPara("横向水平杆", "the_weight");
-          _2DLoadUnitConversion q = new _2DLoadUnitConversion();//将q（施工均布荷载标准值）单位从KN/M^2换算成N/MM^2
-          q.KNperM2=Controller1.tfm1_qConsLoad.TargetValue;
-          LengthUnitConversion la = new LengthUnitConversion();
-          LengthUnitConversion lb = new LengthUnitConversion();
-          la.M = ScaffoldPara.La;//将la，lb的单位换成毫米
-          lb.M = ScaffoldPara.Lb;
-          f_q1 = new F_Q1(m, lb.MM, la.MM, q.NperMM2);
+          //_2DLoadUnitConversion q = new _2DLoadUnitConversion();//将q（施工均布荷载标准值）单位从KN/M^2换算成N/MM^2
+          double q=Controller1.tfm1_qConsLoad.TargetValue;
+         // LengthUnitConversion la = new LengthUnitConversion();
+         // LengthUnitConversion lb = new LengthUnitConversion();
+         // la.M = ScaffoldPara.La;//将la，lb的单位换成毫米
+         // lb.M = ScaffoldPara.Lb;
+          f_q1 = new F_Q1(m, ScaffoldPara.Lb, ScaffoldPara.La, q);
           f_q1.ComputeValue();//计算出q1的值
         }
          
