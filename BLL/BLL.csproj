@@ -69,6 +69,8 @@
     <Compile Include="ComputeUnits\F6\TFS_FiAnchor.cs" />
     <Compile Include="ComputeUnits\F7\Controller7.cs" />
     <Compile Include="ComputeUnits\F7\F_Rc.cs" />
+    <Compile Include="ComputeUnits\F8\Controller8.cs" />
+    <Compile Include="ComputeUnits\F8\F_PCF.cs" />
     <Compile Include="ComputeUnits\LengthUnitConversion.cs" />
     <Compile Include="ComputeUnits\ComputeElement.cs" />
     <Compile Include="ComputeUnits\F1\Controller1.cs" />
@@ -101,9 +103,7 @@
       <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ComputeUnits\F8\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
