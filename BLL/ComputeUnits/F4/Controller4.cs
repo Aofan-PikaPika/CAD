@@ -13,6 +13,7 @@ namespace BLL.ComputeUnits.F4
         public static F_V f_v = null;
 
         //计算出q1（作用在横向水平杆上的荷载标准值）的值
+        //不能在求q1的时候将单位都换算成N/MM^2，运算结果会出现错误
         private void CalcQ1()
         {
           double m = Controller1.tfs_Fitting.FindMaterialPara("横向水平杆", "the_weight");
@@ -27,6 +28,7 @@ namespace BLL.ComputeUnits.F4
         }
          
         //计算出V的值
+        //KN/M^2=N/MM^2
         private void CalcV()
         {
             double I = Controller1.tfs_Fitting.FindMaterialPara("横向水平杆", "I") * Math.Pow(10, 4);//将I的单位换成MM^4

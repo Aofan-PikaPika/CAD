@@ -18,7 +18,7 @@ namespace BLL.ComputeUnits.F8
             double NG2K = Controller1.f_NG2K.TargetValue;
             double NQK = Controller1.f_NQK.TargetValue;
             double NK = NG1K + NG2K + NQK;
-            f_pcf = new F_PCF(NG1K, NG2K, NQK, NK,ScaffoldPara.Pad_Area , f_pcf.TargetValue);
+            f_pcf = new F_PCF(NG1K, NG2K, NQK, NK,ScaffoldPara.Pad_Area );
             f_pcf.ComputeValue();
         }
         
@@ -27,6 +27,7 @@ namespace BLL.ComputeUnits.F8
         //比较pk与与fg的大小，符合要求输出不符合抛出异常
         public void Compare()
         {
+            Calcpk();
             if(f_pcf.TargetValue<=ScaffoldPara.Cha_Value)
             {
                 double fg = ScaffoldPara.Cha_Value;
