@@ -19,10 +19,12 @@ namespace BLL
         private MSWord.Application _wordApp = new Application();
         public MSWord.Application WordApp { get { return _wordApp; } }
 
+        //一个word应用只能有一个word文档对象
         private MSWord.Document _wordDoc = null;
 
+        #region 基本方法
         /// <summary>
-        /// 简单的复制文件命令
+        /// 简单的复制文件命令，目的是将未置换参数的计算书复制到所在目录下
         /// </summary>
         /// <param name="sourceFile"></param>
         /// <param name="destinationFile"></param>
@@ -45,7 +47,7 @@ namespace BLL
         }
 
         /// <summary>
-        /// 成功返回当前打开的Word文档接口对象，失败返回null
+        /// 在程序内存中打开一个Doc文档，以便以后操作
         /// </summary>
         /// <param name="docFileName"></param>
         /// <returns></returns>
@@ -68,10 +70,14 @@ namespace BLL
             return true;
         }
 
+        /// <summary>
+        /// 关闭当前控制类内存中的文档
+        /// </summary>
         public void CloseDoc()
         {
             if(this._wordDoc != null)
                 _wordDoc.Close();
+            _wordDoc = null;
             //wordApp不关
         }
 
@@ -90,6 +96,12 @@ namespace BLL
 
         }
 
+        /// <summary>
+        /// 核心方法：替换文档中的标签
+        /// </summary>
+        /// <param name="oldString">这里要写两边都是@的标签</param>
+        /// <param name="newString">这里要写要替换的字符串</param>
+        /// <returns></returns>
         public bool Replace(string oldString, string newString)
         {
             
@@ -99,6 +111,42 @@ namespace BLL
             object replaceAll = MSWord.WdReplace.wdReplaceAll;
             return _wordDoc.Content.Find.Execute(oldString, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, replaceWith, replaceAll, Nothing, Nothing, Nothing, Nothing);
         }
+        #endregion
+
+        #region 与公式和Model内容对接的方法
+
+        /// <summary>
+        /// 传入很多键值对，依据键值对的内容往公式中添加字符
+        /// 其中要求：键为标签名，值为要替换为公式的字符串
+        /// </summary>
+        /// <param name="dics"></param>
+        public void PushDictionary(params Dictionary<string, string>[] dics)
+        {
+            foreach (Dictionary<string, string> d in dics)
+            {
+                foreach (KeyValuePair<string, string> kp in d)
+                {
+                    Replace(kp.Key, kp.Value);
+                }
+            }
+        
+        }
+
+        /// <summary>
+        /// 传入一个标签数组，一个对象数组，根据标签数组寻找位置，再将对象的ToString内容写入文档
+        /// 要求：对象数组的ToString生成值必须有意义，不能是其命名空间
+        /// </summary>
+        /// <param name="keys"></param>
+        /// <param name="values"></param>
+        public void PushKeyObjValueObj(string[] keys, object[] values)
+        {
+            for (int i = 0; i < keys.Length; i++)
+            {
+                Replace(keys[i], values[i].ToString());
+            }
+        }
+
+        #endregion
 
         #region 测试 上手用代码
 
