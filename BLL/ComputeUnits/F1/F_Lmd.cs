@@ -31,12 +31,16 @@ namespace BLL.ComputeUnits.F1
 
         /// <summary>
         /// 重写ComputeValue方法，返回int型
+        /// 规范规定立杆λ不能大于210
         /// </summary>
         /// <returns></returns>
         public override int ComputeValue()
         {
             //计算lmd的值
             Lmd = (μ * h) / i;
+            //设一道坎，抛异常
+            if (Lmd > 210)
+                throw new Exception("立杆长细比大于210，承载力验算不通过");
             //将lmd的计算值上取整，并给属性赋值
             _targetValue = (int)Math.Ceiling(Lmd);
             //计算标志位
