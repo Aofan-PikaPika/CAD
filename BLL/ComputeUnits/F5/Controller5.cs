@@ -11,7 +11,7 @@ namespace BLL.ComputeUnits.F5
     public class Controller5
     {
         /// <summary>
-        /// 支架立杆轴向力设计值
+        /// 连墙件轴向力设计值
         /// </summary>
         public static  double N1 = -1.0;
         /// <summary>
@@ -23,6 +23,12 @@ namespace BLL.ComputeUnits.F5
         /// f抗拉弯设计值
         /// </summary>
         public static  double  f=-1.0;
+
+        /// <summary>
+        /// 连墙件实际抗拉计算值
+        /// </summary>
+        public static double sigmoid = 0.0;
+
 
         /// <summary>
         /// 公开连墙件查询类
@@ -108,7 +114,8 @@ namespace BLL.ComputeUnits.F5
 
             //CM2变为MM2
             An = An * 100;
-            if ((N1 / An) <= f)
+            sigmoid = N1 / An;
+            if (sigmoid <= f)
             {
                 //通过返回字符串
             }

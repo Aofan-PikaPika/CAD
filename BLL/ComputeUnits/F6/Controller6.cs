@@ -9,11 +9,27 @@ namespace BLL.ComputeUnits.F6
 {
     public class Controller6
     {
-        private double fi = 0.0;
+        /// <summary>
+        /// fi值公开
+        /// </summary>
+        public static  double fi = -1.0;
 
-        private int Lmd = 0;
+        public static double N1 = -1.0;
+        /// <summary>
+        /// 连墙件净截面面积
+        /// </summary>
+        public static double An = -1.0;
 
-        
+        /// <summary>
+        /// f抗拉弯设计值
+        /// </summary>
+        public static double f = -1.0;
+
+        /// <summary>
+        /// 连墙件抗滑移设计值
+        /// </summary>
+        public static double FAF = -1.0;
+
 
         public void CalcFi() 
         {
@@ -44,11 +60,11 @@ namespace BLL.ComputeUnits.F6
             CalcFi();
 
             //公式5已经把单位转换好 N/mm
-            double N1 = Controller5.N1;
-            double An = Controller5.An;
-            double f = Controller5.f;
-
-            if (N1 <= fi * An * f)
+             N1 = Controller5.N1;
+             An = Controller5.An;
+             f = Controller5.f;
+             FAF = fi * An * f;
+            if (N1 <= FAF)
             {
                 //通过返回字符串
             }

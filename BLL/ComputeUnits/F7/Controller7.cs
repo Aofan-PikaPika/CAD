@@ -9,7 +9,16 @@ namespace BLL.ComputeUnits.F7
 {
     public class Controller7
     {
-        private double Rc;
+        /// <summary>
+        /// 扣件抗滑移设计值
+        /// </summary>
+        public  static double Rc;
+
+        /// <summary>
+        /// 连墙件轴向力设计值
+        /// </summary>
+        public static double N1 = -1.0;
+
         public void Calc() 
         {
             int fast_num = ScaffoldPara.Fast_Num;
@@ -23,7 +32,7 @@ namespace BLL.ComputeUnits.F7
         public void Compare() 
         {
 
-            double N1 = Controller5.N1;
+            N1 = Controller5.N1;
 
             if (N1 <= Rc)
             {
@@ -33,7 +42,6 @@ namespace BLL.ComputeUnits.F7
             {
                 //验算失败
             }
-
 
         }
     }
