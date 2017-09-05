@@ -34,7 +34,7 @@ namespace DAL
             return dt;
         }
         /// <summary>
-        /// 根据λ的值查询φ的值
+        /// 根据λ的值查询φ的值(立杆)
         /// </summary>
         /// <param name="tens">十位</param>
         /// <param name="units">个位</param>
@@ -47,6 +47,39 @@ namespace DAL
             double fi = (double)dt.Rows[0][0];
             return fi;
         }
+
+        /// <summary>
+        /// 查询连墙件fi值，槽钢、角钢、工字钢
+        /// </summary>
+        /// <param name="tens"></param>
+        /// <param name="units"></param>
+        /// <returns></returns>
+        public double GetAnchorSteelFi(int tens,int units) 
+        {
+            string sqlCmd = "select [" + units + "] from tb_steel235fi where λ=" + tens;
+            SQLiteConnection conn = new SQLiteConnectionBase().connectToDatabase();
+            DataTable dt = SQLiteHelper.ExecuteDataSet(conn, sqlCmd, null).Tables[0];
+            double fi = (double)dt.Rows[0][0];
+            return fi;
+        }
+
+        /// <summary>
+        /// 查询连墙件fi值，钢管
+        /// </summary>
+        /// <param name="tens"></param>
+        /// <param name="units"></param>
+        /// <returns></returns>
+        public double GetAnchorTubeFi(int tens,int units) 
+        {
+            string sqlCmd = "select [" + units + "] from tb_q235fi where λ=" + tens;
+            SQLiteConnection conn = new SQLiteConnectionBase().connectToDatabase();
+            DataTable dt = SQLiteHelper.ExecuteDataSet(conn, sqlCmd, null).Tables[0];
+            double fi = (double)dt.Rows[0][0];
+            return fi;
+        }
+
+
+
 
         /// <summary>
         /// 封装在TFS_
@@ -67,7 +100,11 @@ namespace DAL
             return _ω0;
         }
 
-
+        /// <summary>
+        /// 查工字钢
+        /// </summary>
+        /// <param name="anchorModel"></param>
+        /// <returns></returns>
         public DataTable SearchAnchorFromGSteel(string anchorModel) 
         {
             SQLiteConnection conn = new SQLiteConnectionBase().connectToDatabase();
@@ -76,6 +113,11 @@ namespace DAL
             return dt;
         }
 
+        /// <summary>
+        /// 查角钢
+        /// </summary>
+        /// <param name="anchorModel"></param>
+        /// <returns></returns>
         public DataTable SearchAnchorFromJSteel(string anchorModel)
         {
             SQLiteConnection conn = new SQLiteConnectionBase().connectToDatabase();
@@ -84,6 +126,11 @@ namespace DAL
             return dt;
         }
 
+        /// <summary>
+        /// 查槽钢
+        /// </summary>
+        /// <param name="anchorModel"></param>
+        /// <returns></returns>
         public DataTable SearchAnchorFromCSteel(string anchorModel)
         {
             SQLiteConnection conn = new SQLiteConnectionBase().connectToDatabase();
@@ -92,6 +139,11 @@ namespace DAL
             return dt;
         }
 
+        /// <summary>
+        /// 查钢管
+        /// </summary>
+        /// <param name="anchorModel"></param>
+        /// <returns></returns>
         public DataTable SearchAnchorFromTube(string anchorModel)
         {
             SQLiteConnection conn = new SQLiteConnectionBase().connectToDatabase();
@@ -99,6 +151,9 @@ namespace DAL
             DataTable dt = SQLiteHelper.ExecuteDataSet(conn, sql, null).Tables[0];
             return dt;
         }
+
+
+
 
 
     }

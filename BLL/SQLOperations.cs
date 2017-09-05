@@ -212,7 +212,6 @@ namespace BLL
         }
         #endregion
 
-
         #region 连墙件型号查询
 
         public DataTable GetSteelModel(string anchorType) 
@@ -248,8 +247,6 @@ namespace BLL
         }
 
         #endregion
-
-
 
         #region 封装DAL层与材料库查询有关的函数
         /**

@@ -2,29 +2,50 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DAL;
 
 namespace BLL.ComputeUnits.F6
 {
     public  class TFS_FiAnchor:Table<double>
     {
         //lamda的个位
-        int units;
+        private int units;
         //lamda的十位
-        int tens;
+        private int tens;
 
-        public TFS_FiAnchor(int lamda) 
+        /// <summary>
+        /// 连墙件类型
+        /// </summary>
+        private string anchorTpye;
+
+        public TFS_FiAnchor(int lamda,string anchorTpye) 
         {
             this.tens = (lamda / 10) * 10;
             this.units = (lamda) % 10;
+            this.anchorTpye = anchorTpye;
         }
 
         public override double Search()
         {
+            CheckTableHandle cth = new CheckTableHandle();
             double fi = 0.0;
             try
             {
-                //在DAL查询
-
+                switch (anchorTpye)
+                {
+                    case "钢管":
+                        {
+                            _targetValue= cth.GetAnchorTubeFi(tens,units);
+                        }
+                        break;
+                    case "角钢":
+                    case "槽钢":
+                    case "工字钢": 
+                        {
+                            _targetValue = cth.GetAnchorSteelFi(tens,units);
+                        }
+                        break;
+                }
             }
             catch (Exception)
             {

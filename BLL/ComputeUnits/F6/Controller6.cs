@@ -18,16 +18,25 @@ namespace BLL.ComputeUnits.F6
         public void CalcFi() 
         {
             //确定i值cm，使用公式5公开的方法
-            double  i = Controller5.tfs_anchor.FindAnchorPara("i");
+            double  i = Controller5.tfs_anchor.FindAnchorPara("radius");
 
             //步距公式转换
             LengthUnitConversion h = new LengthUnitConversion();
             h.M = ScaffoldPara.H;
             F_LmdAnchor f_lmdanchor = new F_LmdAnchor(h.CM,i);
-            f_lmdanchor.ComputeValue();           
-            TFS_FiAnchor tfs_fianchor = new TFS_FiAnchor(f_lmdanchor.TargetValue);
-            tfs_fianchor.Search();
-            fi = tfs_fianchor.TargetValue;
+            f_lmdanchor.ComputeValue();
+            if (f_lmdanchor.TargetValue <= 230)
+            {
+                TFS_FiAnchor tfs_fianchor = new TFS_FiAnchor(f_lmdanchor.TargetValue,ScaffoldPara.Anchor_Type);
+                tfs_fianchor.Search();
+                fi = tfs_fianchor.TargetValue;
+            }
+            else 
+            {
+                //lamda大于230，运算不通过
+                fi = -1.0;
+            }
+           
         }
 
         public void Compare() 
