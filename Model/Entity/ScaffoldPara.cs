@@ -59,7 +59,67 @@ namespace Model.Entity
             Fitting_Model=null;
             Step_Num = 0;
         }
+        public static object[] GetValArray()
+        {
+            object[] arrayToPrint = new object[]{ Sca_Type,
+                                                    Act_Layers,
+                                                    Con_Layers,
+                                                    Soil_Types,
+                                                    Rough_Level,
+                                                    Cha_Value,
+                                                    Pad_Area,
+                                                    Anchor_Style,
+                                                    Anchor_Type,
+                                                    Anchor_Model,
+                                                    Anchor_Connect,
+                                                    Sca_Situation,
+                                                    Bui_Status,
+                                                    Bui_Distance,
+                                                    Per_Brace,
+                                                    Per_Level,
+                                                    Per_Set,
+                                                    La,
+                                                    Lb,
+                                                    H ,
+                                                    Fast_Num,
+                                                    Fitting_Model,
+                                                    Step_Num,
+                                                    Step_Num*H,
+            };
+            return arrayToPrint;
+        }
+        public static string[] GetKeyArray()
+        {
+            string[] keys = new string[]{ "@Sca_Type@",
+                                        "@Act_Layers@",
+                                        "@Con_Layers@",
+                                        "@Soil_Types@",
+                                        "@Rough_Level@",
+                                        "@Cha_Value@",
+                                        "@Pad_Area@",
+                                        "@Anchor_Style@",
+                                        "@Anchor_Type@",
+                                        "@Anchor_Model@",
+                                        "@Anchor_Connect@",
+                                        "@Sca_Situation@",
+                                        "@Bui_Status@",
+                                        "@Bui_Distance@",
+                                        "@Per_Brace@",
+                                        "@Per_Level@",
+                                        "@Per_Set@",
+                                        "@La@",
+                                        "@Lb@",
+                                        "@H@" ,
+                                        "@Fast_Num@",
+                                        "@Fitting_Model@",
+                                        "@Step_Num@",
+                                        "@Sca_Height@"
+            };
+            return keys;
+        }
     }
+
+
 
 
 }

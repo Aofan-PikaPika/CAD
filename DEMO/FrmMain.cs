@@ -17,8 +17,11 @@ using Model;
 using BLL;
 using BLL.ComputeUnits.F1;
 using BLL.ComputeUnits.F2;
+using BLL.ComputeUnits.F4;
+using BLL.ComputeUnits.F8;
 using BLL.ComputeUnits;
 using BLL.Service;
+using System.IO;
 namespace DEMO
 {
     public partial class FrmMain : Skin_Mac
@@ -312,20 +315,51 @@ namespace DEMO
         {
             Controller1 c1 = new Controller1();
             Controller2 c2 = new Controller2();
+            Controller4 c4 = new Controller4();
+            Controller8 c8 = new Controller8();
             try
             {
                 c1.Compare();
                 c2.Compare();
+
 
             }
             catch (Exception ex)
             {
                 ErrorService.Show(ex.Message);
             }
-            MessageBox.Show(Controller1.lString);
-            MessageBox.Show(Controller1.rString);
-            MessageBox.Show(Controller2.lString);
-            MessageBox.Show(Controller2.rString);
+            //这些弹窗都是测试用代码
+            //MessageBox.Show(Controller1.lString);
+            //MessageBox.Show(Controller1.rString);
+           // MessageBox.Show(Controller2.lString);
+            //MessageBox.Show(Controller2.rString);
+            
+            //以下是生成计算书的代码
+            WordController outScaffBook = new WordController();
+            //保存路径为程序根目录下的tmp文件夹
+            Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\tmp");
+            string path = System.Windows.Forms.Application.StartupPath + "\\tmp\\计算书.docx";
+            //未处理的计算书目录为程序根目录下的rawBook文件夹，在这里复制它
+            if (!outScaffBook.CopyTo(System.Windows.Forms.Application.StartupPath + "\\rawBook\\OutScaffCalcBook.docx", path))
+            {
+                ErrorService.Show("计算书不存在");
+                return;
+            }
+            //复制完毕后打开计算书，这里如果设定为true，可以看到程序替换word的过程
+            if (!outScaffBook.OpenDoc(path, true))
+            {
+                ErrorService.Show("计算书无法打开");
+                return;
+            }
+            //处理计算书的内容
+            outScaffBook.PushKeyObjValueObj(ScaffoldPara.GetKeyArray(), ScaffoldPara.GetValArray());
+            outScaffBook.PushDictionary(c1.solveDic);
+            //保存关闭后再打开
+            outScaffBook.SaveDocFile(path);
+            outScaffBook.CloseDoc();
+            outScaffBook.OpenDoc(path, true);
+
+            
         }
 
         //用料统计

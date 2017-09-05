@@ -67,6 +67,27 @@ namespace BLL.ComputeUnits.F1
             }
             return -1.0;
         }
+
+        /// <summary>
+        /// 计算书要求给出杆件型号
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="colName"></param>
+        /// <returns></returns>
+        public string FindMaterialModel(string name, string colName)
+        {
+            if (_isSearched)
+            {
+                for (int i = 0; i < _targetValue.Rows.Count; i++)
+                {
+                    if (_targetValue.Rows[i]["name"].ToString().Equals(name))
+                    {
+                        return (string)_targetValue.Rows[i][colName];
+                    }
+                }
+            }
+            return "";
+        }
         
     }
 }

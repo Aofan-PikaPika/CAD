@@ -18,12 +18,13 @@ namespace BLL.ComputeUnits.F1
         public static TFS_Fitting tfs_Fitting = null;//公开查询到的材料表，很多计算都要用到杆件的资料
         public static TFM1_qConsLoad tfm1_qConsLoad = null;//公开施工均布活荷载标准值的表，3，4公式都要用到查出来的施工均布活荷载标准值
 
-        //公开公式，供调用计算书使用
+        //controller8需要调用NG1K，NG2K，NQK的计算公式
         public static F_NG1K f_NG1K = null;
         public static F_NG2K f_NG2K = null;
         public static F_NQK f_NQK = null;
-        public static F_N f_N = null;
+        public F_N f_N = null;
 
+        public Dictionary<string, string> solveDic = new Dictionary<string, string>();
         private void CalcN()
         {
             //进行脚手架尺寸的单位换算
@@ -117,14 +118,29 @@ namespace BLL.ComputeUnits.F1
             {
                 lString = N.ToString("#0.00") + "/(" + A.ToString("#0.00") + "×" + φ.ToString("#0.00") + ")=" + (N / (A * φ)).ToString("#0.00");
                 rString = f.ToString("#0.00");
+                InputDic();
             }
             else
             {
                 throw new Exception("立杆不组合风荷载稳定性计算未通过");
             }
         }
+
         public static string lString = "";//这个是表达公式左边立杆承受应力的字符串 
         public static string rString = "";//这个表达公式右边f的字符串
+
+
+        private void InputDic()
+        {
+            solveDic.Add("@F_NG1K@", f_NG1K.ToString());
+            solveDic.Add("@F_NG2K@", f_NG2K.ToString());
+            solveDic.Add("@F_NQK@", f_NQK.ToString());
+            solveDic.Add("@F_N@", f_N.ToString());
+            solveDic.Add("@C1_LString@", lString);
+            solveDic.Add("@C1_RString@", rString);
+            solveDic.Add("@TFM1_qConsload@", tfm1_qConsLoad.TargetValue.ToString());
+            solveDic.Add("@HXSPGXH@", tfs_Fitting.FindMaterialModel("横向水平杆", "model"));
+        }
 
     }
 }

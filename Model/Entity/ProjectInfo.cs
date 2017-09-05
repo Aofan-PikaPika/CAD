@@ -37,6 +37,43 @@ namespace Model.Entity
             Con_Height = 0.0;
             Des_Unit = null;
         }
+
+        public static object[] GetValArray()
+        {
+            object[] arrayToPrint = new object[]{   
+                                                    Pro_Id,
+                                                    Pro_Name,
+                                                    Pro_Type,
+                                                    Con_Province ,
+                                                    Con_City ,
+                                                    Unit ,
+                                                    Con_Unit ,
+                                                    Sup_Unit ,
+                                                    Con_Area ,
+                                                    Con_Height,
+                                                    Des_Unit ,
+
+            };
+            return arrayToPrint;
+        }
+
+        public static string[] GetKeyArray()
+        {
+            string[] keys = new string[]{
+                                           "@Pro_Id@",
+                                           "@Pro_Name@",
+                                           "@Pro_Type@",
+                                           "@Con_Province@" ,
+                                           "@Con_City@" ,
+                                           "@Unit@" ,
+                                           "@Con_Unit@" ,
+                                           "@Sup_Unit@" ,
+                                           "@Con_Area@" ,
+                                           "@Con_Height@",
+                                           "@Des_Unit@" ,
+            };
+            return keys;
+        }
     }
     
 }
