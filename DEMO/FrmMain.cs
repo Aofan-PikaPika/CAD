@@ -353,6 +353,7 @@ namespace DEMO
             }
             //处理计算书的内容
             outScaffBook.PushKeyObjValueObj(ScaffoldPara.GetKeyArray(), ScaffoldPara.GetValArray());
+            outScaffBook.PushKeyObjValueObj(ProjectInfo.GetKeyArray(), ProjectInfo.GetValArray());
             outScaffBook.PushDictionary(c1.solveDic);
             //保存关闭后再打开
             outScaffBook.SaveDocFile(path);
