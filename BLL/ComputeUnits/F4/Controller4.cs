@@ -59,6 +59,7 @@ namespace BLL.ComputeUnits.F4
             {
                 lString = Controller4.f_v.TargetValue.ToString("#0.00") ;
                 rString = minv.ToString("#0.00");
+                InputDic();
             }  
             else      
             {

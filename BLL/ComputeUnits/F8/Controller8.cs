@@ -34,6 +34,7 @@ namespace BLL.ComputeUnits.F8
                 double fg = ScaffoldPara.Cha_Value;
                 lString = f_pcf.TargetValue.ToString("#0.00");
                 rString = fg.ToString("#0.00");
+                InputDic();
             }
             else
                 throw new Exception("地基承载力验算未通过");
