@@ -32,6 +32,14 @@ namespace BLL.ComputeUnits.F5
         /// <summary>
         /// 支架立杆轴向力设计值
         /// </summary>
+
+
+        //私有对象
+        private F_N1W f_n1w = null;
+
+        private F_N1 f_n1 = null;
+
+
         public void CalcN1()
         {
             //跨数
@@ -67,11 +75,11 @@ namespace BLL.ComputeUnits.F5
             //风荷载标准值KN/M2
             //从公式2获取
             double wk = Controller2.f_ωk.TargetValue;
-            F_N1W f_n1w = new F_N1W(L1,H1,wk);
+            f_n1w = new F_N1W(L1,H1,wk);
             f_n1w.ComputeValue();
             //变形所产生的轴向力3KN；
              const double  N0=3.0;
-             F_N1 f_n1 = new F_N1(f_n1w.TargetValue,N0);
+             f_n1 = new F_N1(f_n1w.TargetValue,N0);
              f_n1.ComputeValue();
              N1 = f_n1.TargetValue;
           
@@ -115,6 +123,7 @@ namespace BLL.ComputeUnits.F5
             {
                 lString = N1.ToString("#0.00") + "/" + An.ToString("#0.00") + "=" + (N1 / An).ToString("#0.00");
                 rString = f.ToString("#0.00");
+                InputDic();
             }
             else 
             {
@@ -122,6 +131,24 @@ namespace BLL.ComputeUnits.F5
                 throw new Exception("连墙件抗拉强度计算未通过");
             }
         }
+
+        /// <summary>
+        /// 声明一个dictionary
+        /// </summary>
+        public Dictionary<string, string> C5Dic = new Dictionary<string, string>();
+
+        /// <summary>
+        /// 向dictionary插入信息
+        /// </summary>
+        private void InputDic() 
+        {
+            C5Dic.Add("@F_N1W@",f_n1w.ToString());
+            C5Dic.Add("@F_N1@",f_n1.ToString());
+            C5Dic.Add("@C5_LString@",lString);
+            C5Dic.Add("@C5_RString@",rString);
+        }
+
+
 
     }
 }
