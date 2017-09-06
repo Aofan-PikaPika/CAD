@@ -25,6 +25,11 @@ namespace BLL.ComputeUnits.F6
         /// </summary>
         public  double f = -1.0;
 
+        /// <summary>
+        /// 私有lmda
+        /// </summary>
+        private F_LmdAnchor f_lmdanchor = null;
+
         public void CalcFi() 
         {
             //确定i值cm，使用公式5公开的方法
@@ -33,7 +38,7 @@ namespace BLL.ComputeUnits.F6
             //脚手架距建筑物距离l0公式转换
             LengthUnitConversion l0 = new LengthUnitConversion();
             l0.MM = ScaffoldPara.Bui_Distance;
-            F_LmdAnchor f_lmdanchor = new F_LmdAnchor(l0.CM,i);
+            f_lmdanchor = new F_LmdAnchor(l0.CM,i);
             f_lmdanchor.ComputeValue();
             if (f_lmdanchor.TargetValue <= 230)
             {
@@ -63,11 +68,31 @@ namespace BLL.ComputeUnits.F6
             {
                 lString = N1.ToString("#0.00");
                 rString = fi.ToString("#0.00") + "*" + An.ToString("#0.00") + "*" + f.ToString("#0.00") + "=" + (fi * An * f).ToString("#0.00");
+                InputDic();
             }
             else 
             {
                 throw new Exception("连墙件稳定性计算未通过");
             }
+        }
+
+
+        /// <summary>
+        /// 声明一个dictionary
+        /// </summary>
+        public Dictionary<string, string> C6Dic = new Dictionary<string, string>();
+
+        /// <summary>
+        /// 向dictionary插入信息
+        /// </summary>
+        private void InputDic()
+        {
+            C6Dic.Add("@F_lmdanchor@", f_lmdanchor.ToString());
+            C6Dic.Add("@Tfs_fianchor@", fi.ToString());
+            C6Dic.Add("@Anchor_A@",An.ToString());
+            C6Dic.Add("@Anchor_f@",f.ToString());
+            C6Dic.Add("@C6_LString@", lString);
+            C6Dic.Add("@C6_RString@", rString);
         }
 
 
