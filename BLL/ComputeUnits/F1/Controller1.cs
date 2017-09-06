@@ -17,12 +17,15 @@ namespace BLL.ComputeUnits.F1
         public static double f = -1;
         public static TFS_Fitting tfs_Fitting = null;//公开查询到的材料表，很多计算都要用到杆件的资料
         public static TFM1_qConsLoad tfm1_qConsLoad = null;//公开施工均布活荷载标准值的表，3，4公式都要用到查出来的施工均布活荷载标准值
+        public TFS_FiQ345 f_FiQ345;
+
 
         //controller8需要调用NG1K，NG2K，NQK的计算公式
         public static F_NG1K f_NG1K = null;
         public static F_NG2K f_NG2K = null;
         public static F_NQK f_NQK = null;
         public F_N f_N = null;
+        public F_Lmd f_Lmd = null;
 
         public Dictionary<string, string> solveDic = new Dictionary<string, string>();
         private void CalcN()
@@ -79,10 +82,10 @@ namespace BLL.ComputeUnits.F1
             //计算立杆的柔度 没有单位
             LengthUnitConversion H = new LengthUnitConversion();
             H.M = ScaffoldPara.H;//这里要进行一步单位换算
-            F_Lmd f_Lmd = new F_Lmd(tfm1_Miu.TargetValue,H.CM,tfs_Fitting.FindMaterialPara("立杆","radius"));
+            f_Lmd = new F_Lmd(tfm1_Miu.TargetValue,H.CM,tfs_Fitting.FindMaterialPara("立杆","radius"));
             f_Lmd.ComputeValue();
             //根据柔度查稳定系数 没有单位
-            TFS_FiQ345 f_FiQ345 = new TFS_FiQ345(f_Lmd.TargetValue);
+            f_FiQ345 = new TFS_FiQ345(f_Lmd.TargetValue);
             φ = f_FiQ345.Search();
         }
 
@@ -140,6 +143,13 @@ namespace BLL.ComputeUnits.F1
             solveDic.Add("@C1_RString@", rString);
             solveDic.Add("@TFM1_qConsload@", tfm1_qConsLoad.TargetValue.ToString());
             solveDic.Add("@HXSPGXH@", tfs_Fitting.FindMaterialModel("横向水平杆", "model"));
+            solveDic.Add("@ZXSPGXH@", tfs_Fitting.FindMaterialModel("纵向水平杆", "model"));
+            solveDic.Add("@SXXGXH@", tfs_Fitting.FindMaterialModel("水平斜杆", "model"));
+            solveDic.Add("@SPXGXH@",tfs_Fitting.FindMaterialModel("水平斜杆","model"));
+            solveDic.Add("@F_LmdLG@", f_Lmd.ToString());
+            solveDic.Add("@F_LmdLGZHI@", f_Lmd.TargetValue.ToString("#0.00"));
+            solveDic.Add("@TFM_FiQ345@", f_FiQ345.TargetValue.ToString());
+
         }
 
     }

@@ -13,14 +13,19 @@ namespace BLL.ComputeUnits.F2
     /// </summary>
     public class Controller2
     {
-        public static double Mw = -1;//KN * M
-        public static double W = -1;//mm3
+        public double Mw = -1;//KN * M
+        public double W = -1;//mm3
         //生成计算书需要的公式
-        public static F_ωk f_ωk = null;
-        public static F_Mw f_Mw = null;
+        public static F_ωk f_ωk = null;//C5需要用
+        public F_Mw f_Mw = null;
+        public F_NWind f_NWind = null;//这个是组合了风荷载的公式，值比F_N小，所以没用在计算中，只在这里输出一下
+        //生成计算书需要的查表结果
+        public TFS_ω0 tfs_ω0 = null;
 
         //公式2单项依赖公式1
         //测试controller1有没有计算完毕的函数
+
+        public Dictionary<string, string> solveDic = new Dictionary<string, string>();
         private bool TestController1Para()
         {
             if (string.IsNullOrEmpty(Controller1.lString) || string.IsNullOrEmpty(Controller1.rString))
@@ -40,7 +45,7 @@ namespace BLL.ComputeUnits.F2
             tfm_μs.Search();
             //查询当地基本风压ω0
             //城市和省份由级联查询得到，
-            TFS_ω0 tfs_ω0 = new TFS_ω0(ProjectInfo.Con_Province,ProjectInfo.Con_City);
+            tfs_ω0 = new TFS_ω0(ProjectInfo.Con_Province,ProjectInfo.Con_City);
             tfs_ω0.Search();
             //计算风荷载标准值ωk，单位：KN/M2
             f_ωk = new F_ωk(tfm_μzStandingTube.TargetValue,tfm_μs.TargetValue,tfs_ω0.TargetValue);
@@ -73,13 +78,29 @@ namespace BLL.ComputeUnits.F2
             {
                 lString = Controller1.N.ToString("#0.000") + "/(" + Controller1.A.ToString("#0.000") + "×" + Controller1.φ.ToString("#0.000") + ")+" + Mw.ToString("#0.000") + "/" + W.ToString("#0.000") + "=" + ((Controller1.N / (Controller1.A * Controller1.φ)) + Mw / W).ToString("#0.00");
                 rString = Controller1.rString;//直接就是F
+                f_NWind = new F_NWind(Controller1.f_NG1K.TargetValue, Controller1.f_NG2K.TargetValue, Controller1.f_NQK.TargetValue);
+                f_NWind.ComputeValue();
+                InputDic();
             }
             else
             {
                 throw new Exception("立杆组合风荷载稳定性计算未通过");
             }
         }
+
         public static string  lString = "";
         public static string  rString = "";
+
+        private void InputDic()
+        {
+            solveDic.Add("@F_Mw@", f_Mw.ToString());
+            solveDic.Add("@F_ωk@", f_ωk.ToString());
+            solveDic.Add("@TFS_ω0@", tfs_ω0.TargetValue.ToString());
+            solveDic.Add("@F_NWind@", f_NWind.ToString());
+            solveDic.Add("@C2_LString@", lString);
+            solveDic.Add("@C2_RString@", rString);
+        }
+
+
     }
 }

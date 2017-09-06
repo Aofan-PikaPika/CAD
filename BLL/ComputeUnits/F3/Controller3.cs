@@ -18,6 +18,7 @@ namespace BLL.ComputeUnits.F3
         public static double _σ = -1;
         public static double fh = -1;//这里是横向水平杆的f，和controller1中的f不一样
 
+        public Dictionary<string, string> solveDic = new Dictionary<string, string>();
         //公式3单项依赖公式1
         private bool TestController1Para()
         {
@@ -71,14 +72,23 @@ namespace BLL.ComputeUnits.F3
             {
                 lString = _σ.ToString("#0.00");
                 rString = fh.ToString("#0.00");
+                InputDic();
             }
             else 
             {
                 throw new Exception("横向水平杆承载力验算未通过");
             }
         }
+
         public static string lString = "";
         public static string rString = "";
 
+        private void InputDic()
+        {
+            solveDic.Add("@F_q2@", f_q2.ToString());
+            solveDic.Add("@F_σ@", f_σ.ToString());
+            solveDic.Add("@F_Mh@", f_Mh.ToString());
+        }
+        
     }
 }

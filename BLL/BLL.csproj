@@ -54,6 +54,7 @@
     <Compile Include="ComputeUnits\BendingMomentUnitConversion.cs" />
     <Compile Include="ComputeUnits\F2\Controller2.cs" />
     <Compile Include="ComputeUnits\F2\F_Mw.cs" />
+    <Compile Include="ComputeUnits\F2\F_NWind.cs" />
     <Compile Include="ComputeUnits\F2\F_ωk.cs" />
     <Compile Include="ComputeUnits\F2\TFM_μzStandingTube.cs" />
     <Compile Include="ComputeUnits\F2\TFM_μs.cs" />

@@ -23,6 +23,10 @@ namespace BLL.ComputeUnits.F2
             this.la = la;
             this.h = h;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>KN×M</returns>
         public override double ComputeValue()
         {
             _targetValue = (0.9 * 1.4 * _ωk * la * h * h) / 10;
