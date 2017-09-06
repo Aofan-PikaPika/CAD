@@ -355,12 +355,18 @@ namespace DEMO
             outScaffBook.PushKeyObjValueObj(ScaffoldPara.GetKeyArray(), ScaffoldPara.GetValArray());
             outScaffBook.PushKeyObjValueObj(ProjectInfo.GetKeyArray(), ProjectInfo.GetValArray());
             outScaffBook.PushDictionary(c1.solveDic);
-            //保存关闭后再打开
-            outScaffBook.SaveDocFile(path);
-            outScaffBook.CloseDoc();
-            outScaffBook.OpenDoc(path, true);
+            //因WPS与WORD会引起冲突，所以这里不加自动保存功能
+            //将计算书导出后的任何文件保存，打开的问题，抛给WORD或WPS
+            //这样一来，重复写计算书也不会有抛异常的问题
 
-            
+            #region
+            //保存关闭后再打开
+            //outScaffBook.SaveDocFile(path);
+            //outScaffBook.CloseDoc();
+            //outScaffBook.OpenDoc(path, true);
+            #endregion
+
+
         }
 
         //用料统计
