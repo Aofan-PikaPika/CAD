@@ -12,12 +12,12 @@ namespace BLL.ComputeUnits.F7
         /// <summary>
         /// 扣件抗滑移设计值
         /// </summary>
-        public  static double Rc;
+        public double Rc;
 
         /// <summary>
         /// 连墙件轴向力设计值
         /// </summary>
-        public static double N1 = -1.0;
+        public double N1 = -1.0;
 
         public void Calc() 
         {

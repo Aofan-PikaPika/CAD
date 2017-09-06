@@ -10,36 +10,30 @@ namespace BLL.ComputeUnits.F6
     public class Controller6
     {
         /// <summary>
-        /// fi值公开
+        /// fi值
         /// </summary>
-        public static  double fi = -1.0;
+        public  double fi = -1.0;
 
-        public static double N1 = -1.0;
+        public double N1 = -1.0;
         /// <summary>
         /// 连墙件净截面面积
         /// </summary>
-        public static double An = -1.0;
+        public double An = -1.0;
 
         /// <summary>
         /// f抗拉弯设计值
         /// </summary>
-        public static double f = -1.0;
-
-        /// <summary>
-        /// 连墙件抗滑移设计值
-        /// </summary>
-        public static double FAF = -1.0;
-
+        public  double f = -1.0;
 
         public void CalcFi() 
         {
             //确定i值cm，使用公式5公开的方法
             double  i = Controller5.tfs_anchor.FindAnchorPara("radius");
 
-            //步距公式转换
-            LengthUnitConversion h = new LengthUnitConversion();
-            h.M = ScaffoldPara.H;
-            F_LmdAnchor f_lmdanchor = new F_LmdAnchor(h.CM,i);
+            //脚手架距建筑物距离l0公式转换
+            LengthUnitConversion l0 = new LengthUnitConversion();
+            l0.MM = ScaffoldPara.Bui_Distance;
+            F_LmdAnchor f_lmdanchor = new F_LmdAnchor(l0.CM,i);
             f_lmdanchor.ComputeValue();
             if (f_lmdanchor.TargetValue <= 230)
             {
@@ -55,6 +49,8 @@ namespace BLL.ComputeUnits.F6
            
         }
 
+        public static string lString = "";//这个是表达公式左边连墙件轴向力设计值的字符串 
+        public static string rString = "";//这个表达公式右边fiAf的字符串
         public void Compare() 
         {
             CalcFi();
@@ -63,14 +59,14 @@ namespace BLL.ComputeUnits.F6
              N1 = Controller5.N1;
              An = Controller5.An;
              f = Controller5.f;
-             FAF = fi * An * f;
-            if (N1 <= FAF)
+             if (N1 <= fi * An * f)
             {
-                //通过返回字符串
+                lString = N1.ToString("#0.00");
+                rString = fi.ToString("#0.00") + "*" + An.ToString("#0.00") + "*" + f.ToString("#0.00") + "=" + (fi * An * f).ToString("#0.00");
             }
             else 
             {
-                //不通过，抛出异常
+                throw new Exception("连墙件稳定性计算未通过");
             }
         }
 
