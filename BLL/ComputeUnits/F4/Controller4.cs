@@ -12,6 +12,8 @@ namespace BLL.ComputeUnits.F4
         public static F_Q1 f_q1 = null;
         public static F_V f_v = null;
 
+        public Dictionary<string, string> solveDic = new Dictionary<string, string>();
+
         //计算出q1（作用在横向水平杆上的荷载标准值）的值
         //不能在求q1的时候将单位都换算成N/MM^2，运算结果会出现错误
         private void CalcQ1()
@@ -65,5 +67,12 @@ namespace BLL.ComputeUnits.F4
         }
         public static string lString = "";
         public static string rString = "";
+
+        private void InputDic()
+        {
+            solveDic.Add("@F_q1@", f_q1.ToString());
+            solveDic.Add("@F_V@", f_v.ToString());
+            solveDic.Add("@C4_rString@", rString);
+        }
     }   
 }

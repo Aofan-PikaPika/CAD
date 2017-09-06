@@ -10,6 +10,7 @@ namespace BLL.ComputeUnits.F8
     public class Controller8
     {
         public static F_PCF f_pcf = null;
+        public Dictionary<string, string> solveDic = new Dictionary<string, string>();
         
         //计算出pk的值
         private void Calcpk()
@@ -37,6 +38,11 @@ namespace BLL.ComputeUnits.F8
             else
                 throw new Exception("地基承载力验算未通过");
 
+        }
+        private void InputDic()
+        {
+            solveDic.Add("@F_PCF@", f_pcf.ToString());
+            solveDic.Add("@C8_rString@", rString);
         }
     }
 }
