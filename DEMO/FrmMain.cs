@@ -19,6 +19,8 @@ using BLL.ComputeUnits.F1;
 using BLL.ComputeUnits.F2;
 using BLL.ComputeUnits.F4;
 using BLL.ComputeUnits.F8;
+using BLL.ComputeUnits.F5;
+using BLL.ComputeUnits.F6;
 using BLL.ComputeUnits;
 using BLL.Service;
 using System.IO;
@@ -355,24 +357,46 @@ namespace DEMO
             outScaffBook.PushKeyObjValueObj(ScaffoldPara.GetKeyArray(), ScaffoldPara.GetValArray());
             outScaffBook.PushKeyObjValueObj(ProjectInfo.GetKeyArray(), ProjectInfo.GetValArray());
             outScaffBook.PushDictionary(c1.solveDic);
-            //因WPS与WORD会引起冲突，所以这里不加自动保存功能
-            //将计算书导出后的任何文件保存，打开的问题，抛给WORD或WPS
-            //这样一来，重复写计算书也不会有抛异常的问题
-
-            #region
             //保存关闭后再打开
             //outScaffBook.SaveDocFile(path);
             //outScaffBook.CloseDoc();
             //outScaffBook.OpenDoc(path, true);
-            #endregion
 
-
+            
         }
+        #endregion
+
 
         //用料统计
         private void skinButton12_Click(object sender, EventArgs e)
         {
+            Controller1 c1 = new Controller1();
+            Controller2 c2 = new Controller2();
+            Controller4 c4 = new Controller4();         
+            Controller5 c5 = new Controller5();
+            Controller6 c6 = new Controller6();
+            Controller8 c8 = new Controller8();
+            try
+            {
 
+                c1.Compare();
+                c2.Compare();
+                c4.Compare();
+                c5.Compare();
+                c6.Compare();
+                c8.Compare();
+
+
+            }
+            catch (Exception ex)
+            {
+                ErrorService.Show(ex.Message);
+            }
+           
+            MessageBox.Show(Controller5.lString);
+            MessageBox.Show(Controller5.rString);
+            MessageBox.Show(Controller6.lString);
+            MessageBox.Show(Controller6.rString);
         }
 
         //施工图
@@ -381,7 +405,7 @@ namespace DEMO
 
         }
 
-        #endregion
+       
 
         private void skinButton13_Click(object sender, EventArgs e)
         {

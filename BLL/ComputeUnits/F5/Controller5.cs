@@ -11,24 +11,18 @@ namespace BLL.ComputeUnits.F5
     public class Controller5
     {
         /// <summary>
-        /// 连墙件轴向力设计值
+        /// 公开连墙件轴向力设计值
         /// </summary>
         public static  double N1 = -1.0;
         /// <summary>
-        /// 连墙件净截面面积
+        /// 公开连墙件净截面面积
         /// </summary>
         public static  double An = -1.0;
 
         /// <summary>
-        /// f抗拉弯设计值
+        /// 公开f抗拉弯设计值
         /// </summary>
         public static  double  f=-1.0;
-
-        /// <summary>
-        /// 连墙件实际抗拉计算值
-        /// </summary>
-        public static double sigmoid = 0.0;
-
 
         /// <summary>
         /// 公开连墙件查询类
@@ -89,7 +83,8 @@ namespace BLL.ComputeUnits.F5
         {
             string anchorType = ScaffoldPara.Anchor_Type;
             string anchorModel = ScaffoldPara.Anchor_Model;
-            TFS_Anchor tfs_anchor = new TFS_Anchor(anchorType, anchorModel);
+            tfs_anchor = new TFS_Anchor(anchorType, anchorModel);
+            tfs_anchor.Search();
             An = tfs_anchor.FindAnchorPara("A");
         }
 
@@ -102,6 +97,8 @@ namespace BLL.ComputeUnits.F5
             f = tfm1_f.Search();
         }
 
+        public static string lString = "";//这个是表达公式左边sigmoid的字符串 
+        public static string rString = "";//这个表达公式右边f的字符串
         public void Compare()
         {
             CalcN1();
@@ -114,14 +111,15 @@ namespace BLL.ComputeUnits.F5
 
             //CM2变为MM2
             An = An * 100;
-            sigmoid = N1 / An;
-            if (sigmoid <= f)
+             if (N1 / An <= f)
             {
-                //通过返回字符串
+                lString = N1.ToString("#0.00") + "/" + An.ToString("#0.00") + "=" + (N1 / An).ToString("#0.00");
+                rString = f.ToString("#0.00");
             }
             else 
             {
                 //不通过，抛出异常
+                throw new Exception("连墙件抗拉强度计算未通过");
             }
         }
 
