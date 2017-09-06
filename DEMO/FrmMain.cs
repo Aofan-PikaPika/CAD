@@ -333,9 +333,9 @@ namespace DEMO
             //这些弹窗都是测试用代码
             //MessageBox.Show(Controller1.lString);
             //MessageBox.Show(Controller1.rString);
-           // MessageBox.Show(Controller2.lString);
+            // MessageBox.Show(Controller2.lString);
             //MessageBox.Show(Controller2.rString);
-            
+
             //以下是生成计算书的代码
             WordController outScaffBook = new WordController();
             //保存路径为程序根目录下的tmp文件夹
@@ -357,10 +357,18 @@ namespace DEMO
             outScaffBook.PushKeyObjValueObj(ScaffoldPara.GetKeyArray(), ScaffoldPara.GetValArray());
             outScaffBook.PushKeyObjValueObj(ProjectInfo.GetKeyArray(), ProjectInfo.GetValArray());
             outScaffBook.PushDictionary(c1.solveDic);
+            //因WPS与WORD会引起冲突，所以这里不加自动保存功能
+            //将计算书导出后的任何文件保存，打开的问题，抛给WORD或WPS
+            //这样一来，重复写计算书也不会有抛异常的问题
+
+            #region
             //保存关闭后再打开
             //outScaffBook.SaveDocFile(path);
             //outScaffBook.CloseDoc();
             //outScaffBook.OpenDoc(path, true);
+            #endregion
+
+
 
             
         }
