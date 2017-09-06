@@ -18,9 +18,11 @@ using BLL;
 using BLL.ComputeUnits.F1;
 using BLL.ComputeUnits.F2;
 using BLL.ComputeUnits.F3;
-using BLL.ComputeUnits.F8;
+using BLL.ComputeUnits.F4;
 using BLL.ComputeUnits.F5;
 using BLL.ComputeUnits.F6;
+using BLL.ComputeUnits.F7;
+using BLL.ComputeUnits.F8;
 using BLL.ComputeUnits;
 using BLL.Service;
 using System.IO;
@@ -318,11 +320,21 @@ namespace DEMO
             Controller1 c1 = new Controller1();
             Controller2 c2 = new Controller2();
             Controller3 c3 = new Controller3();
+            Controller4 c4 = new Controller4();
+            Controller5 c5 = new Controller5();
+            Controller6 c6 = new Controller6();
+            Controller7 c7 = new Controller7();
+            Controller8 c8 = new Controller8();
             try
             {
                 c1.Compare();
                 c2.Compare();
                 c3.Compare();
+                c4.Compare();
+                c5.Compare();
+                c6.Compare();
+                c7.Compare();
+                c8.Compare();
 
             }
             catch (Exception ex)
@@ -355,7 +367,7 @@ namespace DEMO
             //处理计算书的内容
             outScaffBook.PushKeyObjValueObj(ScaffoldPara.GetKeyArray(), ScaffoldPara.GetValArray());
             outScaffBook.PushKeyObjValueObj(ProjectInfo.GetKeyArray(), ProjectInfo.GetValArray());
-            outScaffBook.PushDictionary(c1.solveDic,c2.solveDic,c3.solveDic);
+            outScaffBook.PushDictionary(c1.solveDic,c2.solveDic,c3.solveDic,c4.solveDic,c5.C5Dic,c6.C6Dic,c8.solveDic);
             //因WPS与WORD会引起冲突，所以这里不加自动保存功能
             //将计算书导出后的任何文件保存，打开的问题，抛给WORD或WPS
             //这样一来，重复写计算书也不会有抛异常的问题
