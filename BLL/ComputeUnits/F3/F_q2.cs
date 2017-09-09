@@ -49,7 +49,7 @@ namespace BLL.ComputeUnits.F3
         public override string ToString()
         {
             if (_isComputed)
-                return "1.2×((" + m.ToString("#0.000") + "×9.8/1000)/" + lb.ToString("#0.000") + "+0.35×" + la.ToString("#0.000") + ")+1.4×" + qConsload.ToString("#0.000") + "×" + la.ToString("#0.000")+"="+_targetValue.ToString("#0.00");
+                return "1.2×((" + m.ToString() + "×9.8/1000)/" + lb.ToString() + "+0.35×" + la.ToString() + ")+1.4×" + qConsload.ToString() + "×" + la.ToString()+"="+_targetValue.ToString("#0.000");
             else
                 return "";
         }

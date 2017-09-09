@@ -57,8 +57,8 @@ namespace BLL.ComputeUnits.F4
             }
             if (f_v.TargetValue < minv)//将V与min[lb/150,10]进行比较，符合要求输出，不符合抛出异常
             {
-                lString = Controller4.f_v.TargetValue.ToString("#0.00") ;
-                rString = minv.ToString("#0.00");
+                lString = Controller4.f_v.TargetValue.ToString("#0.000") ;
+                rString = minv.ToString("#0.000");
                 InputDic();
             }  
             else      

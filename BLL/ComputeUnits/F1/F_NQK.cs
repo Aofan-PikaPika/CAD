@@ -40,7 +40,7 @@ namespace BLL.ComputeUnits.F1
         public override string ToString()
         {
             if (_isComputed)
-                return  la.ToString("#0.00") + "×" + lb.ToString("#0.00") + "×" + q.ToString("#0.00") + "×" + con_layers.ToString() + "/2="+_targetValue.ToString("#0.00");
+                return  la.ToString() + "×" + lb.ToString() + "×" + q.ToString() + "×" + con_layers.ToString() + "/2="+_targetValue.ToString();
             else
                 return "";
         }

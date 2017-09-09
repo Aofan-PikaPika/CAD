@@ -37,7 +37,7 @@ namespace BLL.ComputeUnits.F6
         {
             if (_isComputed)
             {
-                return h.ToString("#0.00") + "/" + i.ToString("#0.00") + "=" + _targetValue.ToString();
+                return h.ToString() + "/" + i.ToString() + "=" + _targetValue.ToString("#0.000");
             }
             else
             {

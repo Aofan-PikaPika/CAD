@@ -34,7 +34,7 @@ namespace BLL.ComputeUnits.F4
         public override string ToString()
         {
             if(_isComputed)
-                return "" + m.ToString("#0.00") + "×9.8/" + lb.ToString("#0.00") + "+0.35×" + la.ToString("#0.00") + "+" + q.ToString("#0.00") + "×" + la.ToString("#0.00") + "=" + _targetValue.ToString("#0.00");
+                return "" + m.ToString() + "×9.8/" + lb.ToString() + "+0.35×" + la.ToString() + "+" + q.ToString() + "×" + la.ToString() + "=" + _targetValue.ToString("#0.000");
             else
                 return "";
         }

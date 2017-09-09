@@ -36,7 +36,7 @@ namespace BLL.ComputeUnits.F5
 
         public override string ToString()
         {
-            return N1W.ToString("0.00") + "+" + N0.ToString("0.00") + "=" + _targetValue.ToString("0.00");
+            return N1W.ToString() + "+" + N0.ToString() + "=" + _targetValue.ToString("0.000");
         }
 
     }

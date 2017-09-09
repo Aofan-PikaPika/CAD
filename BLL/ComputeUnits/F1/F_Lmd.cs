@@ -57,7 +57,7 @@ namespace BLL.ComputeUnits.F1
         {
             if (_isComputed)
             {
-                return "(" + μ.ToString("#0.00") + "×" + h.ToString("#0.00") + ")/" + i.ToString("#0.00") + "=" + _targetValue.ToString();
+                return "(" + μ.ToString() + "×" + h.ToString() + ")/" + i.ToString() + "=" + _targetValue.ToString("#0.000");
             }
             else 
             {

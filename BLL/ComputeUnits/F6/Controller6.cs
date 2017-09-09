@@ -66,8 +66,8 @@ namespace BLL.ComputeUnits.F6
              f = Controller5.f;
              if (N1 <= fi * An * f)
             {
-                lString = N1.ToString("#0.00");
-                rString = fi.ToString("#0.00") + "*" + An.ToString("#0.00") + "*" + f.ToString("#0.00") + "=" + (fi * An * f).ToString("#0.00");
+                lString = N1.ToString("#0.000");
+                rString = fi.ToString() + "*" + An.ToString() + "*" + f.ToString() + "=" + (fi * An * f).ToString("#0.000");
                 InputDic();
             }
             else 

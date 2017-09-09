@@ -32,8 +32,8 @@ namespace BLL.ComputeUnits.F8
             if(f_pcf.TargetValue<=ScaffoldPara.Cha_Value)
             {
                 double fg = ScaffoldPara.Cha_Value;
-                lString = f_pcf.TargetValue.ToString("#0.00");
-                rString = fg.ToString("#0.00");
+                lString = f_pcf.TargetValue.ToString("#0.000");
+                rString = fg.ToString("#0.000");
                 InputDic();
             }
             else
