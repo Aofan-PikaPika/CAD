@@ -63,24 +63,24 @@
             // skinButton1
             // 
             this.skinButton1.BackColor = System.Drawing.Color.Transparent;
-            this.skinButton1.BaseColor = System.Drawing.Color.LightGray;
-            this.skinButton1.BorderColor = System.Drawing.Color.LightGray;
+            this.skinButton1.BaseColor = System.Drawing.Color.White;
+            this.skinButton1.BorderColor = System.Drawing.Color.Silver;
             this.skinButton1.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinButton1.DownBack = null;
-            this.skinButton1.DownBaseColor = System.Drawing.Color.DarkGray;
+            this.skinButton1.DownBaseColor = System.Drawing.Color.Lavender;
             this.skinButton1.FadeGlow = false;
             this.skinButton1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinButton1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.skinButton1.IsDrawBorder = false;
+            this.skinButton1.ForeColor = System.Drawing.Color.Black;
+            this.skinButton1.InnerBorderColor = System.Drawing.Color.White;
             this.skinButton1.IsDrawGlass = false;
-            this.skinButton1.Location = new System.Drawing.Point(556, 85);
+            this.skinButton1.Location = new System.Drawing.Point(565, 87);
             this.skinButton1.MouseBack = null;
             this.skinButton1.MouseBaseColor = System.Drawing.Color.Gainsboro;
             this.skinButton1.Name = "skinButton1";
             this.skinButton1.NormlBack = null;
             this.skinButton1.Radius = 10;
             this.skinButton1.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinButton1.Size = new System.Drawing.Size(121, 34);
+            this.skinButton1.Size = new System.Drawing.Size(112, 34);
             this.skinButton1.TabIndex = 1;
             this.skinButton1.Text = "取  消";
             this.skinButton1.UseVisualStyleBackColor = false;
@@ -90,7 +90,7 @@
             // 
             this.infolabel.AutoSize = true;
             this.infolabel.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.infolabel.Location = new System.Drawing.Point(135, 85);
+            this.infolabel.Location = new System.Drawing.Point(102, 85);
             this.infolabel.Name = "infolabel";
             this.infolabel.Size = new System.Drawing.Size(219, 31);
             this.infolabel.TabIndex = 2;
@@ -102,7 +102,7 @@
             this.gifBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.gifBox1.Image = global::DEMO.Properties.Resources.cpu1;
             this.gifBox1.ImeMode = System.Windows.Forms.ImeMode.AlphaFull;
-            this.gifBox1.Location = new System.Drawing.Point(28, 62);
+            this.gifBox1.Location = new System.Drawing.Point(7, 60);
             this.gifBox1.Name = "gifBox1";
             this.gifBox1.Size = new System.Drawing.Size(89, 79);
             this.gifBox1.TabIndex = 3;
@@ -111,7 +111,7 @@
             // timelabel
             // 
             this.timelabel.AutoSize = true;
-            this.timelabel.Location = new System.Drawing.Point(465, 100);
+            this.timelabel.Location = new System.Drawing.Point(494, 100);
             this.timelabel.Name = "timelabel";
             this.timelabel.Size = new System.Drawing.Size(53, 12);
             this.timelabel.TabIndex = 4;

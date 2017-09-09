@@ -317,72 +317,8 @@ namespace DEMO
         //计算书
         private void skinButton8_Click(object sender, EventArgs e)
         {
-            Controller1 c1 = new Controller1();
-            Controller2 c2 = new Controller2();
-            Controller3 c3 = new Controller3();
-            Controller4 c4 = new Controller4();
-            Controller5 c5 = new Controller5();
-            Controller6 c6 = new Controller6();
-            Controller7 c7 = new Controller7();
-            Controller8 c8 = new Controller8();
-            try
-            {
-                c1.Compare();
-                c2.Compare();
-                c3.Compare();
-                c4.Compare();
-                c5.Compare();
-                c6.Compare();
-                c7.Compare();
-                c8.Compare();
-
-            }
-            catch (Exception ex)
-            {
-                ErrorService.Show(ex.Message);
-            }
-            //这些弹窗都是测试用代码
-            //MessageBox.Show(Controller1.lString);
-            //MessageBox.Show(Controller1.rString);
-            // MessageBox.Show(Controller2.lString);
-            //MessageBox.Show(Controller2.rString);
-
-            //以下是生成计算书的代码
-            WordController outScaffBook = new WordController();
-            //保存路径为程序根目录下的tmp文件夹
-            Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\tmp");
-            string path = System.Windows.Forms.Application.StartupPath + "\\tmp\\计算书.docx";
-            
-            //未处理的计算书目录为程序根目录下的rawBook文件夹，在这里复制它
-            if (!outScaffBook.CopyTo(System.Windows.Forms.Application.StartupPath + "\\rawBook\\OutScaffCalcBook.docx", path))
-            {
-                ErrorService.Show("计算书不存在");
-                return;
-            }
-            //复制完毕后打开计算书，这里如果设定为true，可以看到程序替换word的过程
-            if (!outScaffBook.OpenDoc(path, false))
-            {
-                ErrorService.Show("计算书无法打开");
-                return;
-            }
-            //处理计算书的内容
-            outScaffBook.PushKeyObjValueObj(ScaffoldPara.GetKeyArray(), ScaffoldPara.GetValArray());
-            outScaffBook.PushKeyObjValueObj(ProjectInfo.GetKeyArray(), ProjectInfo.GetValArray());
-            outScaffBook.PushDictionary(c1.solveDic,c2.solveDic,c3.solveDic,c4.solveDic,c5.C5Dic,c6.C6Dic,c8.solveDic);
-            //因WPS与WORD会引起冲突，所以这里不加自动保存功能
-            //将计算书导出后的任何文件保存，打开的问题，抛给WORD或WPS
-            //这样一来，重复写计算书也不会有抛异常的问题
-            outScaffBook.SeeWord();
-            #region
-            //保存关闭后再打开
-            //outScaffBook.SaveDocFile(path);
-            //outScaffBook.CloseDoc();
-            //outScaffBook.OpenDoc(path, true);
-            #endregion
-
-
-
-            
+            FrmProcess fp = new FrmProcess();
+            fp.ShowDialog();         
         }
         #endregion
 
@@ -390,33 +326,7 @@ namespace DEMO
         //用料统计
         private void skinButton12_Click(object sender, EventArgs e)
         {
-            Controller1 c1 = new Controller1();
-            Controller2 c2 = new Controller2();
-      
-            Controller5 c5 = new Controller5();
-            Controller6 c6 = new Controller6();
-            Controller8 c8 = new Controller8();
-            try
-            {
-
-                c1.Compare();
-                c2.Compare();
-
-                c5.Compare();
-                c6.Compare();
-                c8.Compare();
-
-
-            }
-            catch (Exception ex)
-            {
-                ErrorService.Show(ex.Message);
-            }
            
-            MessageBox.Show(Controller5.lString);
-            MessageBox.Show(Controller5.rString);
-            MessageBox.Show(Controller6.lString);
-            MessageBox.Show(Controller6.rString);
         }
 
         //施工图
