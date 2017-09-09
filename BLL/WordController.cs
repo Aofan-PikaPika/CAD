@@ -69,6 +69,15 @@ namespace BLL
             }
             return true;
         }
+        /// <summary>
+        /// 外部即使公开了_wordApp的属性，也无法在外部采用点运算的算法，控制_wordApp的行为
+        /// 这里直接调用方法，在word循环修改参数的方法完毕之后，执行这个方法，显示word
+        /// 后续的任何行为，都抛给word
+        /// </summary>
+        public void SeeWord()
+        {
+            _wordApp.Visible = true;
+        }
 
         /// <summary>
         /// 关闭当前控制类内存中的文档

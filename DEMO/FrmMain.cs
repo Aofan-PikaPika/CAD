@@ -352,6 +352,7 @@ namespace DEMO
             //保存路径为程序根目录下的tmp文件夹
             Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath + "\\tmp");
             string path = System.Windows.Forms.Application.StartupPath + "\\tmp\\计算书.docx";
+            
             //未处理的计算书目录为程序根目录下的rawBook文件夹，在这里复制它
             if (!outScaffBook.CopyTo(System.Windows.Forms.Application.StartupPath + "\\rawBook\\OutScaffCalcBook.docx", path))
             {
@@ -359,7 +360,7 @@ namespace DEMO
                 return;
             }
             //复制完毕后打开计算书，这里如果设定为true，可以看到程序替换word的过程
-            if (!outScaffBook.OpenDoc(path, true))
+            if (!outScaffBook.OpenDoc(path, false))
             {
                 ErrorService.Show("计算书无法打开");
                 return;
@@ -371,7 +372,7 @@ namespace DEMO
             //因WPS与WORD会引起冲突，所以这里不加自动保存功能
             //将计算书导出后的任何文件保存，打开的问题，抛给WORD或WPS
             //这样一来，重复写计算书也不会有抛异常的问题
-
+            outScaffBook.SeeWord();
             #region
             //保存关闭后再打开
             //outScaffBook.SaveDocFile(path);
