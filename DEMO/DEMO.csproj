@@ -115,6 +115,12 @@
     <Compile Include="SubForm\FrmInfo.Designer.cs">
       <DependentUpon>FrmInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubForm\FrmProcess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\FrmProcess.Designer.cs">
+      <DependentUpon>FrmProcess.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubForm\ShowPic.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\FrmMaterial.resx">
       <DependentUpon>FrmMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\FrmProcess.resx">
+      <DependentUpon>FrmProcess.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\ShowPic.resx">
       <DependentUpon>ShowPic.cs</DependentUpon>
@@ -251,6 +260,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\8.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpu.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpu1.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
