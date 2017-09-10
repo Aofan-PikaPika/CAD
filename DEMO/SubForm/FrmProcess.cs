@@ -23,7 +23,6 @@ using BLL;
 using BLL.Service;
 using System.IO;
 using Model.Entity;
-using System.Threading;
 
 namespace DEMO.SubForm
 {
@@ -109,56 +108,82 @@ namespace DEMO.SubForm
             }
             else
             {
-                #region  计算模块
-                //开始计算公式
-                Controller1 c1 = new Controller1();
-                Controller2 c2 = new Controller2();
-                Controller3 c3 = new Controller3();
-                Controller4 c4 = new Controller4();
-                Controller5 c5 = new Controller5();
-                Controller6 c6 = new Controller6();
-                Controller7 c7 = new Controller7();
-                Controller8 c8 = new Controller8();
-                try
+                Controller1 c1 =null;
+                Controller2 c2 = null;
+                Controller3 c3 = null;
+                Controller4 c4 = null;
+                Controller5 c5 = null;
+                Controller6 c6 = null;
+                Controller7 c7 = null;
+                Controller8 c8 = null;
+                RecommendService rs = new RecommendService();
+                for (int i = 0; i < 4; i++)
                 {
-                    c1.Compare();
-                    bkWorker.ReportProgress(10);
-                    Thread.Sleep(500);
-                    c2.Compare();
-                    bkWorker.ReportProgress(20);
-                    Thread.Sleep(500);
-                    c3.Compare();
-                    bkWorker.ReportProgress(30);
-                    Thread.Sleep(500);
-                    c4.Compare();
-                    bkWorker.ReportProgress(40);
-                    Thread.Sleep(500);
-                    c5.Compare();
-                    bkWorker.ReportProgress(50);
-                    Thread.Sleep(500);
-                    c6.Compare();
-                    bkWorker.ReportProgress(60);
-                    Thread.Sleep(500);
-                    c7.Compare();
-                    bkWorker.ReportProgress(70);
-                    Thread.Sleep(500);
-                    c8.Compare();
-                    bkWorker.ReportProgress(80);
-                    Thread.Sleep(500);
+                    //调用推荐服务
+                    //杆件不全时由推荐服务按顺序获取相应杆件尺寸
+                    //填全时直接计算 
+                    rs.Recommend();
+
+                    #region  计算模块
+                    //开始计算公式
+                    c1 = new Controller1();
+                    c2 = new Controller2();
+                    c3 = new Controller3();
+                    c4 = new Controller4();
+                    c5 = new Controller5();
+                    c6 = new Controller6();
+                    c7 = new Controller7();
+                    c8 = new Controller8();
+                    try
+                    {
+                        c1.Compare();
+                        bkWorker.ReportProgress(10);
+                        Thread.Sleep(500);
+                        c2.Compare();
+                        bkWorker.ReportProgress(20);
+                        Thread.Sleep(500);
+                        c3.Compare();
+                        bkWorker.ReportProgress(30);
+                        Thread.Sleep(500);
+                        c4.Compare();
+                        bkWorker.ReportProgress(40);
+                        Thread.Sleep(500);
+                        c5.Compare();
+                        bkWorker.ReportProgress(50);
+                        Thread.Sleep(500);
+                        c6.Compare();
+                        bkWorker.ReportProgress(60);
+                        Thread.Sleep(500);
+                        c7.Compare();
+                        bkWorker.ReportProgress(70);
+                        Thread.Sleep(500);
+                        c8.Compare();
+                        bkWorker.ReportProgress(80);
+                        Thread.Sleep(500);
+                        e.Cancel = false;
+                        //通过计算，跳出循环
+                        break;
+                    }
+                    catch (Exception ex)
+                    {
+                        ErrorMessage = ex.Message;
+                        e.Cancel = true;
+                        if (rs.DeCode == 7)
+                        {
+                            return -1;
+                        }
+                        else 
+                        {
+                            continue;
+                        }
+                       
+                    }
+                 
+                    #endregion
                 }
-                catch (Exception ex)
-                {
-                    ErrorMessage = ex.Message;
-                    e.Cancel = true;
-                    //计算有异常停止计时
-                    sw.Stop();
-                    timer1.Stop();
-                    return -1;
-                }
-             
-                #endregion
                
-                if (bkWorker.CancellationPending)
+               
+                if (bkWorker.CancellationPending||e.Cancel==true)
                 {
                     e.Cancel = true;
                     return -1;
@@ -303,6 +328,7 @@ namespace DEMO.SubForm
             timer1.Stop();
             this.Close();
             this.Dispose();
+            
         }
 
 

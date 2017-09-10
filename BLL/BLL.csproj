@@ -95,6 +95,7 @@
     <Compile Include="ComputeUnits\TableFromMemoryTwoDim.cs" />
     <Compile Include="ComputeUnits\F1\TFS_FiQ345.cs" />
     <Compile Include="Service\ErrorService.cs" />
+    <Compile Include="Service\RecommendService.cs" />
     <Compile Include="SQLOperations.cs" />
     <Compile Include="WordController.cs" />
     <Compile Include="XMLOperation.cs" />

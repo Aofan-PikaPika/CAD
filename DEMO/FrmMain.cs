@@ -105,6 +105,8 @@ namespace DEMO
             _fileName = filePath.Substring(filePath.LastIndexOf("\\") + 1);
             toolStripLabel2.Text = proName;
             _filePath = filePath;
+            skinButton8.Enabled = true;
+            skinButton7_Click(this, null);
         }
 
         private string _filePath = "";
@@ -191,11 +193,15 @@ namespace DEMO
                      {
                          //设置工程状态位为：无工程
                          ProjectSate = 0; 
-                     }                   
+                     }
+                    
                     //给窗体状态栏赋值
                      toolStripLabel2.Text = ProjectName;
 
                     _fileName=ofd.FileName.Substring(ofd.FileName.LastIndexOf("\\") + 1);
+                    skinButton8.Enabled = true;
+                    skinButton7_Click(this, null);
+
 
                 }
             }
@@ -221,7 +227,7 @@ namespace DEMO
                     {
                         if (xo.XmlSave(sfd.FileName, ProjectSate))
                         {
-                            MessageBoxEx.Show("保存完毕！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBoxEx.Show("保存完毕！系统工作区已重置", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             //清空XML文档
                             xo.XmlClear();
                             //修改状态栏
@@ -232,6 +238,7 @@ namespace DEMO
                             ProjectInfo.Clear();
                             ScaffoldPara.Clear();
                             MaterialLib.clearMaterialLib();
+                            skinButton8.Enabled = false;
                         }
                     }
                 }
@@ -239,7 +246,7 @@ namespace DEMO
                 {
                      if (xo.XmlSave(_filePath, ProjectSate))
                         {
-                            MessageBoxEx.Show("保存完毕！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBoxEx.Show("保存完毕！系统工作区已重置！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             //清空XML文档
                             xo.XmlClear();
                             //修改状态栏
@@ -250,6 +257,7 @@ namespace DEMO
                             ProjectInfo.Clear();
                             ScaffoldPara.Clear();
                             MaterialLib.clearMaterialLib();
+                            skinButton8.Enabled = false;
                         }
                 }
                 
@@ -310,15 +318,35 @@ namespace DEMO
         //脚手架参数
         private void skinButton7_Click(object sender, EventArgs e)
         {
-            FrmFrameInfo f = new FrmFrameInfo(ProjectSate);
-            f.ShowDialog();
+            if (ProjectSate != 0)
+            {
+                FrmFrameInfo f = new FrmFrameInfo(ProjectSate);
+                f.ShowDialog();
+                if (f.DialogResult==DialogResult.OK)
+                {
+                    skinButton8.Enabled = true;
+                }
+            }
+            else 
+            {
+                MessageBoxEx.Show("当前系统无项目！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            
         }
 
         //计算书
         private void skinButton8_Click(object sender, EventArgs e)
-        {
-            FrmProcess fp = new FrmProcess();
-            fp.ShowDialog();         
+        {     
+            if (ProjectInfo.Con_City != null && ProjectInfo.Con_Province != null)
+            {
+                FrmProcess fp = new FrmProcess();
+                fp.ShowDialog();
+            }
+            else
+            {
+                MessageBoxEx.Show("建设省份、建设城市参数值不能为空！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+          
         }
         #endregion
 
