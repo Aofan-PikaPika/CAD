@@ -6,9 +6,22 @@ using Model.Entity;
 
 namespace BLL.Service
 {
+    /// <summary>
+    /// 这个类被命名成一个推荐杆件的服务，为了迎合一项新的需求：在工程师拿不准哪个杆件的情况下，循环遍历内置的数组，由难算过到
+    /// 易算过，逐次尝试，直至遇到正确选项，出计算书
+    /// 
+    /// 思路：将需要推荐的数组置入内存，通过不同的循环来遍历数组
+    /// 
+    /// 难点:每个数组的H,Lb,La都有值，不能通过数组本身判断这个值是缺的，还是作为判断依据的一个数
+    /// </summary>
     public class RecommendService
     {
         public int DeCode;
+
+        /// <summary>
+        /// 服务类在实例化时，仅根据目前的缺省项，判断一次：H,Lb,La中缺哪个值
+        /// 然后将这个判断结果抽象成编码，以一个int类变量的形式存放在内存当中
+        /// </summary>
         public RecommendService() 
         {
             this.DeCode = GetCode();
@@ -112,6 +125,7 @@ namespace BLL.Service
         private int GetCode() 
         {
             char [] ch=new char[3];
+            //三个if用来获取二进制码的三位
             if (ScaffoldPara.H != -1.0)
             {
                 ch[0] = '1';
@@ -141,7 +155,9 @@ namespace BLL.Service
             return code;
         }
 
-        //解码
+        /// <summary>
+        /// 外界唯一要调用的推荐过程，这个推荐过程自动为la，lb，h的全局变量赋值。
+        /// </summary>
         public void Recommend() 
         {
             switch (DeCode)

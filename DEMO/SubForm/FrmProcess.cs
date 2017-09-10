@@ -136,6 +136,7 @@ namespace DEMO.SubForm
                     c8 = new Controller8();
                     try
                     {
+                        //计算的同时向UI提交进度，此处调用计算与提交进度不可分离
                         c1.Compare();
                         bkWorker.ReportProgress(10);
                         Thread.Sleep(500);
@@ -160,6 +161,9 @@ namespace DEMO.SubForm
                         c8.Compare();
                         bkWorker.ReportProgress(80);
                         Thread.Sleep(500);
+                        //当走到这里时，前面的推荐服务可能会让这个标志位产生false
+                        //直接break出循环无法导出计算书
+                        //所以这里将标志位设置为false
                         e.Cancel = false;
                         //通过计算，跳出循环
                         break;
@@ -170,13 +174,18 @@ namespace DEMO.SubForm
                         e.Cancel = true;
                         if (rs.DeCode == 7)
                         {
+                            //如果全部填写，编码为111d = 7
+                            //此时无需循环，直接跳出
+                            //这里catch块中return出去就是异常
                             return -1;
                         }
                         else 
                         {
                             continue;
                         }
-                       
+                       /*
+                        *  任何推荐算法最多四次，推荐算法数组走到最后会一直按最后面的来
+                        */
                     }
                  
                     #endregion
