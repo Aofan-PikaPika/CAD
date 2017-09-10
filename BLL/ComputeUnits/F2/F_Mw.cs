@@ -40,7 +40,7 @@ namespace BLL.ComputeUnits.F2
         public override string ToString()
         {
             if (_isComputed)
-                return "(0.9×1.4×" + _ωk.ToString("#0.000") + "×" + la.ToString("#0.000") + "×" + h.ToString("#0.000") + "^2)/10=" + _targetValue.ToString("#0.00");
+                return "(0.9×1.4×" + _ωk.ToString() + "×" + la.ToString() + "×" + h.ToString() + "^2)/10=" + _targetValue.ToString("#0.000");
             else
                 return "";
         }

@@ -40,7 +40,7 @@ namespace BLL.ComputeUnits.F2
         public override string ToString()
         {
             if (_isComputed)
-                return _μz.ToString("#0.000") + "×" + _μs.ToString("#0.000") + "×" + _ω0.ToString("#0.000") + "=" + _targetValue.ToString("#0.00");
+                return _μz.ToString() + "×" + _μs.ToString() + "×" + _ω0.ToString() + "=" + _targetValue.ToString();
             else
                 return "";
         }

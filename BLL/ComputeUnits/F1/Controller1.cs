@@ -119,8 +119,8 @@ namespace BLL.ComputeUnits.F1
             A = A * 100;//由平方厘米转换为平方毫米
             if (N / (A * φ) <= f)
             {
-                lString = N.ToString("#0.00") + "/(" + A.ToString("#0.00") + "×" + φ.ToString("#0.00") + ")=" + (N / (A * φ)).ToString("#0.00");
-                rString = f.ToString("#0.00");
+                lString = N.ToString("#0.0000") + "/(" + A.ToString("#0.000") + "×" + φ.ToString("#0.000") + ")=" + (N / (A * φ)).ToString("#0.000");
+                rString = f.ToString("#0.000");
                 InputDic();
             }
             else

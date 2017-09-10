@@ -41,7 +41,7 @@ namespace BLL.ComputeUnits.F3
         public override string ToString()
         {
             if (_isComputed)
-                return Mh.ToString("#0.000") + "/" + W.ToString("#0.000") + "=" + _targetValue.ToString("#0.00");
+                return Mh.ToString("#0.0000") + "/" + W.ToString("#0.0000") + "=" + _targetValue.ToString("#0.000");
             else
                 return "";
         }

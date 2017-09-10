@@ -44,7 +44,7 @@ namespace BLL.ComputeUnits.F1
         public override string ToString()
         {
             if (_isComputed)
-                return "0.35×" + act_layers.ToString("#0.00") + "×" + la.ToString("#0.00") + "×" + lb.ToString("#0.00") + "/2+0.17×" + act_layers.ToString("#0.00") + "×" + la.ToString("#0.00") + "×" + lb.ToString("#0.00") + "×+0.01×" + la.ToString("#0.00") + "×" + height.ToString("#0.00") + "=" + _targetValue.ToString("#0.00");
+                return "0.35×" + act_layers.ToString() + "×" + la.ToString() + "×" + lb.ToString() + "/2+0.17×" + act_layers.ToString() + "×" + la.ToString() + "×" + lb.ToString() + "×+0.01×" + la.ToString() + "×" + height.ToString() + "=" + _targetValue.ToString();
             else
                 return "";
         }

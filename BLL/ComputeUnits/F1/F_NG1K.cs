@@ -55,7 +55,7 @@ namespace BLL.ComputeUnits.F1
         {
             if (_isComputed)
             {
-                return "[" + GStandingTube.ToString("#0.00") + "+" + GVLedger.ToString("#0.00") + "+(" + GHLedger.ToString("#0.00") + "+" + GVBrace.ToString("#0.00") + "+" + GHBrace.ToString("#0.00") + ")×0.5]×" + Step.ToString() + "=" + _targetValue.ToString("#0.00");
+                return "[" + GStandingTube.ToString() + "+" + GVLedger.ToString() + "+(" + GHLedger.ToString() + "+" + GVBrace.ToString() + "+" + GHBrace.ToString() + ")×0.5]×" + Step.ToString() + "=" + _targetValue.ToString();
             }
             else
                 return "";

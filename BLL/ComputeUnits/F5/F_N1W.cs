@@ -42,7 +42,7 @@ namespace BLL.ComputeUnits.F5
 
         public override string ToString()
         {
-            return "1.4×" + wk.ToString("#0.00") + "×" + L1.ToString("#0.00") + "×" + H1.ToString("#0.00") + "=" + _targetValue.ToString("#0.00");
+            return "1.4×" + wk.ToString() + "×" + L1.ToString() + "×" + H1.ToString() + "=" + _targetValue.ToString("#0.000");
         }
     }
 }

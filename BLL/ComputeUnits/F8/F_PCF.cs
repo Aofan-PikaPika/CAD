@@ -38,7 +38,7 @@ namespace BLL.ComputeUnits.F8
         public override string ToString()
         {
             if (_isComputed)
-                return NK.ToString("#0.00") + "/" + Pad_Area.ToString("#0.00") + "=" + _targetValue.ToString("#0.0");
+                return NK.ToString() + "/" + Pad_Area.ToString() + "=" + _targetValue.ToString("#0.000");
             else
                 return "";
         }

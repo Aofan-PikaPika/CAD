@@ -76,7 +76,7 @@ namespace BLL.ComputeUnits.F2
             CalcW();
             if (Mw < 0 || W < 0 || (Controller1.N / (Controller1.A * Controller1.φ)) + Mw / W <= Controller1.f)
             {
-                lString = Controller1.N.ToString("#0.000") + "/(" + Controller1.A.ToString("#0.000") + "×" + Controller1.φ.ToString("#0.000") + ")+" + Mw.ToString("#0.000") + "/" + W.ToString("#0.000") + "=" + ((Controller1.N / (Controller1.A * Controller1.φ)) + Mw / W).ToString("#0.00");
+                lString = Controller1.N.ToString("#0.0000") + "/(" + Controller1.A.ToString("#0.0000") + "×" + Controller1.φ.ToString("#0.0000") + ")+" + Mw.ToString("#0.0000") + "/" + W.ToString("#0.0000") + "=" + ((Controller1.N / (Controller1.A * Controller1.φ)) + Mw / W).ToString("#0.000");
                 rString = Controller1.rString;//直接就是F
                 f_NWind = new F_NWind(Controller1.f_NG1K.TargetValue, Controller1.f_NG2K.TargetValue, Controller1.f_NQK.TargetValue);
                 f_NWind.ComputeValue();

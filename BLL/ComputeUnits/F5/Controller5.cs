@@ -121,8 +121,8 @@ namespace BLL.ComputeUnits.F5
             An = An * 100;
              if (N1 / An <= f)
             {
-                lString = N1.ToString("#0.00") + "/" + An.ToString("#0.00") + "=" + (N1 / An).ToString("#0.00");
-                rString = f.ToString("#0.00");
+                lString = N1.ToString() + "/" + An.ToString() + "=" + (N1 / An).ToString("#0.000");
+                rString = f.ToString("#0.000");
                 InputDic();
             }
             else 

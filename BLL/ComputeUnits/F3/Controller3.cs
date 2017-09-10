@@ -70,8 +70,8 @@ namespace BLL.ComputeUnits.F3
             if (_σ <= 0 || fh <= 0) return;
             if (_σ <= fh)
             {
-                lString = _σ.ToString("#0.00");
-                rString = fh.ToString("#0.00");
+                lString = _σ.ToString("#0.000");
+                rString = fh.ToString("#0.000");
                 InputDic();
             }
             else 
